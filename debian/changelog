@@ -1,3 +1,10 @@
+fortune-mod (9708-37) unstable; urgency=low
+
+  * datfile/off/atheism: Fixed spelling mistake
+    (closes: #234988)
+
+ -- Pascal Hakim <pasc@debian.org>  Fri, 05 Mar 2004 13:43:00 +1100
+
 fortune-mod (9708-36) unstable; urgency=low
 
   * datfile/debian: Created a new fortune cookie file to hold debian
