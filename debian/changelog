@@ -12,6 +12,8 @@ fortune-mod (9708-35) unstable; urgency=low
   * debian/politics:811: Removed duplicate (and wrong) Monty Python
     quote
     (closes: #214701)
+  * datfile/miscellaneous: Removed 3 spelling mistakes
+    (closes: #215470)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 00:04:00 +1100
 
