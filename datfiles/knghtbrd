@@ -25,7 +25,7 @@ X11 is proprietary.  We live in interesting times.
 %
 <JHM> Being overloaded is the sign of a true Debian maintainer.
 %
-<Overfiend> partycle: I seriously do need a vacation from this package.=20
+<Overfiend> partycle: I seriously do need a vacation from this package.
             I actually had a DREAM about introducing a stupid new bug
             into xbase-preinst last night.  That's a Bad Sign.
 %
@@ -52,7 +52,7 @@ software industry, and secure the blessings of liberty to ourselves and
 our posterity, do ordain and establish this Constitution for the Debian
 GNU/Linux System.
 %
-"This is the element_data structure for elements whose *element_type =3D
+"This is the element_data structure for elements whose *element_type =
 FORM_TYPE_SELECT_ONE, FORM_TYPE_SELECT_MULT. */ /* * nesting deeper
 and deeper, harder and harder, go, go, oh, OH, OHHHHH!! * Sorry, got
 carried away there. */ struct lo_FormElementOptionData_struct."
@@ -64,7 +64,7 @@ Debian Project is committed to working with the industry on this issue
 and we will have our full plans and strategy posted by the first quarter
 of 2020.
 %
-=2E.. Where was Stac Electronics when Microsoft invented Doublespace? Where
+... Where was Stac Electronics when Microsoft invented Doublespace? Where
 were Xerox and Apple when Microsoft invented the GUI?  Where was Apple's
 QuickTime when Microsoft invented Video for Windows?  Where was Spyglass
 Inc.'s Mosaic when Microsoft invented Internet Explorer? Where was Sun
@@ -191,8 +191,7 @@ its twenty below?        -- Linus Torvalds
 %
 <zpx> it's amazing how "not-broken" debian is compared to slack and rh
 %
-<dark> "Hey, I'm from this project called Debian... have you heard of it?=
-=20
+<dark> "Hey, I'm from this project called Debian... have you heard of it?
        Your name seems to be on a bunch of our stuff."
 %
 "In the event of a percieved failing of the project leadership #debian is
@@ -219,7 +218,7 @@ and generally abusing power"
 %
 I can just see it now: nomination-terrorism ;-)
         -- Manoj
-=20
+
 haha!  i nominate manoj.
         -- seeS
 %
@@ -347,8 +346,7 @@ mass of unskilled consumers?        -- Steve Shorter
 <Flav> no, we're all irregular polygons
 %
 <Culus> OH MY GOD NOT A RANDOM QUOTE GENERATOR
-<netgod> surely you didnt think that was static? how lame would that be?=20
-         :-)
+<netgod> surely you didnt think that was static? how lame would that be? :-)
 %
 Mere nonexistence is a feeble excuse for declaring a thing unseeable. You
 *can* see dragons.  You just have to look in the right direction.
@@ -359,23 +357,23 @@ Mere nonexistence is a feeble excuse for declaring a thing unseeable. You
 %
 <Manoj> I *like* the chicken
 %
-=20
+
  [   ]  DOGBERT
  [ 2 ]  RICHARD STALLMAN
  [ 3 ]  BUFFY SUMMERS
  [ 1 ]  MANOJ SRIVASTAVA
  [ 4 ]  NONE of the above
-=20
+
         -- Debian Project Leader 1999 ballot
 %
 <Oryn> anyone know if there is a version of dpkg for redhat?
 %
-acme-cannon (3.1415) unstable; urgency=3Dlow
-=20
+acme-cannon (3.1415) unstable; urgency=low
+
   * Added safety to prevent operator dismemberment, closes: bug #98765,
     bug #98713, #98714.
   * Added manpage. closes: #98725.
-=20
+
   -- Wile E. Coyote <genius@debian.org>  Sun, 31 Jan 1999 07:49:57 -0600
 %
 !netgod:*! time flies when youre using linux
@@ -470,7 +468,7 @@ This is Something
 Therefore, This must be Done
         -- The Thatcherite Syllogism
 %
-<Knghtbrd> xtifr - beware of james when he's off his medication  =3D>
+<Knghtbrd> xtifr - beware of james when he's off his medication  =>
 %
 Indifference will certainly be the downfall of mankind, but who cares?
 %
@@ -479,10 +477,10 @@ Never underestimate the power of human stupidity.
 %
 <wc> red dye causes cancer, haven't you heard? (;
 <Knghtbrd> fucking everything causes cancer, haven't you heard?
-<Knghtbrd> =3D>
+<Knghtbrd> =>
 <archon> no, that causes aids
 %
-Gold, n.:=20
+Gold, n.:
   A soft malleable metal relatively scarce in distribution.  It is mined
   deep in the earth by poor men who then give it to rich men who immediately
   bury it back in the earth in great prisons, although gold hasn't done
@@ -531,7 +529,7 @@ The X Window System:
            the secondary couplings.  If we re-align the phase manifold we
            should be able to use the plasma inductor matrix to manually
            launch a new cheesy spinoff series."
-* ShadwDrgn sighs=20
+* ShadwDrgn sighs
 <Phase> you leave my manifolds alone
 <Phase> !
 %
@@ -558,7 +556,7 @@ The X Window System:
 <jgoerzen> doogie: you sound highly unstable :-)
 <Knghtbrd> jgoerzen - he is.
 * doogie bops Knghtbrd
-<Knghtbrd> see?  Resorting to violence =3DD
+<Knghtbrd> see?  Resorting to violence =D
 %
 I have also been a huge Unix fan ever since I realized that SCO was not
 Unix.           -- Dennis Baker
@@ -569,7 +567,7 @@ Unix.           -- Dennis Baker
 <dracus> don't ask what that does :P
 %
 <Iambe> you are not a nutcase
-<Knghtbrd> You obviously don't know me well enough yet.  =3D>
+<Knghtbrd> You obviously don't know me well enough yet.  =>
 %
 * aj thinks Kb^Zzz ought to pick different things to dream about than
    general resolutions and policy changes.
@@ -582,7 +580,7 @@ Unix.           -- Dennis Baker
 %
 <netgod> Feanor: u have no idea of the depth of the stupidty of american law
 %
-Anyone who stands out in the middle of a road looks like roadkill to me.=20
+Anyone who stands out in the middle of a road looks like roadkill to me.
         -- Linus Torvalds
 %
 <lilo> "PLEASE RESPECT INTELLECTUAL RIGHTS!"
@@ -612,7 +610,7 @@ Anyone who stands out in the middle of a road looks like roadkill to me.=20
 <Tabi-> LauraDax, I don't remember seeing "god"
 %
 <Knghtbrd>     Europe Passes Pro-spam Law
-<Knghtbrd> I though only Americans were that fucking stupid  =3D>
+<Knghtbrd> I though only Americans were that fucking stupid  =>
 <Espy> apparently americans are quite naive :)
 %
 <kira> is a surgical war where you go give the foreign troops nose jobs?
@@ -632,7 +630,7 @@ Anyone who stands out in the middle of a road looks like roadkill to me.=20
 <knghtbrd> ;>
 %
 <Knghtbrd> Overfiend - BTW, after we've discovered X takes all of 1.4 GIGS
-           to build, are you willing admit that X is bloatware?  =3D>
+           to build, are you willing admit that X is bloatware?  =>
 <Overfiend> KB: there is a 16 1/2 minute gap in my answer
 <acf> knghtbrd: evidence exists that X is only the *2nd* worst windowing
       system ;)
@@ -660,8 +658,7 @@ Anyone who stands out in the middle of a road looks like roadkill to me.=20
 %
 <Knghtbrd> Leave it to manoj to call procmail "puny"
 %
-<Crow-> Manoj: well, i cant understand stuff like "s/3#$%^% {]][ @ f245=20
-        }"
+<Crow-> Manoj: well, i cant understand stuff like "s/3#$%^% {]][ @ f245 }"
 <Manoj> Crow: That is not quite legal ;-)
 <Knghtbrd> Manoj - how would one make "s/3#$%^% {]][ @ f245 }" legal
            anyway? (and what would it do?  hehe)
@@ -717,7 +714,7 @@ I am dyslexic of Borg.  Prepare to have your ass laminated.
             of mankind?
 %
 <aph> manoj is going nuts on the bug fixing crusade!  woo woo!
-<Knghtbrd> manoj went nuts long time ago.  but the bug fixing is cool  =3D>
+<Knghtbrd> manoj went nuts long time ago.  but the bug fixing is cool  =>
 %
 <rcw> those apparently-bacteria-like multicolor worms coming out of
       microsoft's backorifice
@@ -727,7 +724,7 @@ I am dyslexic of Borg.  Prepare to have your ass laminated.
 <daem0n> simmy: bite me. :)
 <Simunye> daemon: okay :)
 %
-<Overfiend> lilo: well then, you are probably a responsible thinker.=20
+<Overfiend> lilo: well then, you are probably a responsible thinker.
             Welcome to a very small club.
 <lilo> Overfiend: welcome me when you join :)
 %
@@ -754,16 +751,16 @@ of XFree.
 %
 >   >I don't really regard bible-kjv-text as a technical document,
 >   > but... :)
-=20
+
 > It's a manual -- for living.
-=20
+
 But it hasn't been updated in a long time, many would say that it's
 sadly out of date, and the upstream maintainer doesn't respond to his
 email.  :-)
         -- Branden Robinson, Oliver Elphick, and Chris Waters in a
            message to debian-policy
 %
-<Knghtbrd> I can think of lots of people who need USER=3DID10T someplace!
+<Knghtbrd> I can think of lots of people who need USER=ID10T someplace!
 %
 <slashdot> my US geograpy is lousy...lol
 <knghtbrd> so's mine and I live here
@@ -809,7 +806,7 @@ painful experience... I rather liked it... ;)
            apparently is
 <wc> that's nothing new (;
 <Knghtbrd> wc - hush.
-<Knghtbrd> =3D>
+<Knghtbrd> =>
 %
 <dpg> americans are wierd....
 <xtifr> californians even weirder
@@ -824,7 +821,7 @@ painful experience... I rather liked it... ;)
 <CosmicRay> although, now that somebody brought it up, let's start one
             :-)
 <Knghtbrd> CosmicRay - why not, sounds like a fun way to spend the
-           afternoon =3DD
+           afternoon =D
 %
 <Crow-> these stupid head hunters want resumes in ms word format
 <Crow-> can you write shit in tex and convert it to word?
@@ -886,7 +883,7 @@ thought for the other fellow. He could be plotting something."
 %
 <Knghtbrd> mariab - don't think Debian hasn't had some very stupid and
            obvious bugs before
-<Knghtbrd> of course, we usually fix ours BEFORE we release  =3DD
+<Knghtbrd> of course, we usually fix ours BEFORE we release  =D
 %
 <Knghtbrd> mariab - I am a Debian developer.  Red Hat is "the enemy" or
            something like that I guess..  Still, typecasting RH users as
@@ -897,11 +894,11 @@ thought for the other fellow. He could be plotting something."
 >
 > IANAL either.  My son is, but if I asked him I might get an answer I
 > wouldn't want to hear.
-=20
-"Here's my invoice." ?  =3DD
+
+"Here's my invoice." ?  =D
 %
 > Ok, I see you know what you're doing :-)
-=20
+
 Either that or I've gotten pretty good at faking it.
 %
 <wichert> 8am is an ungoldly hour to be awake :)
@@ -956,7 +953,7 @@ We should run for an entry in the Guinness Book of Records.
 * joeyh takes advantage of netscape's marvelous ability to crash to close
         10 windows with a single keypress
 <joeyh> now that's progress!
-<Knghtbrd> Bus error  =3D>
+<Knghtbrd> Bus error  =>
 %
 <Wordplay> You measure your vibrators in "characters per second"?  I have
 	   bad news for you, c90, you've been masturbating with a
@@ -1042,7 +1039,7 @@ Operating Systems Installed:
   * Windows 98 Second Edition Upgrade Version ($136 through Megadepot.com,
     price does not include taxes/shipping). Surprisingly, no source code
     is included.
-=20
+
         -- Bill Stilwell, http://linuxtoday.com/stories/8794.html
 %
 Steal this tagline.  I did.
@@ -1060,7 +1057,7 @@ As a computer, I find your faith in technology amusing.
 %
 * Knghtbrd assigns 3 to Chris
 * variable wonders who else is named chris besides me
-<Knghtbrd> variable - you.  =3D>
+<Knghtbrd> variable - you.  =>
 * Knghtbrd waits for variable to dramatically say "I feel SO used!"
 <variable> Knghtbrd: :)
 * variable ++
@@ -1127,7 +1124,7 @@ For every vision there is an equal and opposite revision.
 * Knghtbrd hides from Valkyrie
 %
 <Knghtbrd> joeyh now has a terminal at the couch?
-<Knghtbrd> That guy is wired, I swear  =3D>
+<Knghtbrd> That guy is wired, I swear  =>
 <doogie> Knghtbrd: laptop
 <doogie> and I don't mean the cats.
 %
@@ -1151,7 +1148,7 @@ wearing padded gloves.  ;-)
 In fact.. based on this model of what the NSA is and isn't... many of the
 people reading this are members of the NSA... /. is afterall 'News for
 Nerds'.
-=20
+
 NSA MONDAY MORNING {at the coffee machine):
 NSA AGENT 1: Hey guys, did you check out slashdot over the weekend?
     AGENT 2: No, I was installing Mandrake 6.1 and I coulnd't get the darn
@@ -1163,7 +1160,7 @@ Technology is a constand battle between manufacturers producing bigger and
 more idiot-proof systems and nature producing bigger and better idiots.
         -- Slashdot signature
 %
-"I am ecstatic that some moron re-invented a 1995 windows fuckup."=20
+"I am ecstatic that some moron re-invented a 1995 windows fuckup."
         -- Alan Cox
 %
 knghtbrd: there may be no spoon, but can you spot the vulnerability in
@@ -1235,7 +1232,7 @@ excellent customer service today?"
 "Um, thanks, they make us say that."
         -- knghtbrd and a pacbell rep, name removed to protect her job
 %
-<danpat> Omnic: bloody newzealanders=20
+<danpat> Omnic: bloody newzealanders
 <Omnic> danpat: put a sock in it
 <danpat> heh :)
 <knghtbrd> making fun of .nz'ers is different---they're all weird
@@ -1251,13 +1248,13 @@ excellent customer service today?"
 <knghtbrd> *snipsnip*
 <rcw> oh dear, is that the sound of fortune-database editing?
 <Joy> uh oh
-<knghtbrd> Yes  =3D>
+<knghtbrd> Yes  =>
 %
 <Joy> that's a Kludge(TM)
 <knghtbrd> It Works(tm)
 <Joy> AIX works(TM)
 <knghtbrd> no it doesn't
-<knghtbrd> =3D>
+<knghtbrd> =>
 %
 "The difference between genius and stupidity is that genius has it's
 limits."
@@ -1398,7 +1395,7 @@ I'll be happy ;)
        is our job to ensure the bullet gets where it's supposed to.
 %
 <Mercury> Be warned, I have a keyboard I can use to beat luser's heads
-          in, and then continue to use... (=3D:]
+          in, and then continue to use... (=:]
 <Deek> Mercury: Oh, an IBM. :)
 %
 <Palisade> knght, sheesh, are you pasting my words out of context in
@@ -1427,7 +1424,7 @@ I'd been hearing all sorts of gloom and doom predictions for Y2K, so I
  thought I'd heed some of the advice that the experts have been giving:
  Fill up the car's gas tank, stock up on canned goods, fill up the bathtub
  with water, and so on.
-=20
+
 I guess I wasn't fully awake when I completed my preparations late last
 night.  This morning I found the kitchen shelves soaked in gasoline, water
 in the car's gas tank, and my bathtub filled with baked beans.
@@ -1443,14 +1440,14 @@ in the car's gas tank, and my bathtub filled with baked beans.
             "warning" pasted all over it
 <darkangel> no, I'm not that dumb... hehe
 <Knghtbrd> ...
-* darkangel considers downloading the latest unstable kernel	=09
+* darkangel considers downloading the latest unstable kernel
 %
 <wichert> solaris is bsd, so it should work
 * Espy takes wichert's crack pipe away
 %
 <Knghtbrd> it's too bad most old unices turned out y2k compliant
 <Knghtbrd> because it means people will STILL BE RUNNING THEM in 30 years
-           =3Dp
+           =p
 <Knghtbrd> it would have been so much nicer if y2k effectively killed off
            hpux, aix, sunos, etc  ;>
 <Espy> Knghtbrd: since when are PH-UX, aches, and solartus "old"?
@@ -1463,7 +1460,7 @@ in the car's gas tank, and my bathtub filled with baked beans.
 %
 <raptor> Adamel, i think the code you fixed of mine didn't work
 <raptor> i must not have commited the working code
-<Knghtbrd> raptor: like it's the first time THAT has ever happened  =3Dp
+<Knghtbrd> raptor: like it's the first time THAT has ever happened  =p
 %
 <Mercury> Knghtbrd: Using -3dfx or -svga?
 <Knghtbrd> Mercury will do something sane with it
@@ -1498,7 +1495,7 @@ implies that if you have to ask, you can't afford it.
         -- Linus Torvalds
 %
 <Deek> you GPL your homework? :)
-<knghtbrd> yah  =3DD
+<knghtbrd> yah  =D
 <knghtbrd> Anyone is permitted to use or modify my homework, but if they
            distribute changes they must include the full machine-readable
            source code ;>
@@ -1527,7 +1524,7 @@ implies that if you have to ask, you can't afford it.
 %
 <Kysh_> Joey: I'm on it right now.. 3 1.3Gb disks, 128M ram, dual 50Mhz
         (Up to quad 250Mhz)
-<Kysh_> The catch is that it pulls 110v at about 12A 8>=20
+<Kysh_> The catch is that it pulls 110v at about 12A 8>
 <Culus> 12A!
 <Culus> Okay, my stove is 3000W, this sun is 1320W
 <Culus> DO YOU SEE A PROBLEM HERE
@@ -1538,7 +1535,7 @@ implies that if you have to ask, you can't afford it.
 %
 <knghtbrd> joeyh: I was down since midmorning yesterday and pacbell said
            this morning that AT&T was to blame and almost all of the state
-           was down=09
+           was down
 <rcw> dunno why people insist the internet can survive a nuclear holocaust
       when it can't survive a backhoe
 %
@@ -1553,7 +1550,7 @@ Feb  5 13:27:01 trinity lp0 on fire
 %
 The less you know about computers the more you want Microsoft!
         -- Microsoft ad campaign, circa 1996
-=20
+
 (Proof that Microsoft's advertising _isn't_ dishonest!)
 %
 Making one brilliant decision and a whole bunch of mediocre ones isn't as
@@ -1627,7 +1624,7 @@ The Unixverse ends on Tue, 19 Jan 2038 03:14:07 +0000
            myself before someone else did  ;>
 %
 * Omnic looks at his 33.6k link and then looks at Joy
-* Mercury cuddles his cable modem.. (=3D:]
+* Mercury cuddles his cable modem.. (=:]
 %
 Granted, Win95's look wasn't all that new either - Apple tried to sue
 Microsoft for copying the Macintosh UI / trash can icon, until Microsoft
@@ -1639,11 +1636,11 @@ everyone is interested in their trash cans.
 <knghtbrd> is it a sign of mental illness to wander aimlessly through the
            start map, collect your Thunderbolt, hop in the pool, and gib
            yourself with it just to see your head buouce when it falls
-	   through the bottom of the pool?  =3D>
+	   through the bottom of the pool?  =>
 <knghtbrd> "You know you're a Quake addict when ..."
 %
 <Zoid> I still think you guys are nuts merging Q and QW. :P
-<knghtbrd> Of course we're nuts.  Even John said so.  =3D>
+<knghtbrd> Of course we're nuts.  Even John said so.  =>
 <taniwha> Zoid: we're nuts, but we're productive nuts:)
 %
 <taniwha> Zoid: we're nuts, but we're productive nuts:)
@@ -1698,11 +1695,11 @@ Wallace) to shoot lightning bolts from their arse?
         -- Seth Galbraith
 %
 <Mercury> You don't have to be crazy to be a member of the project, but
-          you will be.. <=3D:]
+          you will be.. <=:]
 %
 * Endy needs to consult coffee :P
 <Endy> coffee the bot person, not coffee the beverage :)
-<knghtbrd> consulting the beverage may help too  =3D>
+<knghtbrd> consulting the beverage may help too  =>
 %
 <Mongoose> knghtbrd: and the meek shall inherit k-mart
 %
@@ -1772,18 +1769,17 @@ We believe in: rough consensus and working code.
 <Deek> knghtbrd: You're kidding, right? ;)
 * Deek takes away Knghtbrd's crack pipe. ;)
 %
-<Deek> change all cvar->value =3D X to use Cvar_Set()
+<Deek> change all cvar->value = X to use Cvar_Set()
 <theoddone33> that didn't happen in oldtree
 <Deek> Actually, it did.
 <Knghtbrd> yeah - two weeks later.
 %
-=3D=3D=3D This letter is the Honor System Virus =3D=3D=3D=3D
+=== This letter is the Honor System Virus ====
 If you are running a Macintosh, OS/2, Unix, or
 Linux computer, please randomly delete
 several files from your hard disk drive and
 forward this message to everyone you know.
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=20
+==============================================
 %
 * shortc wants to get in one of knghtbrd's sigs one of these days.
 %
@@ -1839,10 +1835,10 @@ faster than light, or a floating-point boolean value?
 <``Erik> about the same as a quake bot, except irc bots are (usually)
          built to help, not shoot your ass full of holes
 %
-if (me !=3D you)        // FIXME: probably always true, delete?
-    for (n =3D 0; n < who_knows_what; n++) {
-        answer =3D DoSomething (withthis[n]);
-        if (answer =3D=3D foobar) {
+if (me != you)        // FIXME: probably always true, delete?
+    for (n = 0; n < who_knows_what; n++) {
+        answer = DoSomething (withthis[n]);
+        if (answer == foobar) {
             GetLost (n);
             break;
         }
@@ -1860,7 +1856,7 @@ if (me !=3D you)        // FIXME: probably always true, delete?
 Why is it that all of the instruments seeking intelligent life in the
 universe are pointed away from Earth?
 %
-<rebelpacket> hey, quick question, is there any way to speed up the=20
+<rebelpacket> hey, quick question, is there any way to speed up the
               performance of uquake-x11?
 <Deek> rebelpacket: If you want to accelerate it, throw it harder.
 %
@@ -1929,7 +1925,7 @@ He rings up as a $.35 pack of JuicyFruit.
 <NullC> I like the seed code for computing masking curves.
 <NullC> I've never seen code that made be want to drink before that...
 %
-$you =3D new YOU;
+$you = new YOU;
 honk() if $you->love(perl)
         -- Seen on Slashdot
 %
@@ -1997,7 +1993,7 @@ RFC 882 put the dot in .com, not Sun Microsystems
 <Mercury> WildCode: Debugging X is like trying to run a straight line
           through a maze.
 <Mercury> You just need to bend space-time so that the corners move around
-          you and you won't have any problems. (=3D:]
+          you and you won't have any problems. (=:]
 %
 <miguel> `You have been unsubscribed from the high energy personal
          protection devices mailing list'
@@ -2057,7 +2053,7 @@ RFC 882 put the dot in .com, not Sun Microsystems
 %
 <pv2b> oh, besides, whats the best approach if i want to make a Quake
        level designed from an existing building?
-<Knghtbrd> Get a floorplan of Brian's office?  =3D)
+<Knghtbrd> Get a floorplan of Brian's office?  =)
 <pv2b> Knghtbrd: im considering my school.
 <Knghtbrd> Oh great
 <Knghtbrd> That's ALL we need
@@ -2128,7 +2124,7 @@ manipulate a free market; to extend monopoly powers into new markets.  7.
 To evade liability for wrong doings; to get off.  8. To purchase
 legislation, legistators, legislatures, or chiefs of state.  9.  To
 mediate all transactions in a global economy; to embezzle; to co-opt power
-(coup d'=E9tat). Cf. innovate, English usage (antonym).
+(coup d'état). Cf. innovate, English usage (antonym).
         -- csbruce, in a Slashdot post
 %
 The deafening silence taught me not to ask a bunch of geeks for advice
@@ -2256,7 +2252,7 @@ document it must ignore."
 Isn't it embarrassing when you have to go to the drugstore for some
 "special items", and when you're checking out, the cashier looks at you
 like, "oh, I know what YOU'RE doing tonight..."
-=20
+
 Yep, that cashier read all the signs... canned chicken soup, TheraFlu,
 Halls, NyQuil, the bigass bottles of OJ and grapefruit juice... he knew
 and I knew that I had a date with the teevee and a down comforter. Awww
@@ -2298,7 +2294,7 @@ a sufficiently broad range of tasks.
 <Knghtbrd> I'd better put the incriminating stuff into code:  ahfuiovka
            ikperoa edfr ade 9 enbuw ejasxleme ka iena df4mesa
 <Knghtbrd> If you can decrypt that, you're a better cryptographer than I
-           am.  =3D)
+           am.  =)
 %
 <rcw> liiwi: printk("CPU0 on fire\n");
 %
@@ -2328,13 +2324,13 @@ NOTICE: anyone seen smoking will be assumed to be on fire and will be
 <hoponpop> my program works if i take out the bugs.
 %
 <Mercury> Knghtbrd: Hey, perl has the power grace and elegance of a sledge
-          hammer. (=3D:]
+          hammer. (=:]
 <|Rain|> certainly the grace and elegance, anyway
 %
 <DannyS> Hit the monkey to win $20(*)!
 * knghtbrd gets out his mallet.
 * knghtbrd plants it firmly on DannyS' head.
-* knghtbrd will take his $20 now.  =3DD
+* knghtbrd will take his $20 now.  =D
 %
 <gholam> well I'm impressed
 <gholam> win98 managed to crash X from within vmware.
@@ -2393,7 +2389,7 @@ perpetual motion machines.  Especially on AIX :)."
 %
 <hop_> i had something that i think was chicken that was coated with a red
        paste that seemed to be composed of lye based on how much of my
-       tounge it burned away.	   =20
+       tounge it burned away.
 <hop_> our friend who is Indian said this is why most Indians are thin
        and i quote "It doesn't take very much of this food to get you
        satisfied enoguh to stop eating."
