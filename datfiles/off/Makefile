@@ -26,7 +26,12 @@ rotated-stamp: recoded-stamp
 
 recoded-stamp:
 	for i in $(OCOOKIES_UNROTATED) ; \
-	    do cp unrotated/$$i unrotated/$$i.old ; recode latin1..u8 unrotated/$$i; done
+	    do \
+	        if [ ! -f unrotated/$$i.old ]; then \
+	    	    cp unrotated/$$i unrotated/$$i.old ; \
+		fi; \
+		recode latin1..u8 unrotated/$$i; \
+	    done
 	touch recoded-stamp
 	    
 install:
