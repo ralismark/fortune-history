@@ -17,8 +17,11 @@ fortune-mod (9708-35) unstable; urgency=low
   * datfile/humourist:1017: Added Nipsey Russell quote from Match Game 
     75
     (closes: #211144)
+  * fortune/fortune.c: Check that a character is a valid ASCII
+    character before rotating it when showing an offensive fortune
+    (closes: #213477)
 
- -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 00:04:00 +1100
+ -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 14:04:00 +1100
 
 fortune-mod (9708-34) unstable; urgency=low
 

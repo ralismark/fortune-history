@@ -1550,9 +1550,9 @@ void matches_in_list(FILEDESC * list)
 		{
                     for (p = output; (ch = *p); ++p)
 		    {
-                        if (isupper(ch))
+                        if (isupper(ch) && isascii(ch))
                             *p = 'A' + (ch - 'A' + 13) % 26;
-                        else if (islower(ch))
+                        else if (islower(ch) && isascii(ch))
                             *p = 'a' + (ch - 'a' + 13) % 26;
 		    }
 		}
@@ -1614,9 +1614,9 @@ void display(FILEDESC * fp)
 	{
 	    for (p = line; (ch = *p); ++p)
 	    {
-		if (isupper(ch))
+		if (isupper(ch) && isascii(ch))
 		    *p = 'A' + (ch - 'A' + 13) % 26;
-		else if (islower(ch))
+		else if (islower(ch) && isascii (ch))
 		    *p = 'a' + (ch - 'a' + 13) % 26;
 	    }
 	}
