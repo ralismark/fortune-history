@@ -1,3 +1,11 @@
+fortune-mod (9708-28) unstable; urgency=low
+
+  * Fixed broken encoding characters (patch from Sam Hocevar 
+    <sam@zoy.org>)
+    (closes: #188884)
+
+ -- Pascal Hakim <pasc@debian.org>  Tue, 20 May 2003 23:45:32 +1000
+
 fortune-mod (9708-27) unstable; urgency=low
 
   * Fixed -f to provide correct filenames 
