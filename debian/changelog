@@ -1,3 +1,9 @@
+fortune-mod (9708-35) unstable; urgency=low
+
+  * datfile/politics: Fixed spelling of Gandhi
+
+ -- Pascal Hakim <pasc@debian.org>  UNRELEASED
+
 fortune-mod (9708-34) unstable; urgency=low
 
   * Updated to policy 3.6.1.0
