@@ -1,6 +1,24 @@
 fortune-mod README
 ==================
 
+This is fortune-mod-1.99.1. It's a pre-release for
+fortune-mod-2.0. This should give interested parties a chance to have
+a look at the changes that have come in, and the new features.
+
+Fortune-mod now leaves at http://www.redellipse.net/code/fortune. You
+can find the CVS repository at
+http://cvs.alioth.debian.org/cgi-bin/cvsweb.cgi/fortune/?cvsroot=fortune
+
+Many thanks to Dennis for making the last release of this software,
+and to everyone who has taken the time to contribute quotes. We are
+now up to 22203 fortunes at last count. Keep 'em coming!
+
+	-- Pascal Hakim <pasc@redellipse.net> Fri, 05 Mar 2004 23:03:00 +1100
+
+--- Dennis' README---
+fortune-mod README
+==================
+
 This is fortune-mod 9708.  It is basically the same as the fortune-mod
 released in October 1995, with some portability improvements, bug fixes
 and documentation cleanup.
@@ -44,6 +62,7 @@ Linux Software Map, at:
 Its LSM entry should tell you where to find it.
 
 Cheers,
+
 
   -- Dennis L. Clark <dbugger@progsoc.uts.edu.au>  Thu, 28 Aug 1997 11:42:15 -0400
 

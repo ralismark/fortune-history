@@ -1,5 +1,7 @@
-fortune-mod (9708-38) unstable; urgency=low
+fortune-mod (1:1.99.1-1) unstable; urgency=low
 
+  * Based off of Pascal's new _official_ fortune-mod release.
+    Updated debian/copyright.
   * Pascal Hakim
     - datfile/definitions: Fixed typo
       (closes: #240176)
@@ -33,7 +35,7 @@ fortune-mod (9708-38) unstable; urgency=low
     - Remove all the German quotes in datfiles/linux and send them to the
       fortunes-de maintainer.
 
- -- Joshua Kwan <joshk@triplehelix.org>  Thu,  5 Aug 2004 22:55:49 -0700
+ -- Joshua Kwan <joshk@triplehelix.org>  Fri,  6 Aug 2004 18:38:53 -0700
 
 fortune-mod (9708-37) unstable; urgency=low
 

@@ -1,6 +1,18 @@
 (Note: this file has been re-arranged to be in reverse chronological
 order, which is The Right Thing for ChangeLogs - DLC)
 
+March 05, 2004 (fortune-mod-1.99.1)
+
+	Most of the changes have occured at some point in time in the last
+	5 years. 
+
+	A high number of spelling, punctuation, formatting and grammar
+	fixes.
+
+	Internationalisation support.
+
+	New -c option to see which file a fortune came from.	
+	
 August 29, 1997
 
   Incorporated a couple of minor changes made in the (old) Debian
