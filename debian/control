@@ -3,7 +3,7 @@ Section: games
 Priority: optional
 Maintainer: Pascal Hakim <pasc@debian.org>
 Standards-Version: 3.6.0
-Build-Depends: debhelper
+Build-Depends: debhelper, recode, librecode-dev
 
 Package: fortune-mod
 Architecture: any
