@@ -1559,3 +1559,8 @@ And what is the compiler supposed to do instead? Go shopping for you
 and buy more memory?
 
                 -- Falk Hueffner, on the GNU C++ compiler
+%
+This code passes Torvalds test grades 0, 1 and 2 (it looks ok, it
+compiles and it booted).
+
+		-- Alan Cox
