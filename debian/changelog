@@ -3,6 +3,8 @@ fortune-mod (9708-35) unstable; urgency=low
   * datfile/politics: Fixed spelling of Gandhi
   * datfile/cookie: Removed stray >
     (closes: #211399)
+  * datfile/linuxcookie:492: Added vi VS emacs quote
+    (closes: #215884)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 00:04:00 +1100
 
