@@ -1599,28 +1599,6 @@ Despite the best efforts of a quantum bigfoot drive (yes I know everyone
 told me they suck, now I know they were right) 2.1.109ac1 is now available
 	-- Alan Cox announcing Linux 2.1.109ac1
 %
-<dark> Turns out that grep returns error code 1 when there are no matches.
-       I KNEW that.  Why did it take me half an hour?
-	-- Seen on #Debian
-%
-It's simply unbelievable how much energy and creativity people have
-invested into creating contradictory, bogus and stupid licenses...
-	--- Sven Rudolph about licences in debian/non-free.
-%
-<Overfiend> partycle: I seriously do need a vacation from this
-            package.  I actually had a DREAM about introducing a
-            stupid new bug into xbase-preinst last night.  That's a
-            Bad Sign.
-	-- Seen on #Debian shortly before the release of Debian 2.0
-%
-<core> i'm glad Debian finally got into
-        polar-deep-freeze-we-arent-shitting-you state finally.
-	-- Seen on #Debian shortly before the release of Debian 2.0
-%
-<dark> Looks like the channel is back to normal :)
-<jim> You mean it's not scrolling faster than anyone can read? :)
-	-- Seen on #Debian after the release of Debian 2.0
-%
 Alex Buell:
 Or how about a Penguin logo painted in really really trippy
 colours, and emblazoned with the word LSD. :o)
@@ -1831,3 +1809,8 @@ is a good rationale for doing something.
 #define SIOGIFINDEX     SIOCGIFINDEX    /* misprint compatibility :-)   */
 
 		-- /usr/include/bits/ioctls.h
+%
+This kernel runs like a dessicated slug if you have more than 2G of memory
+due to a 32-bit overflow.
+
+		-- Andrew Morton, on Linux 2.6.8-rc1-mm1
