@@ -7,6 +7,8 @@ fortune-mod (9708-35) unstable; urgency=low
     (closes: #215884)
   * datfile/politicis:2971: Added Bernanos quote
     (closes: #217615)
+  * debian/menu: Gave the full path to the fortune binary
+    (closes: #218127)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 00:04:00 +1100
 
