@@ -19,15 +19,22 @@ ocookies-stamp:	rotated-stamp
 	for i in $(OCOOKIES) ; do $(STRFILE) -x $$i || exit $$? ; done
 	touch ocookies-stamp
 
-rotated-stamp:
+rotated-stamp: recoded-stamp
 	for i in $(OCOOKIES_UNROTATED) ; \
-	    do $(ROT) < unrotated/$$i > $$i || exit $$? ; done
+	    do $(ROT) < unrotated/$$i > $$i || exit $$? ; ln -s $$i $$i.u8; done
 	touch rotated-stamp
 
+recoded-stamp:
+	for i in $(OCOOKIES_UNROTATED) ; \
+	    do cp unrotated/$$i unrotated/$$i.old ; recode latin1..u8 unrotated/$$i; done
+	touch recoded-stamp
+	    
 install:
 	install -m 0755 -d $(OCOOKIEDIR)
 	for i in $(OCOOKIES) ; \
 	    do install -m 0644 $$i $$i.dat $(OCOOKIEDIR) || exit $$? ; done
 
 clean:
-	rm -f ocookies-stamp rotated-stamp *.dat $(OCOOKIES_UNROTATED)
+	rm -f ocookies-stamp rotated-stamp recoded-stamp *.dat $(OCOOKIES_UNROTATED)
+	for i in $(OCOOKIES_UNROTATED) ; \
+	    do mv unrotated/$$i.old unrotated/$$i; done
