@@ -299,6 +299,126 @@ it not existing.
 		-- Daniel Stone on debian-{x,devel}, commenting on the
 		   future of X
 %
-Does she think we just want to sit around painting debian swirls on our toenails?
+Does she think we just want to sit around painting debian swirls on our
+toenails?
 		-- Erinn Clark, referring to the Debian-women project
 %
+modconf (0.2.37) stable unstable; urgency=medium
+  [...]
+  * Eduard Bloch:
+    - fixed Makefile broken Marcin Owsiany a while ago. The default manpage
+      has been overwritten with the polish translation. I still wonder why
+      nobody noticed this before. Closes: #117474
+  [...]
+ -- Eduard Bloch <blade@debian.org>  Sun, 28 Oct 2001 12:53:27 +0100
+%
+<|ryan|> I don't use deb
+<netgod> u poor man
+<Disconnect> netgod: heh
+<Kingsqueak> apt-get install task-p0rn
+%
+(It is an old Debian tradition to leave at least twice a year ...)
+	-- Sven Rudolph
+%
+<Joey> gorgo: *lol*
+<gorgo> joey: what's so funny? :)
+<Culus> shh, joey is losing all sanity from lack of sleep
+<Culus> 'yes joey, very funny'
+<Culus> Humor him :>
+	-- Seen on #Debian
+%
+* SynrG notes that the number of configuration questions to answer in sendmail
+  is NON-TRIVIAL
+	-- Seen on #Debian
+%
+* JHM wonders what Joey did to earn "I'd just like to say, for the record,
+  that Joey rules."
+	-- Seen on #Debian
+%
+Do people like check the Debian website every 5 minutes to check it hasn't
+morphed into another one? Not that I'm one to talk, but some people seriously
+need to get a life.
+	-- james on #Debian
+%
+* james would be more impressed if netgod's magic powers could stop the
+  splits in the first place...
+* netgod notes debian developers are notoriously hard to impress
+	-- Seen on #Debian
+%
+   * In anticipation of 2.10.02 release, updated to patchlevel
+     +ircu2.10.01+.config6-7.config7-8.lgline3.iwho.limit.glibc.motdcache2.trace.whois1-2.config8-9.statsw.sprintf2-3.msgtree2.memleak1-2+.msgtree2-3.gline8-9.gline9-10.invite2.rbr.stats.numclients.whisper.whisper1-2.stats1-2.nokick1-2.chroot.config9-11.snomask7-8.limi+t1-3.userip1-3.userip3-4.config11-12.config12-13.umode2-3.akillsbt.who4-5.kn.kn1-2.freebsdcore2.msgtree3-5.y2k.glibc1-2.rmfunc.msgf+lags2.who5-6.nickchange2.glibc2-3.modeless3
+	-- From the annoucement of ircd 2.10.01-3 for Debian GNU/Linux
+%
+* Joey should not write changelog entries at 5:30am
+<Joey>    * DFSC Free cgi library
+<Joey> What's that? DFSC?
+<jim> Debian Free Software mroooooCows
+	-- Seen on #Debian
+%
+<james> abuse me.  I'm so lame I sent a bug report to debian-devel-changes
+	-- Seen on #Debian
+%
+<dark> eat Depends: cook | eat-out.
+       But eat-out is non-free so that's out.
+       And cook Recommends: clean-pans.
+	-- Seen on #Debian
+%
+You will not censor me through bug terrorism.
+	-- James Troup
+%
+<doogie> Thinking is dangerous.  It leads to ideas.
+	-- Seen on #Debian
+%
+<james> Are we going to make an emacs out of apt?
+        APT - Debian in a program.  It even does your laundry
+	-- Seen on #Debian
+%
+Debian is like Suse with yast turned off, just better. :)
+	-- Goswin Brederlow
+%
+Charles Briscoe-Smith <cpbs@debian.org>:
+  After all, the gzip package is called `gzip', not `libz-bin'...
+
+James Troup <troup@debian.org>:
+  Uh, probably because the gzip binary doesn't come from the
+  non-existent libz package or the existent zlib package.
+	-- debian-bugs-dist
+%
+<jim> Lemme make sure I'm not wasting time here... bcwhite will remove
+      pkgs that havent been fixed that have outstanding bugs of severity
+      "important".  True or false?
+<JHM> jim: "important" or higher.  True.
+<jim> Then we're about to lose ftp.debian.org and dpkg :)
+* netgod will miss dpkg -- it was occasionally useful
+<Joey> We still have rpm....
+	-- Seen on #Debian
+%
+Being overloaded is the sign of a true Debian maintainer.
+	-- JHM on #Debian
+%
+I am amazed that no-one's based a commercial distribution on Debian
+yet - it is by far the most solid UNIX-like OS I've ever installed,
+and I've played with HP/UX, Solaris, FreeBSD, BSDi, and SCO (not to
+mention OS/2, Novell, Win95/NT)
+	-- Nathan E. Norman
+%
+> <magical +3 sigh of hyperbole deflection>
+
+The branden dodges your magical sigh. The branden attacks you with a
+slew of words! The branden misses!
+
+	-- Henning Makholm in <yahsmr7dk9k.fsf@pc-043.diku.dk>
+%
+I don't think 'It's better than hurling yourself into a meat grinder'
+is a good rationale for doing something.
+		-- Andrew Suffield in 
+		   <20030905221055.GA22354@doc.ic.ac.uk> on debian-devel
+%
+< Overfiend> whew.
+< Overfiend> I really need to get some sleep.
+< Overfiend> but it sure was fun talking guitars, politics, and lesbians.
+%
+Whoever asked if the debian organization was dead isn't reading
+debian-devel. 66 messages in one day, and it's not over. I find it
+difficult to keep up.
+	-- Bruce Perens

@@ -26,8 +26,12 @@ fortune-mod (9708-38) UNRELEASED; urgency=low
     - datfiles/off/unrotated/limerick: Fixed typo.
     - datfiles/off/unrotated/debian: added quote from ari and nickr
     - datfiles/linux: added quote from Ciaran McCreesh on sparclinux
+    - Moved a buttload of quotes from datfiles/linux to datfiles/debian.
+    - Removed a buttload of unfunny quotes from datfiles/linux.
+    - Remove all the German quotes in datfiles/linux and send them to the
+      fortunes-de maintainer.
 
- -- Joshua Kwan <joshk@triplehelix.org>  Mon, 19 Jul 2004 15:08:10 -0700
+ -- Joshua Kwan <joshk@triplehelix.org>  Thu,  5 Aug 2004 21:59:11 -0700
 
 fortune-mod (9708-37) unstable; urgency=low
 

@@ -366,7 +366,8 @@ the "leading edge" so bad they walk right off the precipice.
 	-- Craig E. Groeschel
 %
 We all know Linux is great... it does infinite loops in 5 seconds.
-	- Linus Torvalds about the superiority of Linux on the Amterdam Linux Symposium
+	- Linus Torvalds about the superiority of Linux on the Amsterdam
+          Linux Symposium
 %
 Waving away a cloud of smoke, I look up, and am blinded by a bright, white
 light.  It's God. No, not Richard Stallman, or Linus Torvalds, but God. In
@@ -377,13 +378,6 @@ FOR THE 386.
 The chat program is in public domain.  This is not the GNU public license.
 If it breaks then you get to keep both pieces.
 	-- Copyright notice for the chat program
-%
-'Mounten' wird für drei Dinge benutzt: 'Aufsitzen' auf Pferde, 'einklinken'
-von Festplatten in Dateisysteme, und, nun, 'besteigen' beim Sex.
-	-- Christa Keil
-%
-Manchmal stehe nachts auf und installier's mir einfach...
-	-- H0arry @ IRC
 %
 'Mounting' is used for three things: climbing on a horse, linking in a
 hard disk unit in data systems, and, well, mounting during sex.
@@ -414,8 +408,8 @@ of careful development.
 	-- dmeggins@aix1.uottawa.ca
 %
 LILO, you've got me on my knees!
-	-- David Black, dblack@pilot.njin.net, with apologies to Derek and the
-Dominos, and Werner Almsberger
+	-- David Black, dblack@pilot.njin.net, with apologies to Derek and
+           the Dominos, and Werner Almsberger
 %
 I've run DOOM more in the last few days than I have the last few
 months.  I just love debugging ;-)
@@ -649,7 +643,8 @@ Monthy Python.  You'd better start practicing.
 	-- Linus Torvalds, announcing another kernel patch
 %
 How do you power off this machine?
-	-- Linus, when upgrading linux.cs.helsinki.fi, and after using the machine for several months
+	-- Linus, when upgrading linux.cs.helsinki.fi, and after using the
+           machine for several months
 %
 Excusing bad programming is a shooting offence, no matter _what_ the
 circumstances.
@@ -669,6 +664,7 @@ S: US
 > You know you are "there" when you are known by your first name, and
 > are recognized.
 > Lemmie see, there is Madonna, and Linus, and ..... help me out here!
+
 Bill ? ;-)
 	-- From some postings on comp.os.linux.misc
 %
@@ -877,17 +873,6 @@ than the real vendors can keep up.
 Not only Guinness - Linux is good for you, too.
 	-- Banzai on IRC
 %
-> NE-2000 clone.  Pentium optimizing gcc (pentium gcc pl8 I think).
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Build a kernel with the proper gcc. Reports with a non standard compiler
-are useless.
-	-- Alan Cox
-%
-BTW: I have a better name for the software .... Microsoft Internet
-Exploder.
-	-- George Bonser <grep@cris.com>
-%
 Well, since MS cant be sure of the username of someone downloading
 things, they are going to play it safe and have everything dowloaded
 and executed by Explorer as suid root. That way, it will run on ANY
@@ -1015,21 +1000,11 @@ There is, however, a strange, musty smell in the air that reminds me of
 something...hmm...yes...I've got it...there's a VMS nearby, or I'm a Blit.
 	-- Larry Wall in Configure from the perl distribution
 %
-Das ganze Saarland ist von M$ besetzt - das ganze? Nein eine kleine
-Gruppe im Sudwesten trotzt dem ubergrosen Herrscher dank ihres
-Zaubertrankes Linux
-	-- Tooster on #LinuxGER
-%
 1648 files (84%) out of the files that I mirror disappeared.  Since
 my delete threshold was set at 90%, all those files are now missing
 from my hard drive.  It's going to take a loooong time to fetch those
 again via 14.4kbps!
 	-- Brian C. White
-%
-Whoever asked if the debian organization was dead isn't reading
-debian-devel. 66 messages in one day, and it's not over. I find it
-difficult to keep up.
-	-- Bruce Perens
 %
 >    What is the status of Linux' Unicode implementation. Will Linux
 >    be prepared for the first contact?
@@ -1162,9 +1137,6 @@ And formatted so it's a little easier to read:
 
 	-- Randal Schwartz
 %
-(It is an old Debian tradition to leave at least twice a year ...)
-	-- Sven Rudolph
-%
 If a 'train station' is where a train stops, what's a 'workstation'?
 %
 Computers are not intelligent.  They only think they are.
@@ -1188,20 +1160,8 @@ said. ^[[D^[[D^[[D^[[D ^[[D^[^[[D^[[D^[[B^
 exit ^X^C quit :x :wq dang it :w:w:w :x ^C^C^Z^D
 	-- Jesper Lauridsen <rorschak@daimi.aau.dk> from alt.religion.emacs
 %
-oh okay. my mistake.
-
-Yafcot:atj(*),
-
-mark
-
-* Yet another fool coming over this: according to joey
-	-- mark@mail.novare.net
-%
 Sorry.  I just realized this sentance makes no sense :)
 	-- Ian Main
-%
-Netscape is not a newsreader, and probably never shall be.
-	-- Tom Christiansen
 %
 Stopping Apache webserver...sleeping...starting again...apache: dl-version.c:189:
  _dl_check_map_versions: Assertion `needed != ((void *)0)' failed
@@ -1211,9 +1171,6 @@ noooooooooooooooooooooooooooo
 Make it idiot-proof, and someone will breed a better idiot.
 	-- Oliver Elphick
 %
-#Debian makes me feel all warm and fuzzy inside. :)
-	-- HippieGuy on #Debian
-%
 <Myxie> I know. Unless htere is a cookie monster somewhere between us tat muches the amil.
 <Myxie> amil/mail
 <Myxie> muches/munches tat/that htere/there
@@ -1221,9 +1178,6 @@ Make it idiot-proof, and someone will breed a better idiot.
 <HippieGuy> problems? :)
 * Myxie needs an ircii addon that pipes teh command line through ispell :)
 	-- Seen on #Debian
-%
-ECRC hat keine lynx komp. seiten, sowas MUSS ja pleite gehen ;-)=
-	-- Getty on #LinuxGER
 %
 Uh... deity is a word, and diety isn't.
 
@@ -1239,11 +1193,6 @@ Why are there always boycotts?  Shouldn't there be girlcotts too?
 <klogd> whats new aboutit
 <sct> klogd: It cleans whiter than white. :)
 	-- Seen on #Linux
-%
-Und die Tastaturabrdücke auf Ihrer Wange unterstreichen seeeeeehr
-vorteilhaft ihr unterschütterliches Vertrauen in die moderene
-Technologie
-	-- Agent Gully in "Die eXakten"
 %
 - DDD no longer requires the librx library.  Consequently, librx
   errors can no more cause DDD to crash.
@@ -1266,17 +1215,6 @@ Computers are like air conditioners.  Both stop working, if you open windows.
 I am NOT a kludge!  I am a computer!
 	-- tts
 %
-<Joey> gorgo: *lol*
-<gorgo> joey: what's so funny? :)
-<Culus> shh, joey is losing all sanity from lack of sleep
-<Culus> 'yes joey, very funny'
-<Culus> Humor him :>
-	-- Seen on #Debian
-%
-* SynrG notes that the number of configuration questions to answer in sendmail
-  is NON-TRIVIAL
-	-- Seen on #Debian
-%
 My apologies if I sound angry.  I feel like I'm talking to a void.
 	-- Avery Pennarun
 %
@@ -1288,10 +1226,6 @@ After 14 non-maintainer releases, I'm the S-Lang non-maintainer.
 %
 BREAKFAST.COM Halted... Cereal Port Not Responding.
 %
-* JHM wonders what Joey did to earn "I'd just like to say, for the record,
-  that Joey rules."
-	-- Seen on #Debian
-%
 Steal my cash, car and TV - but leave the computer!
 	-- Soenke Lange <soenke@escher.north.de>
 %
@@ -1299,35 +1233,6 @@ The only really good reason I can think to not release specs is
 embarrassment on just how crappy some hardware out there is, or just how
 buggy it is.
 	-- Chris Wedgwood <cw@ix.net.nz>
-%
-> Alan Cox wrote:
-[..]
-
-No I didnt.  Someone else wrote that.  Please keep attributions
-straight.
-	-- From linux-kernel
-%
-Do people like check the Debian website every 5 minutes to check it hasn't morphed into another one?
-Not that I'm one to talk, but some people seriously need to get a life
-	-- james on #Debian
-%
-... Linux und seine Programme sind damit so etwas wie ein real existierender
-Sozialismus der besseren Art ...
-	-- Christian Seel in der Berliner Morgenpost v. 9.3.1997
-%
-* james would be more impressed if netgod's magic powers could stop the splits in the first place...
-* netgod notes debian developers are notoriously hard to impress
-	-- Seen on #Debian
-%
-   * In anticipation of 2.10.02 release, updated to patchlevel
-     +ircu2.10.01+.config6-7.config7-8.lgline3.iwho.limit.glibc.motdcache2.trace.whois1-2.config8-9.statsw.sprintf2-3.msgtree2.memleak1-2+.msgtree2-3.gline8-9.gline9-10.invite2.rbr.stats.numclients.whisper.whisper1-2.stats1-2.nokick1-2.chroot.config9-11.snomask7-8.limi+t1-3.userip1-3.userip3-4.config11-12.config12-13.umode2-3.akillsbt.who4-5.kn.kn1-2.freebsdcore2.msgtree3-5.y2k.glibc1-2.rmfunc.msgf+lags2.who5-6.nickchange2.glibc2-3.modeless3
-	-- From the annoucement of ircd 2.10.01-3 for Debian GNU/Linux
-%
-* Joey should not write changelog entries at 5:30am
-<Joey>    * DFSC Free cgi library
-<Joey> What's that? DFSC?
-<jim> Debian Free Software mroooooCows
-	-- Seen on #Debian
 %
 <posix> this guy _is_ crazy
 <stargazer> posix: from the looks of Enlightenment he's on LSD
@@ -1338,8 +1243,6 @@ On Netscape GPLing their browser: ``How can you trust a browser that
 ANYONE can hack? For the secure choice, choose Microsoft.''
 	-- <oryx@pobox.com> in a comment on slashdot.org
 %
-Turn right here. No! NO! The OTHER right!
-%
 #define FALSE   0               /* This is the naked Truth */
 #define TRUE    1               /* and this is the Light */
 	-- mailto.c
@@ -1347,9 +1250,6 @@ Turn right here. No! NO! The OTHER right!
 <Stealth> How do I bind a computer to an NIS server?
 <Joey> Use a rope?
 	-- Seen on #Debian
-%
-Try to remove the color-problem by restarting your computer several times.
-	-- Microsoft-Internet Explorer README.TXT
 %
 Does biff in bo work
 coz it biffin doesn't beep
@@ -1362,7 +1262,8 @@ no biffin output does it show
 so poor wee biff is gonna go.
 	-- John Spence <jspence@lynx.net.au> on debian-user
 %
-Real Men don't make backups.  They upload it via ftp and let the world mirror it.
+Real Men don't make backups.  They upload it via ftp and let the world mirror
+it.
 	-- Linus Torvalds
 %
 One tree to rule them all,
@@ -1381,20 +1282,11 @@ Alan Cox wrote:
 You got me worried there for a brief (very brief) moment :-).
 	-- Stephen R. van den Berg (AKA BuGless)
 %
-<grin> seen jhm
-<dpkg> jhm is Sarek, and jhm is on the channel right now!
-* JHM wonders why dpkg remembers that particular nick.
-<grin> dpkg: Sarek? ermm, sure, and I am Khan
-	-- Seen on #Debian
-%
 When you have 200 programmers trying to write code for one
 product, like Win95 or NT, what you get is a multipule personality
 program.  By definition, the real problem is that these programs are
 psychotic by nature and make people crazy when they use them.
 	-- Joan Brewer on alt.destroy.microsoft
-%
-<igor> Hah! we have 2 Johnie Ingrams in the channel :)
-<igor> Hey all btw :)
 %
 I just uploaded xtoolplaces-1.6. It fixes all bugs but one: It still
 coredumps instead of doing something useful.  The upstream author's
@@ -1436,15 +1328,6 @@ I want to recompile it.
 #endif
 	-- linux/arch/sparc64/double.h
 %
-<dark> eat Depends: cook | eat-out.
-       But eat-out is non-free so that's out.
-       And cook Recommends: clean-pans.
-	-- Seen on #Debian
-%
-* Linux Viruscan.....
-  Windows 95 found.  Remove it? (Y/y)
-	-- Unknown source
-%
 <sel> need help: my first packet to my provider gets lost :-(
 <netgod> sel:  dont send the first one, start with #2
 * netgod is kidding
@@ -1453,9 +1336,6 @@ These download files are in Microsoft Word 6.0 format. After
 unzipping, these files can be viewed in any text editor, including
 all versions of Microsoft Word, WordPad, and Microsoft Word Viewer
 	-- From Micro$oft
-%
-<james> abuse me.  I'm so lame I sent a bug report to debian-devel-changes
-	-- Seen on #Debian
 %
 Ooh, mommy, mommy, what I have now doesn't work in this extremely
 unlikely circumstance, so I'll just throw it away and write something
@@ -1472,6 +1352,7 @@ completely new.
 %
 Linus Torvalds:
 > This is the special easter release of linux, more mundanely called 1.3.84
+
 Winfried Truemper:
 > Umh, oh. What do you mean by "special easter release"?. Will it quit
 > working today and rise on easter?
@@ -1489,9 +1370,6 @@ and take over the (computing) world from the grassroots.
  *
  */
 	-- From /usr/src/linux/mm/page_alloc.cA
-%
-baz bat bamus batis bant.
-	-- James Troup
 %
 Just go ahead and write your own multitasking multiuser os!
 Worked for me all the times.
@@ -1511,31 +1389,10 @@ stable kernel is approaching is to notice that somebody starts to
 spellcheck the kernel - it has so far never failed)
 	-- Linus Torvalds in the annoucement for pre-2.1.99-3
 %
-You will not censor me through bug terrorism.
-	-- James Troup
-%
-<doogie> Thinking is dangerous.  It leads to ideas.
-	-- Seen on #Debian
-%
-<james> Are we going to make an emacs out of apt?
-        APT - Debian in a program.  It even does your laundry
-	-- Seen on #Debian
-%
 <joost> Do you mean to say that I can read mail with vi too? ;-)
 <Joey> Didn't you know that?
 <Joey> :r /var/spool/mail/jk
-	-- debian-mentors
-%
-Charles Briscoe-Smith <cpbs@debian.org>:
-  After all, the gzip package is called `gzip', not `libz-bin'...
-
-James Troup <troup@debian.org>:
-  Uh, probably because the gzip binary doesn't come from the
-  non-existent libz package or the existent zlib package.
-	-- debian-bugs-dist
-%
-Debian is like Suse with yast turned off, just better. :)
-	-- Goswin Brederlow
+	-- Seen on #debian-mentors
 %
 Arnold's Laws of Documentation:
 	(1) If it should exist, it doesn't.
@@ -1547,29 +1404,9 @@ The truth is not free.  It's that simple.  If you change the truth, it is no
 longer true - so the truth is not free!
 	-- Jules Bean about freeness of documentation
 %
-<jim> Lemme make sure I'm not wasting time here... bcwhite will remove
-      pkgs that havent been fixed that have outstanding bugs of severity
-      "important".  True or false?
-<JHM> jim: "important" or higher.  True.
-<jim> Then we're about to lose ftp.debian.org and dpkg :)
-* netgod will miss dpkg -- it was occasionally useful
-<Joey> We still have rpm....
-	-- Seen on #Debian
-%
-* JHM wonders what Joey did to earn "I'd just like to say, for the record,
-  that Joey rules."
-	-- Seen on #Debian
-%
 The problem here (as someon else stated) is that when multiple dists
 use the same package format it only gives a "false sense of compatibility".
 	-- Stephen Carpenter <sjc@delphi.com>
-%
-*** Rince is wagner@schizo.DAINet.de (We have Joey, we have Fun, we have Linux on a Sun)
-	-- Seen on #Debian
-%
-... Linux und seine Programme sind damit
-so etwas wie ein real existierender Sozialismus der besseren Art...
-	-- Christian Seel in der Berliner Morgenpost v. 9.3.1997
 %
 The most effective has probably been Linux/8086 - that was a joke
 that got out of hand.  So far out of hand in fact its almost approaching
@@ -1584,16 +1421,6 @@ of PDP/11's and other roomsized computers from the same era.
 Ha. I say let them try -- even vi+perl couldn't match the power of an
 editor which is, after all, its own OS.  ;-)
 	-- Johnie Ingram on debian-devel, about linking vim with libperl.so
-%
-Being overloaded is the sign of a true Debian maintainer.
-	-- JHM on #Debian
-%
-<alaint> joey--very clever !!!
-<alaint> joey--no wonder that Debian is a good distrib with coder like you
-	-- Seen on #Debian (referring to my RAID article for the LJ)
-%
-There are 3 kinds of people: those who can count & those who can't.
-	-- Unknown source
 %
 Despite the best efforts of a quantum bigfoot drive (yes I know everyone
 told me they suck, now I know they were right) 2.1.109ac1 is now available
@@ -1613,20 +1440,6 @@ so if people who do this run into trouble, that's good!  All businesses
 based on non-free software ought to fail, and the sooner the better.
 	-- Richard Stallman
 %
-Außerdem noch [..] die Distribution für Puristen, denen technische
-Eleganz und Qualität und philosophisch reine Lehre der `freien Software'
-über totale Einfachheit geht (Debian) und viele mehr.
-	-- Anselm Lingnau in de.comp.os.unix.discussion
-%
-Fehlermeldung von StarOffice:
-
-Das Dokument wurde fuer den Drucker Generic PostScript Printer formatiert.
-Der Drucker ist nicht vorhanden.  Soll der Standarddrucker Generic
-PostScript Printer verwendet werden?
-
-Ob Programme schizophren werden koennen?
-	-- Oliver Bedford <O.Bedford@uni-koeln.de>
-%
 No, that's wrong too.  Now there's a race condition between the rm and
 the mv.  Hmm, I need more coffee.
 	-- Guy Maor on Debian Bug#25228
@@ -1642,24 +1455,6 @@ to a DNS query that was never made.  Fix Information: Run your DNS
 service on a different platform.
 	-- bugtraq
 %
-I am amazed that no-one's based a commercial distribution on Debian
-yet - it is by far the most solid UNIX-like OS I've ever installed,
-and I've played with HP/UX, Solaris, FreeBSD, BSDi, and SCO (not to
-mention OS/2, Novell, Win95/NT)
-	-- Nathan E. Norman
-%
-Jim>   http://www.novare.net/~eam/kaffe/
-Joey>                           ^
-Joey> And now we all learn how to write Ean's name and the URL is complete.
-Jim> Hah!  I noticed that the instead I sent it, and I tried to hit ^g, but
-     I was too slow.  :-)
-	--- debian-devel
-%
-Die TeX-Artikel [..] aber doch inzwischen wohl nicht mehr an den
-Fingern zweier Hände abzählbar (außer vielleicht von Informatikern,
-die bekanntlich mit den Fingern bis 1023 zählen können.
-	-- Anselm Lingnau
-%
 And Bruce is effectively building BruceIX
 	-- Alan Cox
 %
@@ -1671,44 +1466,29 @@ When a float occurs on the same page as the start of a supertabular
 you can expect unexpected results.
 	-- Documentation of supertabular.sty
 %
-From: Ean Schuessler <ean@novare.net>
 The unrecognized minister of propaganda,
 E
-	-- Debian, joking
+	-- seen in an email from Ean Schuessler
 %
 * liw prefers not to have Linus run Debian, because then /me would
   have to run Red Hat, just to keep the power balance :)
 	-- #Debian
 %
-<\\swing> and if we're playing old distributions... whatever happened to Yggdrasil? :)
-<joost> \\swing: everybody who tried to pronounce it got their tongue in a knot and choked
+<\\swing> and if we're playing old distributions... whatever happened to
+          Yggdrasil? :)
+<joost> \\swing: everybody who tried to pronounce it got their tongue in a
+        knot and choked
 	-- #Debian
 %
 I'm telling you that the kernel is stable not because it's a kernel,
 but because I refuse to listen to arguments like this.
 	-- Linus Torvalds
-%
-> Tut mir Leid, Jost, aber Du bist ein unertraeglicher Troll.
-Was soll das? Du *beleidigst* die Trolle!
-	-- de.comp.os.unix.linux.misc
-%
-Wenn also die KDE-Arbeit nochmal gemacht wird bei GNOME, hat das die
-Entwicklungszeit für ein freies Desktop-System verkürzt.  Hast Du auch
-irgendwo die passende Algebra zu der Rechnung?
-	-- Sascha Ziemann in de.comp.os.unix.linux.misc
-%
 * dpkg ponders: 'C++' should have been called 'D'
 	-- #Debian
 %
 <rm_-rf_> The real value of KDE is that they inspired and push the
           development of GNOME :-)
 	-- #Debian
-%
-* dpkg hands stu a huge glass of vbeer
-* Joey takes the beer from stu, you're too young ;)
-* Cylord takes the beer from Joey, you're too drunk.
-* Cylord gives the beer to muggles.
-	-- #Debian, celebrating the 5th anniversary
 %
 <stu> Stupid nick highlighting
 <stu> Whenever someone starts with "stupid" it highlights the nick.  Hmm.
@@ -1720,7 +1500,8 @@ irgendwo die passende Algebra zu der Rechnung?
 	-- #Debian
 %
 * LG loves czech girls.
-<vincent> LG: do they have additional interesting "features" other girls don't have? ;)
+<vincent> LG: do they have additional interesting "features" other girls
+          don't have? ;)
 	-- #Debian
 %
 The first is to ensure your partner understands that nature has root
@@ -1756,30 +1537,11 @@ Someone on IRC was very sad about the uptime of his machine wrapping
 from 497 days to 0.
 	-- linux-kernel
 %
-<doogie> netgod:  8:42pm is not late.
-<netgod> doogie: its 2:42am in Joeyland
-	-- #Debian
-%
 We knew from experience that the essence of communal computing, as
 supplied by remote-access, time-shared machines, is not just to type
 programs into a terminal instead of a keypunch, but to encourage close
 communication.
 	-- Dennis Ritchie
-%
-modconf (0.2.37) stable unstable; urgency=medium
-  [...]
-  * Eduard Bloch:
-    - fixed Makefile broken Marcin Owsiany a while ago. The default manpage
-      has been overwritten with the polish translation. I still wonder why
-      nobody noticed this before. Closes: #117474
-  [...]
- -- Eduard Bloch <blade@debian.org>  Sun, 28 Oct 2001 12:53:27 +0100
-%
-<|ryan|> I don't use deb
-<netgod> u poor man
-<Disconnect> netgod: heh
-<Kingsqueak> apt-get install task-p0rn
-%
 %
 Could somebody drag the Irix team kicking and screaming into the 1980's, 
 please? 
@@ -1788,22 +1550,6 @@ I realize it might be quite painful for them, but maybe you could buy them
 a disco tape, so they'd feel a little bit more at home. 
 
 		-- Linus "Stayin' alive, stayin' alive" Torvalds
-%
-> <magical +3 sigh of hyperbole deflection>
-
-The branden dodges your magical sigh. The branden attacks you with a
-slew of words! The branden misses!
-
-	-- Henning Makholm in <yahsmr7dk9k.fsf@pc-043.diku.dk>
-%
-I don't think 'It's better than hurling yourself into a meat grinder'
-is a good rationale for doing something.
-		-- Andrew Suffield in 
-		   <20030905221055.GA22354@doc.ic.ac.uk> on debian-devel
-%
-< Overfiend> whew.
-< Overfiend> I really need to get some sleep.
-< Overfiend> but it sure was fun talking guitars, politics, and lesbians.
 %
 #define SIOCGIFINDEX    0x8933          /* name -> if_index mapping     */
 #define SIOGIFINDEX     SIOCGIFINDEX    /* misprint compatibility :-)   */
@@ -1820,3 +1566,12 @@ busybox, nfsmount a system image and then repeatedly try to run things until
 you get lucky with DMA...
 
                 -- Ciaran McCreesh, on Linux 2.6.x with HyperSPARC CPUs
+%
+> When there isn't sufficient virtual memory, the compiler bails out,
+> giving an internal error message. When I kill some processes, the
+> error goes away.
+
+And what is the compiler supposed to do instead? Go shopping for you
+and buy more memory?
+
+                -- Falk Hueffner, on the GNU C++ compiler
