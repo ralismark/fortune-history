@@ -437,6 +437,4 @@ fortune-mod (9510-1) unstable; urgency=low
 
  -- Helmut Geyer <Helmut.Geyer@iwr.uni-heidelberg.de>  Thu, 10 Oct 1996 13:26:22 +0200
 
-Local Variables:
-mode: debian-changelog
-End:
+
