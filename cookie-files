@@ -23,8 +23,6 @@ slightly off, since I'll try to check for duplicates at least once more).
 
 art		: Broadly construed; it includes television and celebrities.
 ascii-art	: each one worth a thousand words, I guess.
-atheism		: Wayne Aiken's atheism cookie file, from:
-                  http://www4.ncsu.edu/~aiken/
 computers	: various fortunes that are computer-related.  This includes
 		  the 'joke' fortunes that are supposed to emulate system
 		  error messages, as well as some neat stuff.
@@ -93,6 +91,8 @@ zippy		: Quotes from the comic Zippy the Pinhead.
 		  unrotated, are found in the subdirectory:
 ./datfiles/off/unrotated/	: unrotated, offensive fortunes*
 
+atheism		: Wayne Aiken's atheism cookie file, from:
+                  http://www4.ncsu.edu/~aiken/
 astrology	: Like in the daily newspapers, except nastier.  More would
 		  be nice.  A few comments *about* astrology.
 black-humor	: Death, violence-as-humor, and the like.  Really sick stuff.
