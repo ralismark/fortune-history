@@ -596,14 +596,6 @@ Footnotes are for things you believe don't really belong in LDP manuals,
 but want to include anyway.
 	-- Joel N. Weber II discussing the 'make' chapter of LPG
 %
-Eh, that's it, I guess.  No 300 million dollar unveiling event for this
-kernel, I'm afraid, but you're still supposed to think of this as the
-"happening of the century" (at least until the next kernel comes along).
-Oh, and this is another kernel in that great and venerable "BugFree(tm)"
-series of kernels. So be not afraid of bugs, but go out in the streets
-and deliver this message of joy to the masses.
-	-- Linus Torvalds, on releasing 1.3.27
-%
 Ok, I'm just uploading the new version of the kernel, v1.3.33, also
 known as "the buggiest kernel ever".
 	-- Linus Torvalds
