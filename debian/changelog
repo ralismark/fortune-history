@@ -10,6 +10,7 @@ fortune-mod (9708-38) UNRELEASED; urgency=low
       (closes: #230300)
     - datfile/debian: Added Andrew Morton quote
       (closes: #242151)
+    - datfiles/computers: Added Dave Cock quote
   * Joshua Kwan
     - datfiles/off/unrotated/atheism: Fixed casual -> causal typo.
       (closes: #259677)
