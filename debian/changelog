@@ -4,6 +4,8 @@ fortune-mod (9708-37) unstable; urgency=low
     (closes: #234988)
   * datfile/zippy: Fixed spelling mistake
     (closes: #226968)
+  * datfile/men-women: Fixed spelling mistake in attribution
+    (closes: #231811)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 05 Mar 2004 13:43:00 +1100
 
