@@ -10,8 +10,11 @@ fortune-mod (9708-38) unstable; urgency=low
       (closes: #230300)
     - datfile/debian: Added Andrew Morton quote
       (closes: #242151)
+  * Joshua Kwan
+    - datfiles/off/unrotated/atheism: Fixed casual -> causal typo.
+      (closes: #259677)
 
- -- Pascal Hakim <pasc@debian.org>  Sun, 11 Jul 2004 23:59:00 +1000
+ -- Joshua Kwan <joshk@triplehelix.org>  Thu, 15 Jul 2004 21:24:50 -0700
 
 fortune-mod (9708-37) unstable; urgency=low
 
