@@ -2,8 +2,10 @@ fortune-mod (9708-31) unstable; urgency=low
 
   * datfile/off/linux:30: Fixed spelling of lactating
     (closes: #200718)
+  * datfile/off/linux:37: Added tbm quote
+    (closes: #202220)
 
- -- Pascal Hakim <pasc@debian.org>  Tue, 15 Jul 2003 22:23:00 +1000
+ -- Pascal Hakim <pasc@debian.org>  Mon, 21 Jul 2003 14:07:00 +1000
 
 fortune-mod (9708-30) unstable; urgency=low
 
