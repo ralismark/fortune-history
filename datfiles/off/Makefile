@@ -32,9 +32,14 @@ recoded-stamp:
 install:
 	install -m 0755 -d $(OCOOKIEDIR)
 	for i in $(OCOOKIES) ; \
-	    do install -m 0644 $$i $$i.dat $(OCOOKIEDIR) || exit $$? ; done
+	    do install -m 0644 $$i $$i.dat $$i.u8 $(OCOOKIEDIR) || exit $$? ; done
 
 clean:
 	rm -f ocookies-stamp rotated-stamp recoded-stamp *.dat $(OCOOKIES_UNROTATED)
-	for i in $(OCOOKIES_UNROTATED) ; \
-	    do mv unrotated/$$i.old unrotated/$$i; done
+	rm -f *u8
+	for i in $(OCOOKIES_UNROTATED) ; do \
+		if [ -f unrotated/$$i.old ] ; then \
+			mv unrotated/$$i.old unrotated/$$i; \
+		fi; \
+	done
+									      
