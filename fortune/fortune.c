@@ -99,6 +99,29 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #define		PROGRAM_NAME		"fortune-mod"
 #define		PROGRAM_VERSION		"9708"
 
+#ifdef HAVE_STDBOOL_H
+#include <stdbool.h>
+#else /* ! HAVE_STDBOOL_H */
+
+/* stdbool.h for GNU.  */
+
+/* The type `bool' must promote to `int' or `unsigned int'.  The constants
+   `true' and `false' must have the value 0 and 1 respectively.  */
+typedef enum
+  {
+    false = 0,
+    true = 1
+  } bool;
+
+/* The names `true' and `false' must also be made available as macros.  */
+#define false	false
+#define true	true
+
+/* Signal that all the definitions are present.  */
+#define __bool_true_false_are_defined	1
+
+#endif /* HAVE_STDBOOL_H */
+
 #include	<sys/types.h>
 #include	<sys/time.h>
 #include	<sys/param.h>
@@ -117,7 +140,7 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #include	<errno.h>
 #include	<locale.h>
 #include	<langinfo.h>
-#include	<iconv.h> 
+#include 	<recode.h>
 
 
 /* This makes GNU libc to prototype the BSD regex functions */
@@ -1561,17 +1584,24 @@ int find_matches(void)
 
 void display(FILEDESC * fp)
 {
-    register char *p, ch, *ctype;
+    register char *p, ch, *ctype, *crequest;
     unsigned char line[BUFSIZ];
-    iconv_t ic;
+    RECODE_REQUEST request;
+    RECODE_OUTER outer;
 
     if(fp->utf8_charset) {
-	setlocale(LC_ALL,"");
+       outer = recode_new_outer(true);
+	request = recode_new_request (outer);
 
+	setlocale(LC_ALL,"");
 	ctype = nl_langinfo(CODESET);
 	if(strcmp(ctype,"ANSI_X3.4-1968") == 0)
 	    ctype="ISO-8859-1";
-	ic = iconv_open(ctype, "UTF-8");
+	
+	crequest = malloc(strlen(ctype) + 7 + 1);
+	sprintf(crequest, "UTF-8..%s", ctype);
+	recode_scan_request (request, crequest);
+	free(crequest);
     }
 
     open_fp(fp);
@@ -1592,18 +1622,19 @@ void display(FILEDESC * fp)
 	    }
 	}
 	if(fp->utf8_charset) {
-	    size_t len, outlenmax;
-	    char *output, *outbuf_tmp, *input;
-	    outlenmax = len=strlen(line);
-	    input=strdup(line);
-	    output = outbuf_tmp = calloc(outlenmax +1, sizeof(char));
-	    iconv(ic, &input, &len, &outbuf_tmp, &outlenmax);
+	    char *output;
+	    output = recode_string (request, line);
 	    fputs(output, stdout);
+	    free(output);
 	}
 	else
 	    fputs(line, stdout);
     }
     fflush(stdout);
+
+    if(fp->utf8_charset) {
+	recode_delete_request(request);
+    }	
 }
 
 /*

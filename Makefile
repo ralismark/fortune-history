@@ -48,17 +48,21 @@ WEB=0
 #	For systems with BSD-compatible regex functions
 # -DPOSIX_REGEX
 #	For systems with POSIX-compatible regex functions
+# -DHAVE_STDBOOL
+#       For GNU system that declare bool type in <stdbool.h>
 #
 # NB. Under Linux, the BSD regex functions are _MUCH_ faster
 #     than the POSIX ones, but your mileage may vary.
 #
-REGEXDEFS=-DHAVE_REGEX_H -DBSD_REGEX
+REGEXDEFS=-DHAVE_REGEX_H -DBSD_REGEX -DHAVE_STDBOOL
 
 #
 # If your system's regex functions are not in its standard C library,
 # include the appropriate link flags into REGEXLIBS
 #
 REGEXLIBS=
+
+RECODELIBS=-lrecode
 
 DEFINES=-DFORTDIR="\"$(COOKIEDIR)\"" -DOFFDIR="\"$(OCOOKIEDIR)\"" -DLOCFORTDIR="\"$(LOCALDIR)\"" -DLOCOFFDIR="\"$(LOCALODIR)\""
 CFLAGS=-O2 $(DEFINES) -Wall -fomit-frame-pointer -pipe -fsigned-char
@@ -99,7 +103,7 @@ debug: fortune-debug util-debug cookies-z
 fortune-bin:
 	cd fortune && $(MAKE) CC='$(CC)' \
 		    CFLAGS='$(CFLAGS) $(REGEXDEFS) -I../util'	\
-		    LDFLAGS='$(LDFLAGS)' LIBS='$(REGEXLIBS)'
+		    LDFLAGS='$(LDFLAGS)' LIBS='$(REGEXLIBS) $(RECODELIBS)'
 
 fortune-debug:
 	cd fortune && $(MAKE) CC='$(CC)' \
