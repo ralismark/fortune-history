@@ -1,9 +1,22 @@
+fortune-mod (9708-33) unstable; urgency=low
+
+  * Use librecode instead of iconv, to deal with non-existing 
+    characters in locales better. (Patch from Aurelien Jarno 
+    <aurelien@aurel32.net>)
+    (closes: #205061, #201230)
+  * datfile/kids:144: fixed typo
+    (closes: #204199)
+
+ -- Pascal Hakim <pasc@debian.org>  Fri, 22 Aug 2003 11:22:46 +1000
+
 fortune-mod (9708-32) unstable; urgency=low
 
   * Added missing % at the end of a number of fortune cookies
     (closes: #202341)
+  * Added missing Build-Depends
+    (closes: #202325)
 
- -- Pascal Hakim <pasc@debian.org>  Tue, 22 Jul 2003 12:08:29 +1000
+ -- Pascal Hakim <pasc@debian.org>  Tue, 22 Jul 2003 12:21:29 +1000
 
 fortune-mod (9708-31) unstable; urgency=low
 
