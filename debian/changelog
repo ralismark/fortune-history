@@ -1,3 +1,10 @@
+fortune-mod (9708-32) unstable; urgency=low
+
+  * Added missing % at the end of a number of fortune cookies
+    (closes: #202341)
+
+ -- Pascal Hakim <pasc@debian.org>  Tue, 22 Jul 2003 12:08:29 +1000
+
 fortune-mod (9708-31) unstable; urgency=low
 
   * datfile/off/linux:30: Fixed spelling of lactating
