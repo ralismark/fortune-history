@@ -748,7 +748,7 @@ int form_file_list(register char **files, register int file_cnt)
     register char *sp;
     char *lang;
     char langdir[512];
-    char fullpathname[512];
+    char fullpathname[512],locpathname[512];
 
     if (file_cnt == 0)
     {
@@ -863,16 +863,29 @@ int form_file_list(register char **files, register int file_cnt)
 	    }
 	}
 	if (strcmp(sp, "all") == 0)
-	  sp = FORTDIR;
+	{
+	  snprintf(fullpathname,sizeof(fullpathname),"%s",FORTDIR);
+	  snprintf(locpathname,sizeof(locpathname),"%s",LOCFORTDIR);
+	}
 	/* if it isn't an absolute path or relative to . or .. 
 	   make it an absolute path relative to FORTDIR */
-	if (strncmp(sp,"/",1)!=0 && strncmp(sp,"./",2)!=0 &&
-	    strncmp(sp,"../",3)!=0)
-	  snprintf(fullpathname,sizeof(fullpathname),
-		   "%s/%s",FORTDIR,sp);
 	else
-	  snprintf(fullpathname,sizeof(fullpathname),"%s",sp);
-	
+	{
+	    if (strncmp(sp,"/",1)!=0 && strncmp(sp,"./",2)!=0 &&
+		    strncmp(sp,"../",3)!=0)
+	    {
+		snprintf(fullpathname,sizeof(fullpathname),
+			"%s/%s",FORTDIR,sp);
+		snprintf(locpathname,sizeof(locpathname),
+			"%s/%s",LOCFORTDIR,sp);
+	    }
+	    else
+	    {
+		snprintf(fullpathname,sizeof(fullpathname),"%s",sp);
+		snprintf(locpathname,sizeof(locpathname),"%s",sp);
+	    }
+	}
+
 	lang=getenv("LC_MESSAGES");
 	if (!lang) lang=getenv("LC_ALL");
 	if (!lang) lang=getenv("LANGUAGE");
@@ -914,6 +927,9 @@ int form_file_list(register char **files, register int file_cnt)
 	  if (!ret)
 	    ret=add_file(percent, fullpathname, NULL, &File_list,
 			 &File_tail, NULL);
+	  if ( (!ret && fullpathname != locpathname) || strcmp(sp, "all") == 0 )
+	    ret=add_file(percent, locpathname, NULL, &File_list,
+		         &File_tail, NULL);
 	  if (!ret)
 	    return FALSE;
 	  

@@ -2,6 +2,13 @@ fortune-mod (9708-29) unstable; urgency=low
 
   * datafile/linux: Added quote from debian-legal
     (closes: #194346)
+  * fortune/fortune.c: Fixed copy to display proper paths in error messages.
+    (Patch from William Steve Applegate <wsapplegate@est.un.goret.info>)
+    (closes: #195729)
+  * fortune/fortune.c: Search /usr/local/share/games for fortune files when a
+    cookie file is specified. (Patch from Scott Wehrenberg
+    <wehresj@auburn.edu>)
+    (closes: #161741)
 
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 
