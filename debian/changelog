@@ -2,6 +2,8 @@ fortune-mod (9708-37) unstable; urgency=low
 
   * datfile/off/atheism: Fixed spelling mistake
     (closes: #234988)
+  * datfile/zippy: Fixed spelling mistake
+    (closes: #226968)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 05 Mar 2004 13:43:00 +1100
 
