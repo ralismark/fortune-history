@@ -11,6 +11,11 @@ fortune-mod (9708-38) UNRELEASED; urgency=low
     - datfile/debian: Added Andrew Morton quote
       (closes: #242151)
     - datfiles/computers: Added Dave Cock quote
+    - datfiles/debian: Added Shawn McMahon
+      (closes: #241161)
+    - datfiles/{off/,}debian: Added some quotes from Andrew Suffield's
+      quote file
+      (closes: #236471)
   * Joshua Kwan
     - datfiles/off/unrotated/atheism: Fixed casual -> causal typo.
       (closes: #259677)
