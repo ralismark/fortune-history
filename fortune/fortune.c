@@ -636,7 +636,7 @@ int add_file(int percent, register char *file, char *dir,
     strncpy (fp->name, file, strlen (file) + 1);
 
     fp->path = do_malloc (strlen (path) + 1);
-    strncpy (fp->path, path, strlen (file) + 1);
+    strncpy (fp->path, path, strlen (path) + 1);
 
     fp->parent = parent;
 
