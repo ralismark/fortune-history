@@ -23,8 +23,9 @@ fortune-mod (9708-38) UNRELEASED; urgency=low
       (closes: #259677)
     - datfiles/computers: Added quote (from Adrian von Bidder
       <avbidder@fortytwo.ch> (closes: #259686)
+    - datfiles/off/unrotated/limerick: Fixed typo.
 
- -- Joshua Kwan <joshk@triplehelix.org>  Fri, 16 Jul 2004 00:40:58 -0700
+ -- Joshua Kwan <joshk@triplehelix.org>  Fri, 16 Jul 2004 17:35:10 -0700
 
 fortune-mod (9708-37) unstable; urgency=low
 
