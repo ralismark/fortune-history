@@ -26,6 +26,8 @@ fortune-mod (9708-38) UNRELEASED; urgency=low
     - datfiles/off/unrotated/limerick: Fixed typo.
     - datfiles/off/unrotated/debian: added quote from ari and nickr
     - datfiles/linux: added quote from Ciaran McCreesh on sparclinux
+    - datfiles/linux: added email snip from Falk Hueffner on G++; thanks
+      Martin (closes: #263181)
     - Moved a buttload of quotes from datfiles/linux to datfiles/debian.
     - Removed a buttload of unfunny quotes from datfiles/linux.
     - Remove all the German quotes in datfiles/linux and send them to the

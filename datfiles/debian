@@ -177,7 +177,6 @@ can't, proceed without his input.  That way lies madness.
 <asuffield> mdz_: spraying
 <mdz_> asuffield: sucking
 %
-%
 <mjg59> Damnit. I've got a month to write a paper. This involves
         actually writing the chunks of code I'm going to be talking
         about.
@@ -204,12 +203,6 @@ can't, proceed without his input.  That way lies madness.
 revision 1.17.2.7
 date: 2001/05/31 21:32:44;  author: branden;  state: Exp;  lines: +1 -1
 ARRRRGH!!  GOT THE G** D*** SENSE OF A F******* TEST BACKWARDS!
-%
-<Overfiend_> Maybe Tollef Fog Heen is mad b/c I don't give his bugs
-             against X special priority
-<Overfiend_> But what can you expect from somebody who's named after a
-             Frost Giant?
-<Overfiend_> .%( WhoIs    : Mithrandir    :%( address  : tfheen@jotunheim.no
 %
 <Overfiend_> Overfiend's First Law of Package Quality: If the
              maintainer likes to spell part or all of his name in
