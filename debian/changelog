@@ -25,6 +25,7 @@ fortune-mod (9708-37) unstable; urgency=low
       /buildd/... (Closes: #252019, #229355)
     - datfiles/computers: Fix typo: Andy Tannenbaum -> Tanenbaum.
       (Closes: #253909)
+    - Quote key values in debian/menu to conform with policy.
 
  -- Joshua Kwan <joshk@triplehelix.org>  Sat, 26 Jun 2004 13:32:05 -0700
 
