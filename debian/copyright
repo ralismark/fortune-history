@@ -6,6 +6,12 @@ The Debian packaging is now maintained by pasc@debian.org
 The closest thing to an upstream URL at this time is:
 ftp://sunsite.unc.edu/pub/Linux/games/amusements/fortune/fortune-mod-9708.tar.gz
 
+This version of fortune will be forked soon. Current work
+can be found at:
+
+http://alioth.debian.org/projects/fortune/
+
+and all versions since -26 are in CVS.
 
 ------------------------------------------------------------------------------
 Notes for the Debian GNU/Linux port of BSD fortune(6)
