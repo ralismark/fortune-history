@@ -10,8 +10,9 @@ fortune-mod (9708-34) unstable; urgency=low
     search on it. Fortunes will now be displayed correctly when
     searched for, and searches will work a bit better.
     (closes: #205000)
+  * datfile/linux:1826: Added an Overfiend quote
 
- -- Pascal Hakim <pasc@debian.org>  Sun,  7 Sep 2003 15:43:40 +1000
+ -- Pascal Hakim <pasc@debian.org>  Mon,  8 Sep 2003 15:23:40 +1000
 
 fortune-mod (9708-33) unstable; urgency=low
 
