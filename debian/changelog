@@ -16,6 +16,8 @@ fortune-mod (9708-38) UNRELEASED; urgency=low
     - datfiles/{off/,}debian: Added some quotes from Andrew Suffield's
       quote file
       (closes: #236471)
+    - datfiles/debian: Added Daniel Stone quote
+      (closes: #256958)
   * Joshua Kwan
     - datfiles/off/unrotated/atheism: Fixed casual -> causal typo.
       (closes: #259677)
