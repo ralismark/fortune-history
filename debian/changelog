@@ -1,8 +1,10 @@
 fortune-mod (9708-35) unstable; urgency=low
 
   * datfile/politics: Fixed spelling of Gandhi
+  * datfile/cookie: Removed stray >
+    (closes: #211399)
 
- -- Pascal Hakim <pasc@debian.org>  UNRELEASED
+ -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 00:04:00 +1100
 
 fortune-mod (9708-34) unstable; urgency=low
 
