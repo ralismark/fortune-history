@@ -3,9 +3,11 @@ fortune-mod (1:1.99.1-2) UNRELEASED; urgency=low
   * Joshua Kwan
     - Remove dupe fortune in datfiles/linux.
     - Fix Cincinnatti -> Cincinnati typo in datfiles/sports.
-    - datfiles/linux: Add quote from Alan Cox. 
+    - datfiles/linux: Add quote from Alan Cox.
+    - datfiles/people: Add crazyphilman's kuro5hin signature, thanks
+      Anthony DeRobertis. closes: #273988
 
- -- Joshua Kwan <joshk@triplehelix.org>  Sat,  2 Oct 2004 18:40:08 -0700
+ -- Joshua Kwan <joshk@triplehelix.org>  Wed,  6 Oct 2004 23:43:04 -0700
 
 fortune-mod (1:1.99.1-1) unstable; urgency=low
 
