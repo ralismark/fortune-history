@@ -11,6 +11,9 @@ fortune-mod (9708-37) unstable; urgency=low
   * datfile/debian: Added IRC quote
     (from Scott James Remnant <scott@netsplit.com>)
     (closes: #227950)
+  * datfile/off/debian: Added IRC quote
+    (from Scott James Remnant <scott@netsplit.com>)
+    (closes: #235984)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 05 Mar 2004 13:43:00 +1100
 
