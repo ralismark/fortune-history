@@ -9,6 +9,9 @@ fortune-mod (9708-35) unstable; urgency=low
     (closes: #217615)
   * debian/menu: Gave the full path to the fortune binary
     (closes: #218127)
+  * debian/politics:811: Removed duplicate (and wrong) Monty Python
+    quote
+    (closes: #214701)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 00:04:00 +1100
 
