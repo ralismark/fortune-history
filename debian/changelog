@@ -32,6 +32,8 @@ fortune-mod (9708-29) unstable; urgency=low
   * fortune/fortune.c: New option: -c. Used to name the file from which the
     cookie came.
     (closes: #109167)
+  * datfile/off/unrotated/atheism: Added new cookie file
+    (closes: #95588)
     
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 
