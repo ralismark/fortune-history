@@ -50,7 +50,7 @@
 .SH NAME
 fortune \- print a random, hopefully interesting, adage
 .SH SYNOPSIS
-.BR fortune " [" -aefilosw "] [" -n 
+.BR fortune " [" -acefilosw "] [" -n 
 .IR length "] ["
 .B -m 
 .IR pattern "] [[" n% "] " file/dir/all ]
@@ -67,6 +67,9 @@ The options are as follows:
 Choose from all lists of maxims, both offensive and not.  (See the
 .B -o 
 option for more information on offensive fortunes.)
+.TP
+.B -c
+Show the cookie file from which the fortune came.
 .TP
 .B -e
 Consider all fortune files to be of equal size (see discussion below

@@ -177,6 +177,7 @@ bool Long_only = FALSE;		/* long fortune desired */
 bool Offend = FALSE;		/* offensive fortunes only */
 bool All_forts = FALSE;		/* any fortune allowed */
 bool Equal_probs = FALSE;	/* scatter un-allocated prob equally */
+bool Show_filename = FALSE;
 
 bool ErrorMessage = FALSE;	/* Set to true if an error message has been displayed */
 
@@ -965,9 +966,9 @@ void getargs(int argc, char **argv)
     ignore_case = FALSE;
 
 #ifdef DEBUG
-    while ((ch = getopt(argc, argv, "aDefilm:n:osvw")) != EOF)
+    while ((ch = getopt(argc, argv, "acDefilm:n:osvw")) != EOF)
 #else
-    while ((ch = getopt(argc, argv, "aefilm:n:osvw")) != EOF)
+    while ((ch = getopt(argc, argv, "acefilm:n:osvw")) != EOF)
 #endif /* DEBUG */
 	switch (ch)
 	  {
@@ -1020,6 +1021,9 @@ void getargs(int argc, char **argv)
 	  case 'v':
 	      (void) printf("%s\n", program_version());
 	      exit(0);
+	  case 'c':
+	      Show_filename++;
+	      break;
 	  case '?':
 	  default:
 	      usage();
@@ -1547,6 +1551,8 @@ void display(FILEDESC * fp)
 
     open_fp(fp);
     fseek(fp->inf, (long) Seekpts[0], 0);
+    if (Show_filename)
+	printf ("(%s)\n%%\n", fp->name);
     for (Fort_len = 0; fgets(line, sizeof line, fp->inf) != NULL &&
 	 !STR_ENDSTRING(line, fp->tbl); Fort_len++)
     {
