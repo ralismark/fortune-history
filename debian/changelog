@@ -6,6 +6,8 @@ fortune-mod (9708-30) unstable; urgency=low
     (closes: #198656)
   * datfile/politics:2967: Added a Mohammed Saeed al-Sahaf quote
     (closes: #199181)
+  * datfiles/computer:5439: Added a GNU Libtool Manual quote
+    (closes: #200613)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 20 Jun 2003 02:04:46 +1000
 
