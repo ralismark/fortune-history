@@ -13,7 +13,7 @@ fortune-mod (9708-30) unstable; urgency=low
   * datfiles/off/linux:28: Added Overfiend quote
     (closes: #164941)
 
- -- Pascal Hakim <pasc@debian.org>  Fri, 20 Jun 2003 02:04:46 +1000
+ -- Pascal Hakim <pasc@debian.org>  Thu, 10 Jul 2003 01:18:07 +1000
 
 fortune-mod (9708-29) unstable; urgency=low
 
