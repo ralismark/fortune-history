@@ -2,7 +2,7 @@
 OCOOKIES_UNROTATED=drugs misandry privates sex astrology ethnic \
 	miscellaneous racism songs-poems black-humor hphobia misogyny \
 	religion vulgarity definitions limerick politics riddles zippy \
-	cookie fortunes linux art atheism
+	cookie fortunes linux art atheism debian
 
 OCOOKIES_ROTATED=
 

@@ -977,6 +977,12 @@ int form_file_list(register char **files, register int file_cnt)
 	  if ( (!ret && fullpathname != locpathname) || strcmp(sp, "all") == 0 )
 	    ret=add_file(percent, locpathname, NULL, &File_list,
 		         &File_tail, NULL);
+	  
+	  if (!ret){
+		  snprintf (locpathname, sizeof (locpathname), "%s/%s", getenv ("PWD"), sp);
+		  
+		  ret=add_file (percent, locpathname, NULL, &File_list, &File_tail, NULL);
+	  }
 	  if (!ret)
 	    return FALSE;
 	  

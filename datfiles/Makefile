@@ -4,7 +4,7 @@ COOKIES=art ascii-art computers cookie definitions drugs education ethnic \
 	love magic medicine men-women miscellaneous news people pets \
 	platitudes politics riddles science songs-poems sports \
 	startrek translate-me wisdom work linux perl knghtbrd \
-	paradoxum zippy
+	paradoxum zippy debian
 
 STRFILE=../util/strfile
 
