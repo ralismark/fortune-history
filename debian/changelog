@@ -17,6 +17,9 @@ fortune-mod (9708-29) unstable; urgency=low
   * fortune/fortune.c: Changed the order in which LC_ALL and LC_MESSAGES are
     interpreted
     (closes: #157171)
+  * fortune/fortune.c: Display a message when no appropriate fortunes have
+    been found
+    (closes: #165562)
 
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 

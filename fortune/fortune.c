@@ -178,6 +178,8 @@ bool Offend = FALSE;		/* offensive fortunes only */
 bool All_forts = FALSE;		/* any fortune allowed */
 bool Equal_probs = FALSE;	/* scatter un-allocated prob equally */
 
+bool ErrorMessage = FALSE;	/* Set to true if an error message has been displayed */
+
 #ifndef NO_REGEX
 bool Match = FALSE;		/* dump fortunes matching a pattern */
 
@@ -835,11 +837,13 @@ int form_file_list(register char **files, register int file_cnt)
 	    if (percent > 100)
 	    {
 		fprintf(stderr, "percentages must be <= 100\n");
+		ErrorMessage = TRUE;
 		return FALSE;
 	    }
 	    if (*sp == '.')
 	    {
 		fprintf(stderr, "percentages must be integers\n");
+		ErrorMessage = TRUE;
 		return FALSE;
 	    }
 	    /*
@@ -857,6 +861,7 @@ int form_file_list(register char **files, register int file_cnt)
 		if (++i >= file_cnt)
 		{
 		    fprintf(stderr, "percentages must precede files\n");
+		    ErrorMessage = TRUE;
 		    return FALSE;
 		}
 		sp = files[i];
@@ -1023,7 +1028,10 @@ void getargs(int argc, char **argv)
     argv += optind;
 
     if (!form_file_list(argv, argc))
+    { 
+	if (!ErrorMessage) fprintf (stderr, "No fortunes found\n");
 	exit(1);		/* errors printed through form_file_list() */
+    }
 #ifdef DEBUG
 /*      if (Debug >= 1)
  * print_list(File_list, 0); */
