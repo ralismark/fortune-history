@@ -1,4 +1,4 @@
-fortune-mod (9708-38) unstable; urgency=low
+fortune-mod (9708-38) UNRELEASED; urgency=low
 
   * Pascal Hakim
     - datfile/definitions: Fixed typo
@@ -13,8 +13,10 @@ fortune-mod (9708-38) unstable; urgency=low
   * Joshua Kwan
     - datfiles/off/unrotated/atheism: Fixed casual -> causal typo.
       (closes: #259677)
+    - datfiles/computers: Added quote (from Adrian von Bidder
+      <avbidder@fortytwo.ch> (closes: #259686)
 
- -- Joshua Kwan <joshk@triplehelix.org>  Thu, 15 Jul 2004 21:24:50 -0700
+ -- Joshua Kwan <joshk@triplehelix.org>  Fri, 16 Jul 2004 00:40:58 -0700
 
 fortune-mod (9708-37) unstable; urgency=low
 
