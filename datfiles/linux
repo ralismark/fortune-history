@@ -1814,3 +1814,9 @@ This kernel runs like a dessicated slug if you have more than 2G of memory
 due to a 32-bit overflow.
 
 		-- Andrew Morton, on Linux 2.6.8-rc1-mm1
+%
+Only way to run a proper userspace on hypersparcs with 2.6.x is to boot into
+busybox, nfsmount a system image and then repeatedly try to run things until
+you get lucky with DMA...
+
+                -- Ciaran McCreesh, on Linux 2.6.x with HyperSPARC CPUs

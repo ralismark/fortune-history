@@ -25,6 +25,7 @@ fortune-mod (9708-38) UNRELEASED; urgency=low
       <avbidder@fortytwo.ch> (closes: #259686)
     - datfiles/off/unrotated/limerick: Fixed typo.
     - datfiles/off/unrotated/debian: added quote from ari and nickr
+    - datfiles/linux: added quote from Ciaran McCreesh on sparclinux
 
  -- Joshua Kwan <joshk@triplehelix.org>  Mon, 19 Jul 2004 15:08:10 -0700
 
