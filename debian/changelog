@@ -1,3 +1,11 @@
+fortune-mod (9708-34) unstable; urgency=low
+
+  * datfile/literature:298: Moved Anne Frank remark to the 
+    offensive section.
+    (closes: #208467, #208468)
+
+ -- Pascal Hakim <pasc@debian.org>  Fri,  5 Sep 2003 19:23:40 +1000
+
 fortune-mod (9708-33) unstable; urgency=low
 
   * Use librecode instead of iconv, to deal with non-existing 
