@@ -1,5 +1,6 @@
 fortune-mod (9708-34) unstable; urgency=low
 
+  * Updated to policy 3.6.1.0
   * datfile/literature:298: Moved Anne Frank remark to the 
     offensive section.
     (closes: #208467, #208468)
@@ -10,7 +11,7 @@ fortune-mod (9708-34) unstable; urgency=low
     searched for, and searches will work a bit better.
     (closes: #205000)
 
- -- Pascal Hakim <pasc@debian.org>  Sun,  7 Sep 2003 12:23:40 +1000
+ -- Pascal Hakim <pasc@debian.org>  Sun,  7 Sep 2003 15:43:40 +1000
 
 fortune-mod (9708-33) unstable; urgency=low
 
