@@ -558,7 +558,7 @@ int add_file(int percent, register char *file, char *dir,
     }
 
     DPRINTF(1, (stderr, "trying to add file \"%s\"\n", path));
-    if ((fd = open(path, O_RDONLY)) < 0)
+    if ((fd = open(path, O_RDONLY)) < 0 || *path != '/')
     {
       found = FALSE;
 	if (dir == NULL && (strchr(file,'/') == NULL))
