@@ -27,6 +27,9 @@ fortune-mod (9708-29) unstable; urgency=low
     (closes: #182613)
   * datfiles/songs-poems:303: Fixed a typo in Gollum's riddle
     (closes: #157105)
+  * datfiles/off/unrotated/limericks:5053: Removed a broken limeric.
+    (closes: #171114)
+    
 
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 
