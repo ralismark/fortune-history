@@ -76,6 +76,10 @@ rename the distro from "stable" to "wobbly".
 <erich> this wasn't chicken.
 		-- in #debian-devel
 %
+I was attacked by dselect as a small child and have since avoided
+debian.
+		-- Andrew Morton
 %
 * joeyh installs debian using only his big toe, for a change of pace
 		-- in #debian-boot
+%

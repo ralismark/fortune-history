@@ -1,3 +1,18 @@
+fortune-mod (9708-38) unstable; urgency=low
+
+  * Pascal Hakim
+    - datfile/definitions: Fixed typo
+      (closes: #240176)
+    - datfile/wisdom: Fixed typo
+      (closes: #249382)
+    - datfile/computers: Added David Bradley quote
+      (from Dale Harris <rodmur@maybe.org>)
+      (closes: #230300)
+    - datfile/debian: Added Andrew Morton quote
+      (closes: #242151)
+
+ -- Pascal Hakim <pasc@debian.org>  Sun, 11 Jul 2004 23:59:00 +1000
+
 fortune-mod (9708-37) unstable; urgency=low
 
   * Pascal Hakim
