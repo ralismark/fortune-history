@@ -6,6 +6,8 @@ fortune-mod (9708-37) unstable; urgency=low
     (closes: #226968)
   * datfile/men-women: Fixed spelling mistake in attribution
     (closes: #231811)
+  * datfile/cookie: Fixed spelling mistake
+    (closes: #234154)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 05 Mar 2004 13:43:00 +1100
 
