@@ -10,6 +10,8 @@ fortune-mod (9708-30) unstable; urgency=low
     (closes: #200613)
   * datfiles/linuxcookies:4: Removed duplicate quote (off/linux)
     (closes: #200615)
+  * datfiles/off/linux:28: Added Overfiend quote
+    (closes: #164941)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 20 Jun 2003 02:04:46 +1000
 
