@@ -1827,3 +1827,7 @@ is a good rationale for doing something.
 < Overfiend> I really need to get some sleep.
 < Overfiend> but it sure was fun talking guitars, politics, and lesbians.
 %
+#define SIOCGIFINDEX    0x8933          /* name -> if_index mapping     */
+#define SIOGIFINDEX     SIOCGIFINDEX    /* misprint compatibility :-)   */
+
+		-- /usr/include/bits/ioctls.h
