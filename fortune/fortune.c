@@ -1036,11 +1036,8 @@ void getargs(int argc, char **argv)
 	    pat = conv_pat(pat);
 	if (BAD_COMP(RE_COMP(pat)))
 	{
-#ifndef REGCMP
-	    fprintf(stderr, "%s\n", pat);
-#else /* REGCMP */
 	    fprintf(stderr, "bad pattern: %s\n", pat);
-#endif /* REGCMP */
+	    exit (1);
 	}
     }
 #endif /* NO_REGEX */

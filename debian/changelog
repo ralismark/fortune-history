@@ -9,6 +9,9 @@ fortune-mod (9708-29) unstable; urgency=low
     cookie file is specified. (Patch from Scott Wehrenberg
     <wehresj@auburn.edu>)
     (closes: #161741)
+  * fortune/fortune.c: Exit cleanly on bad patterns instead of segfaulting.
+    (Patch from Scott Wehrenberg <wehresj@auburn.edu>)
+    (closes: #191647)
 
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 
