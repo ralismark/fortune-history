@@ -37,7 +37,9 @@ recoded-stamp:
 install:
 	install -m 0755 -d $(OCOOKIEDIR)
 	for i in $(OCOOKIES) ; \
-	    do install -m 0644 $$i $$i.dat $$i.u8 $(OCOOKIEDIR) || exit $$? ; done
+	    do install -m 0644 $$i $$i.dat $(OCOOKIEDIR) || exit $$? ; \
+	    cp -d $$i.u8 $(OCOOKIEDIR) ; \
+	done
 
 clean:
 	rm -f ocookies-stamp rotated-stamp recoded-stamp *.dat $(OCOOKIES_UNROTATED)
