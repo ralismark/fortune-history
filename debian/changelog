@@ -37,10 +37,10 @@ fortune-mod (9708-29) unstable; urgency=low
   * Lintian changes:
     -Updated policy version
     -fixed description
-  * Added some cookie files which weren't getting built to their directory's
+  * Added some cookie files which weren't getting built to their directories
     makefile.
     
- -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
+ -- Pascal Hakim <pasc@debian.org>  Tue, 17 Jun 2003 01:24:59 +1000
 
 fortune-mod (9708-28) unstable; urgency=low
 
