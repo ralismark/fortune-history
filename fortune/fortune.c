@@ -588,8 +588,8 @@ int add_file(int percent, register char *file, char *dir,
         { /* don't display an error when trying language specific files */
 	  char *lang;
 	  
-	  lang=getenv("LC_MESSAGES");
-	  if (!lang) lang=getenv("LC_ALL");
+	  lang=getenv("LC_ALL");
+	  if (!lang) lang=getenv("LC_MESSAGES");
 	  if (!lang) lang=getenv("LANGUAGE");
 	  if (!lang) lang=getenv("LANG");
 	  if (lang) {
@@ -769,8 +769,8 @@ int form_file_list(register char **files, register int file_cnt)
 	else {
 	    char *lang=NULL;
 	    
-            lang=getenv("LC_MESSAGES");
-            if (!lang) lang=getenv("LC_ALL");
+            lang=getenv("LC_ALL");
+            if (!lang) lang=getenv("LC_MESSAGES");
             if (!lang) lang=getenv("LANGUAGE");
 	    if (!lang) lang=getenv("LANG");
 	    if (lang) {
@@ -886,8 +886,8 @@ int form_file_list(register char **files, register int file_cnt)
 	    }
 	}
 
-	lang=getenv("LC_MESSAGES");
-	if (!lang) lang=getenv("LC_ALL");
+	lang=getenv("LC_ALL");
+	if (!lang) lang=getenv("LC_MESSAGES");
 	if (!lang) lang=getenv("LANGUAGE");
 	if (!lang) lang=getenv("LANG");
 	if (lang) {

@@ -14,6 +14,9 @@ fortune-mod (9708-29) unstable; urgency=low
     (closes: #191647)
   * fortune/fortune.c: Don't search the local directory for languages
     (closes: #159095)
+  * fortune/fortune.c: Changed the order in which LC_ALL and LC_MESSAGES are
+    interpreted
+    (closes: #157171)
 
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 
