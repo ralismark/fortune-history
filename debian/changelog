@@ -2,6 +2,8 @@ fortune-mod (9708-30) unstable; urgency=low
 
   * datfile/food:781: Fixed spelling mistake in "vegetarian"
     (closes: #198083)
+  * datfile/definition:3568: Changed posistion to position
+    (closes: #198656)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 20 Jun 2003 02:04:46 +1000
 
