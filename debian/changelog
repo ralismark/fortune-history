@@ -25,6 +25,8 @@ fortune-mod (9708-29) unstable; urgency=low
   * datfiles/translate-me: Added some translations. (Mostly thanks to
     Christian Kurz <shorty@debian.org>)
     (closes: #182613)
+  * datfiles/songs-poems:303: Fixed a typo in Gollum's riddle
+    (closes: #157105)
 
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 
