@@ -4,8 +4,11 @@ fortune-mod (9708-31) unstable; urgency=low
     (closes: #200718)
   * datfile/off/linux:37: Added tbm quote
     (closes: #202220)
+  * Added utf-8 support.
+    (Patch from Eduard Bloch <edi@gmx.de>)
+    (closes: #178392, #179595)
 
- -- Pascal Hakim <pasc@debian.org>  Mon, 21 Jul 2003 14:07:00 +1000
+ -- Pascal Hakim <pasc@debian.org>  Mon, 21 Jul 2003 18:07:00 +1000
 
 fortune-mod (9708-30) unstable; urgency=low
 

@@ -115,6 +115,10 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #include	<stdlib.h>
 #include	<string.h>
 #include	<errno.h>
+#include	<locale.h>
+#include	<langinfo.h>
+#include	<iconv.h> 
+
 
 /* This makes GNU libc to prototype the BSD regex functions */
 #ifdef BSD_REGEX
@@ -162,6 +166,7 @@ typedef struct fd
     char *datfile, *posfile;
     bool read_tbl;
     bool was_pos_file;
+    bool utf8_charset;
     STRFILE tbl;
     int num_children;
     struct fd *child, *parent;
@@ -530,11 +535,12 @@ int add_file(int percent, register char *file, char *dir,
 {
     register FILEDESC *fp;
     register int fd;
-    register char *path;
+    register char *path, *testpath;
     register bool was_malloc;
     register bool isdir;
     auto char *sp;
     auto bool found;
+    struct stat statbuf;
 
     if (dir == NULL)
     {
@@ -640,6 +646,15 @@ int add_file(int percent, register char *file, char *dir,
 
     fp->path = do_malloc (strlen (path) + 1);
     strncpy (fp->path, path, strlen (path) + 1);
+
+    //FIXME
+    fp->utf8_charset = FALSE;
+    testpath = do_malloc(strlen (path) + 4);
+    sprintf(testpath, "%s.u8", path);
+//    fprintf(stderr, "State mal: %s\n", testpath);
+    if(stat(testpath, &statbuf) == 0)
+	fp->utf8_charset = TRUE;
+//    fprintf(stderr, "Is utf8?: %i\n",	fp->utf8_charset );
 
     fp->parent = parent;
 
@@ -1546,8 +1561,18 @@ int find_matches(void)
 
 void display(FILEDESC * fp)
 {
-    register char *p, ch;
+    register char *p, ch, *ctype;
     unsigned char line[BUFSIZ];
+    iconv_t ic;
+
+    if(fp->utf8_charset) {
+	setlocale(LC_ALL,"");
+
+	ctype = nl_langinfo(CODESET);
+	if(strcmp(ctype,"ANSI_X3.4-1968") == 0)
+	    ctype="ISO-8859-1";
+	ic = iconv_open(ctype, "UTF-8");
+    }
 
     open_fp(fp);
     fseek(fp->inf, (long) Seekpts[0], 0);
@@ -1566,7 +1591,17 @@ void display(FILEDESC * fp)
 		    *p = 'a' + (ch - 'a' + 13) % 26;
 	    }
 	}
-	fputs(line, stdout);
+	if(fp->utf8_charset) {
+	    size_t len, outlenmax;
+	    char *output, *outbuf_tmp, *input;
+	    outlenmax = len=strlen(line);
+	    input=strdup(line);
+	    output = outbuf_tmp = calloc(outlenmax +1, sizeof(char));
+	    iconv(ic, &input, &len, &outbuf_tmp, &outlenmax);
+	    fputs(output, stdout);
+	}
+	else
+	    fputs(line, stdout);
     }
     fflush(stdout);
 }
