@@ -14,6 +14,9 @@ fortune-mod (9708-35) unstable; urgency=low
     (closes: #214701)
   * datfile/miscellaneous: Removed 3 spelling mistakes
     (closes: #215470)
+  * datfile/humourist:1017: Added Nipsey Russell quote from Match Game 
+    75
+    (closes: #211144)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 31 Oct 2003 00:04:00 +1100
 
