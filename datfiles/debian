@@ -76,4 +76,6 @@ rename the distro from "stable" to "wobbly".
 <erich> this wasn't chicken.
 		-- in #debian-devel
 %
-
+%
+* joeyh installs debian using only his big toe, for a change of pace
+		-- in #debian-boot
