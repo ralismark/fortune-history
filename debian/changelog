@@ -19,7 +19,9 @@ fortune-mod (9708-29) unstable; urgency=low
     (closes: #157171)
   * fortune/fortune.c: Display a message when no appropriate fortunes have
     been found
-    (closes: #165562)
+    (closes: #165563)
+  * datfiles/love:16: Removed duplicate entry
+    (closes: #178558)
 
  -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
 
