@@ -29,7 +29,7 @@ binary-indep: build
 	@cat fortune/fortune-man.part2 >>fortune/fortune.man
 	make install-cookie prefix=$(shell pwd)/debian/fortunes
 	mv debian/fortunes/usr/share/games/fortunes/off debian/fortunes-off/usr/share/games/fortunes
-	mv debian/fortunes/usr/share/games/fortunes/{fortunes,literature,riddles}{,.dat} debian/fortunes-min/usr/share/games/fortunes
+	mv debian/fortunes/usr/share/games/fortunes/{fortunes,literature,riddles}{,.dat,.u8} debian/fortunes-min/usr/share/games/fortunes
 	dh_installdocs -i
 #	dh_installexamples -i
 #	dh_installmenu -i
