@@ -5,6 +5,10 @@ fortune-mod (9708-34) unstable; urgency=low
     (closes: #208467, #208468)
   * datfile/linux:1821: Added Andrew Suffield quote
     (closes: #208975)
+  * Convert a fortune to the local charset before attempting a
+    search on it. Fortunes will now be displayed correctly when
+    searched for, and searches will work a bit better.
+    (closes: #205000)
 
  -- Pascal Hakim <pasc@debian.org>  Sun,  7 Sep 2003 12:23:40 +1000
 

@@ -252,6 +252,9 @@ regex_t Re_pat;
 
 #endif /* BSD_REGEX */
 
+RECODE_REQUEST request;
+RECODE_OUTER outer;
+
 int add_dir(register FILEDESC *);
 
 char *program_version(void)
@@ -1514,6 +1517,7 @@ void matches_in_list(FILEDESC * list)
     unsigned char ch; /* -allover */
     register FILEDESC *fp;
     int in_file, nchar;
+    char *output;
 
     for (fp = list; fp != NULL; fp = fp->next)
     {
@@ -1533,10 +1537,18 @@ void matches_in_list(FILEDESC * list)
 	    {
 		*sp = '\0';
 		nchar = sp - Fortbuf;
-                /* Should maybe rot13 Fortbuf -allover */
+
+		if (fp->utf8_charset) 
+		{
+		    output = recode_string (request, Fortbuf);
+		} else {
+		    output = Fortbuf;
+		}
+		/* Should maybe rot13 Fortbuf -allover */
+
                 if(fp->tbl.str_flags & STR_ROTATED)
 		{
-                    for (p = Fortbuf; (ch = *p); ++p)
+                    for (p = output; (ch = *p); ++p)
 		    {
                         if (isupper(ch))
                             *p = 'A' + (ch - 'A' + 13) % 26;
@@ -1548,7 +1560,7 @@ void matches_in_list(FILEDESC * list)
 		DPRINTF(1, (stdout, "nchar = %d\n", nchar));
 		if ( (nchar < SLEN || !Short_only) &&
 			(nchar > SLEN || !Long_only) &&
-			RE_EXEC(Fortbuf) )
+			RE_EXEC(output) )
 		{
 		    if (!in_file)
 		    {
@@ -1556,9 +1568,13 @@ void matches_in_list(FILEDESC * list)
 			Found_one = TRUE;
 			in_file = TRUE;
 		    }
-		    fwrite(Fortbuf, 1, sp - Fortbuf, stdout);
+		    fputs (output, stdout);
 		    printf("%c\n", fp->tbl.str_delim);
 		}
+
+		if (fp->utf8_charset)
+		  free (output);
+
 		sp = Fortbuf;
 	    }
     }
@@ -1584,25 +1600,8 @@ int find_matches(void)
 
 void display(FILEDESC * fp)
 {
-    register char *p, ch, *ctype, *crequest;
+    register char *p, ch;
     unsigned char line[BUFSIZ];
-    RECODE_REQUEST request;
-    RECODE_OUTER outer;
-
-    if(fp->utf8_charset) {
-       outer = recode_new_outer(true);
-	request = recode_new_request (outer);
-
-	setlocale(LC_ALL,"");
-	ctype = nl_langinfo(CODESET);
-	if(strcmp(ctype,"ANSI_X3.4-1968") == 0)
-	    ctype="ISO-8859-1";
-	
-	crequest = malloc(strlen(ctype) + 7 + 1);
-	sprintf(crequest, "UTF-8..%s", ctype);
-	recode_scan_request (request, crequest);
-	free(crequest);
-    }
 
     open_fp(fp);
     fseek(fp->inf, (long) Seekpts[0], 0);
@@ -1668,7 +1667,21 @@ int max(register int i, register int j)
 
 int main(int ac, char *av[])
 {
+    char *ctype, *crequest;
     getargs(ac, av);
+
+    outer = recode_new_outer(true);
+    request = recode_new_request (outer);
+
+    setlocale(LC_ALL,"");
+    ctype = nl_langinfo(CODESET);
+    if(strcmp(ctype,"ANSI_X3.4-1968") == 0)
+        ctype="ISO-8859-1";
+	
+    crequest = malloc(strlen(ctype) + 7 + 1);
+    sprintf(crequest, "UTF-8..%s", ctype);
+    recode_scan_request (request, crequest);
+    free(crequest);
 
 #ifndef NO_REGEX
     if (Match)
