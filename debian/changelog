@@ -4,6 +4,8 @@ fortune-mod (9708-30) unstable; urgency=low
     (closes: #198083)
   * datfile/definition:3568: Changed posistion to position
     (closes: #198656)
+  * datfile/politics:2967: Added a Mohammed Saeed al-Sahaf quote
+    (closes: #199181)
 
  -- Pascal Hakim <pasc@debian.org>  Fri, 20 Jun 2003 02:04:46 +1000
 
