@@ -1,3 +1,10 @@
+fortune-mod (9708-29) unstable; urgency=low
+
+  * datafile/linux: Added quote from debian-legal
+    (closes: #194346)
+
+ -- Pascal Hakim <pasc@debian.org>  Sat, 14 Jun 2003 01:10:10 +1000
+
 fortune-mod (9708-28) unstable; urgency=low
 
   * Fixed broken encoding characters (patch from Sam Hocevar 
