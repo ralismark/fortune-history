@@ -3,13 +3,13 @@
 build: build-stamp
 build-stamp:
 	dh_testdir
-	make
+	$(MAKE)
 	touch build-stamp
 
 clean:
 	dh_testdir
 	dh_testroot
-	make clean
+	$(MAKE) clean
 	rm -f build-stamp
 	dh_clean
 
@@ -18,16 +18,8 @@ binary-indep: build
 	dh_testroot -i
 	dh_clean -i -k
 	dh_installdirs -i
-	@cat fortune/fortune-man.part1 >fortune/fortune.man
-	@echo "/usr/share/games/fortunes \- Directory for inoffensive fortunes" >>fortune/fortune.man
-	@echo ".TP" >>fortune/fortune.man
-	@echo "/usr/share/games/fortunes/off \- Directory for offensive fortunes" >>fortune/fortune.man
-	@echo ".TP" >>fortune/fortune.man
-	@echo "/usr/local/share/games/fortunes \- Local directory for inoffensive fortunes" >>fortune/fortune.man
-	@echo ".TP" >>fortune/fortune.man
-	@echo "/usr/local/share/games/fortunes/off \- Local directory for offensive fortunes" >>fortune/fortune.man
-	@cat fortune/fortune-man.part2 >>fortune/fortune.man
-	make install-cookie prefix=$(shell pwd)/debian/fortunes
+	$(MAKE) fortune/fortune.man prefix=
+	$(MAKE) install-cookie prefix=$(CURDIR)/debian/fortunes
 	mv debian/fortunes/usr/share/games/fortunes/off debian/fortunes-off/usr/share/games/fortunes
 	mv debian/fortunes/usr/share/games/fortunes/{fortunes,literature,riddles}{,.dat,.u8} debian/fortunes-min/usr/share/games/fortunes
 	dh_installdocs -i
@@ -53,7 +45,7 @@ binary-arch: build
 	dh_testroot -a
 	dh_clean -a -k
 	dh_installdirs -a
-	make install-fortune install-util install-man \
+	$(MAKE) install-fortune install-util install-man \
                   prefix=$(shell pwd)/debian/tmp
 	install -m 0644 -o root -g root \
 	   fortune/fortune.man debian/tmp/usr/share/man/man6/fortune.6

@@ -1,21 +1,32 @@
 fortune-mod (9708-37) unstable; urgency=low
 
-  * datfile/off/atheism: Fixed spelling mistake
-    (closes: #234988)
-  * datfile/zippy: Fixed spelling mistake
-    (closes: #226968)
-  * datfile/men-women: Fixed spelling mistake in attribution
-    (closes: #231811)
-  * datfile/cookie: Fixed spelling mistake
-    (closes: #234154)
-  * datfile/debian: Added IRC quote
-    (from Scott James Remnant <scott@netsplit.com>)
-    (closes: #227950)
-  * datfile/off/debian: Added IRC quote
-    (from Scott James Remnant <scott@netsplit.com>)
-    (closes: #235984)
+  * Pascal Hakim
+    - datfile/off/atheism: Fixed spelling mistake
+      (closes: #234988)
+    - datfile/zippy: Fixed spelling mistake
+      (closes: #226968)
+    - datfile/men-women: Fixed spelling mistake in attribution
+      (closes: #231811)
+    - datfile/cookie: Fixed spelling mistake
+      (closes: #234154)
+    - datfile/debian: Added IRC quote
+      (from Scott James Remnant <scott@netsplit.com>)
+      (closes: #227950)
+    - datfile/off/debian: Added IRC quote
+      (from Scott James Remnant <scott@netsplit.com>)
+      (closes: #235984)
+  * Joshua Kwan
+    - Add self to Uploaders.
+    - datfile/off/debian: Added IRC quote
+    - datfiles/debian: Added ML quotes from Adrian von Bidder
+      <avbidder@fortytwo.ch> (Closes: #247259)
+    - Manually invoke the man page build target before running install-cookie,
+      with a blank prefix, so that the paths are not munged to include
+      /buildd/... (Closes: #252019, #229355)
+    - datfiles/computers: Fix typo: Andy Tannenbaum -> Tanenbaum.
+      (Closes: #253909)
 
- -- Pascal Hakim <pasc@debian.org>  Fri, 05 Mar 2004 13:43:00 +1100
+ -- Joshua Kwan <joshk@triplehelix.org>  Sat, 26 Jun 2004 13:32:05 -0700
 
 fortune-mod (9708-36) unstable; urgency=low
 
