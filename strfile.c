@@ -23,7 +23,7 @@
  * to be added to the structure in one of the pointer elements.
  */
 
-char	sccsid[] = "@(#)strfile.c	1.2 (Berkeley) 5/14/81";
+char	sccsid[] = "@(#)strfile.c	1.3 (Berkeley) 6/20/83";
 
 # define	reg	register
 
@@ -114,7 +114,7 @@ char	*av[]; {
 				tbl.str_longlen = li;
 			if (tbl.str_shortlen > li)
 				tbl.str_shortlen = li;
-			if (sp[1] == DELIM_CH && delim < MAXDELIMS)
+			if (sp && sp[1] == DELIM_CH && delim < MAXDELIMS)
 				tbl.str_delims[delim++] = lp - seekpts;
 		}
 		else
