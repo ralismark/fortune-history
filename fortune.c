@@ -1,6 +1,6 @@
-#ifdef UCB_SCCSID
-	char	*sccsid = "@(#)fortune.c	2.6";
-#endif
+char	*sccsid = "@(#)fortune.c	1.4 (Berkeley) 2/11/83";
+
+# include	<sys/types.h>
 # include	<stdio.h>
 # include	"strfile.h"
 
@@ -31,6 +31,12 @@ char	fortfile[100]	= FORTFILE,	/* fortune database		*/
 
 long	seekpts[2];			/* seek pointers to fortunes	*/
 
+time_t	seed;
+
+STRFILE	tbl;				/* input table			*/
+
+time_t	time();
+
 main(ac, av)
 int	ac;
 char	*av[]; {
@@ -38,12 +44,11 @@ char	*av[]; {
 	reg char	c;
 	reg int		nchar = 0;
 	reg FILE	*inf;
-	int		numforts,	/* number of fortunes		*/
+	reg int		numforts,	/* number of fortunes		*/
 			fortune;	/* fortune number		*/
-	STRFILE		tbl;		/* input table			*/
+	reg time_t	tm;
 
 	getargs(ac, av);
-	srand(getpid());
 	if ((inf = fopen(fortfile, "r")) == NULL) {
 		perror(fortfile);
 		exit(-1);
@@ -62,14 +67,15 @@ char	*av[]; {
 		numforts -= tbl.str_delims[0];
 	else if (!aflag)
 		numforts = tbl.str_delims[0];
-	do {
-		fortune = roll(1, numforts) - 1;
-		if (oflag && !aflag)
-			fortune += tbl.str_delims[0];
-		fseek(inf, (long)(sizeof seekpts[0]) * fortune + sizeof tbl, 0);
-		fread(seekpts, (sizeof seekpts[0]), 2, inf);
-	} while ((sflag && seekpts[1] - seekpts[0] > SLEN)
-	       || (lflag && seekpts[1] - seekpts[0] < SLEN));
+	tm = time(NULL);
+	seed = tm + getpid();
+	getfort(numforts, inf);
+	if (sflag)
+		while (seekpts[1] - seekpts[0] >= SLEN)
+			getfort(numforts, inf);
+	else if (lflag)
+		while (seekpts[1] - seekpts[0] < SLEN)
+			getfort(numforts, inf);
 	fseek(inf, seekpts[0], 0);
 	while (c = getc(inf)) {
 		nchar++;
@@ -79,6 +85,7 @@ char	*av[]; {
 	if (wflag)
 		sleep(max((int) nchar/CPERS, MINW));
 }
+
 /*
  *	This routine evaluates the arguments on the command line
  */
@@ -125,42 +132,27 @@ reg char	*av[]; {
 	}
 }
 
+getfort(numforts, inf)
+reg int		numforts;
+reg FILE	*inf; {
+
+	reg int		fortune;
+
+	fortune = rnd(numforts);
+	if (oflag && !aflag)
+		fortune += tbl.str_delims[0];
+	fseek(inf, (long)(sizeof seekpts[0]) * fortune + sizeof tbl, 0);
+	fread(seekpts, (sizeof seekpts[0]), 2, inf);
+}
+
 max(i, j)
 reg int	i, j; {
 
 	return (i >= j ? i : j);
 }
 
-# ifndef vax
-# define	MAXRAND	32767L
+rnd(num)
+int	num; {
 
-roll(ndie, nsides)
-int	ndie, nsides; {
-
-	reg long	tot;
-	reg unsigned	n, r;
-
-	tot = 0;
-	n = ndie;
-	while (n--)
-		tot += rand();
-	return (int) ((tot * (long) nsides) / ((long) MAXRAND + 1)) + ndie;
+	return ((seed = seed*11109+13849) & 0xffff) % num;
 }
-
-# else
-
-roll(ndie, nsides)
-reg int	ndie, nsides; {
-
-	reg int		tot, r;
-	reg double	num_sides;
-
-	num_sides = nsides;
-	tot = 0;
-	while (ndie--)
-		tot += rand() * (num_sides / 017777777777) + 1;
-	return tot;
-}
-# endif
-
-

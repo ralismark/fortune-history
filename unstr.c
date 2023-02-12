@@ -14,6 +14,8 @@
  *	Ken Arnold		Aug 13, 1978
  */
 
+char	sccsid[] = "@(#)unstr.c	1.2 (Berkeley) 5/14/81";
+
 # define	reg	register
 
 # define	DELIM_CH	'-'

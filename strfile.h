@@ -1,3 +1,5 @@
+/* @(#)strfile.h	1.2 (Berkeley) 5/14/81 */
+
 # define	MAXDELIMS	3
 
 struct	strfile {		/* information table			*/

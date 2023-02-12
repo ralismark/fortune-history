@@ -23,6 +23,8 @@
  * to be added to the structure in one of the pointer elements.
  */
 
+char	sccsid[] = "@(#)strfile.c	1.2 (Berkeley) 5/14/81";
+
 # define	reg	register
 
 # define	DELIM_CH	'-'
