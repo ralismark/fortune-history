@@ -1,18 +1,32 @@
 /*
- * Copyright (c) 1986 Regents of the University of California.
- * All rights reserved.  The Berkeley software License Agreement
- * specifies the terms and conditions for redistribution.
+ * Copyright (c) 1989 The Regents of the University of California.
+ * All rights reserved.
+ *
+ * This code is derived from software contributed to Berkeley by
+ * Ken Arnold.
+ *
+ * Redistribution and use in source and binary forms are permitted
+ * provided that the above copyright notice and this paragraph are
+ * duplicated in all such forms and that any documentation,
+ * advertising materials, and other materials related to such
+ * distribution and use acknowledge that the software was developed
+ * by the University of California, Berkeley.  The name of the
+ * University may not be used to endorse or promote products derived
+ * from this software without specific prior written permission.
+ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  */
 
 #ifndef lint
-static char sccsid[] = "@(#)unstr.c	1.1 (Berkeley) 12/9/86";
-#endif not lint
+char copyright[] =
+"@(#) Copyright (c) 1989 The Regents of the University of California.\n\
+ All rights reserved.\n";
+#endif /* not lint */
 
-# include	<stdio.h>
-# include	"strfile.h"
-
-# define	TRUE	1
-# define	FALSE	0
+#ifndef lint
+static char sccsid[] = "@(#)unstr.c	5.6 (Berkeley) 12/15/89";
+#endif /* not lint */
 
 /*
  *	This program un-does what "strfile" makes, thereby obtaining the
@@ -27,111 +41,88 @@ static char sccsid[] = "@(#)unstr.c	1.1 (Berkeley) 12/9/86";
  *	Ken Arnold		Aug 13, 1978
  */
 
-# define	DELIM_CH	'-'
+# include	<machine/endian.h>
+# include	<sys/param.h>
+# include	"strfile.h"
+# include	<stdio.h>
+# include	<ctype.h>
 
-char	Infile[100],			/* name of input file */
-	Outfile[100];			/* name of output file */
+# ifndef MAXPATHLEN
+# define	MAXPATHLEN	1024
+# endif	/* MAXPATHLEN */
 
-short	Oflag = FALSE;			/* use order of initial table */
+char	*Infile,			/* name of input file */
+	Datafile[MAXPATHLEN],		/* name of data file */
+	Delimch;			/* delimiter character */
 
-FILE	*Inf, *Outf;
+FILE	*Inf, *Dataf;
 
-char	*rindex(), *malloc(), *strcat(), *strcpy();
+char	*strcat(), *strcpy();
 
+/* ARGSUSED */
 main(ac, av)
 int	ac;
 char	**av;
 {
-	register char	c;
-	register int	nstr, delim;
 	static STRFILE	tbl;		/* description table */
 
-	getargs(ac, av);
+	getargs(av);
 	if ((Inf = fopen(Infile, "r")) == NULL) {
 		perror(Infile);
-		exit(-1);
-		/* NOTREACHED */
+		exit(1);
 	}
-	if ((Outf = fopen(Outfile, "w")) == NULL) {
-		perror(Outfile);
-		exit(-1);
-		/* NOTREACHED */
+	if ((Dataf = fopen(Datafile, "r")) == NULL) {
+		perror(Datafile);
+		exit(1);
 	}
-	(void) fread((char *) &tbl, sizeof tbl, 1, Inf);
-	if (Oflag) {
-		order_unstr(&tbl);
-		exit(0);
-		/* NOTREACHED */
+	(void) fread((char *) &tbl, sizeof tbl, 1, Dataf);
+	tbl.str_version = ntohl(tbl.str_version);
+	tbl.str_numstr = ntohl(tbl.str_numstr);
+	tbl.str_longlen = ntohl(tbl.str_longlen);
+	tbl.str_shortlen = ntohl(tbl.str_shortlen);
+	tbl.str_flags = ntohl(tbl.str_flags);
+	if (!(tbl.str_flags & (STR_ORDERED | STR_RANDOM))) {
+		fprintf(stderr, "nothing to do -- table in file order\n");
+		exit(1);
 	}
-	nstr = tbl.str_numstr;
-	(void) fseek(Inf, (long) (sizeof (long) * (nstr + 1)), 1);
-	delim = 0;
-	for (nstr = 0; (c = getc(Inf)) != EOF; nstr++)
-		if (c != '\0')
-			putc(c, Outf);
-		else if (nstr != tbl.str_numstr - 1)
-			if (nstr == tbl.str_delims[delim]) {
-				fputs("%-\n", Outf);
-				delim++;
-			}
-			else
-				fputs("%%\n", Outf);
+	Delimch = tbl.str_delim;
+	order_unstr(&tbl);
+	(void) fclose(Inf);
+	(void) fclose(Dataf);
 	exit(0);
-	/* NOTREACHED */
 }
 
-getargs(ac, av)
-register int	ac;
-register char	**av;
+getargs(av)
+register char	*av[];
 {
-	register char	*sp;
-
-	if (ac > 1 && strcmp(av[1], "-o") == 0) {
-		Oflag++;
-		ac--;
-		av++;
+	if (!*++av) {
+		(void) fprintf(stderr, "usage: unstr datafile\n");
+		exit(1);
 	}
-	if (ac < 2) {
-		printf("usage: %s datafile[.dat] [ outfile ]\n", av[0]);
-		exit(-1);
-	}
-	(void) strcpy(Infile, av[1]);
-	if (ac < 3) {
-		(void) strcpy(Outfile, Infile);
-		if ((sp = rindex(av[1], '.')) && strcmp(sp, ".dat") == 0)
-			Outfile[strlen(Outfile) - 4] = '\0';
-		else
-			(void) strcat(Infile, ".dat");
-	}
-	else
-		(void) strcpy(Outfile, av[2]);
+	Infile = *av;
+	(void) strcpy(Datafile, Infile);
+	(void) strcat(Datafile, ".dat");
 }
 
 order_unstr(tbl)
-STRFILE	*tbl;
+register STRFILE	*tbl;
 {
-	register int	i, c;
-	register int	delim;
-	register long	*seekpts;
+	register int	i;
+	register char	*sp;
+	auto off_t	pos;
+	char		buf[BUFSIZ];
 
-	seekpts = (long *) malloc(sizeof *seekpts * tbl->str_numstr);	/* NOSTRICT */
-	if (seekpts == NULL) {
-		perror("malloc");
-		exit(-1);
-		/* NOTREACHED */
-	}
-	(void) fread((char *) seekpts, sizeof *seekpts, tbl->str_numstr, Inf);
-	delim = 0;
-	for (i = 0; i < tbl->str_numstr; i++, seekpts++) {
+	for (i = 0; i < tbl->str_numstr; i++) {
+		(void) fread((char *) &pos, 1, sizeof pos, Dataf);
+		(void) fseek(Inf, ntohl(pos), 0);
 		if (i != 0)
-			if (i == tbl->str_delims[delim]) {
-				fputs("%-\n", Outf);
-				delim++;
-			}
+			(void) printf("%c\n", Delimch);
+		for (;;) {
+			sp = fgets(buf, sizeof buf, Inf);
+			if (sp == NULL || STR_ENDSTRING(sp, *tbl))
+				break;
 			else
-				fputs("%%\n", Outf);
-		(void) fseek(Inf, *seekpts, 0);
-		while ((c = getc(Inf)) != '\0')
-			putc(c, Outf);
+				fputs(sp, stdout);
+		}
 	}
 }
