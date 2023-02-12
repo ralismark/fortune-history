@@ -1,3 +1,31 @@
+
+This is fortune-mod 9705.  It is basically the same as fortune-mod 9510,
+with some portability improvements, bug fixes and documentation cleanup.
+
+The most significant fix was for the reported bug about the `-a' option
+of fortune with database names that appear in both the inoffensive and
+offensive directories.  This was solved by allowing the user to append
+'-o' to a fortune name while `-a' is in effect to force selection of the
+offensive version of a database.
+
+Other changes/fixes: Fortune is now consistant in how it determines a
+fortune's length (for -s and -l).  The -m can now be used together with
+-s or -l: only fortunes which match _BOTH_ the pattern and the length
+requirement will be printed.
+
+Most of the other features over the usual BSD fortune are summarised in
+Amy's README.Linux, included below, and in the accompanying manual pages
+for fortune(6) and strfile(1).
+
+The changes in fortune.c and fortune.man are copyrighted by me but
+freely distributable: see the source files for details.  All other
+changes are in the public domain: you may do what you like with them.
+
+Cheers,
+
+  -- Dennis L. Clark <dbugger@progsoc.uts.edu.au>  Mon, 26 May 1997 17:45:33 +1000
+
+----Amy's README.Linux---
 This version of fortune is a modification of the NetBSD fortune, as
 tweaked by Florian La Roche (see below, and many thanks to Florian for
 starting the update), and then massively hacked on by Amy Lewis.

@@ -1,39 +1,122 @@
-Late September, 1995
-  Too many changes to mention, really.  Look at the source code for
-  comments on individual files.  LINUX.DIF has been removed.
-  
-  It is worth noting that strfile was completely broken as distributed,
-  and fortune had code to make it report a different file list than the
-  one it used to retrieve fortunes.  There's some rather strong language
-  on the subject in strfile.c; if it offends you, tough.
-  
-  Bugs were fixed, and some enhancements were added.  Unstr, in
-  particular, has had its command line considerably enhanced.  Strfile
-  now *really does* sort, instead of merely setting the 'sorted' flag.
-  Ditto for randomizing.
-  
-  Noteworthy: the way to distinguish between offensive and non-offensive
-  files has changed for fortune.  A second directory (which may be a
-  subdirectory of the main fortune directory; the program doesn't
-  add files recursively down a directory tree) has been added to 
-  pathnames.h.  Offensive files should be placed there.  There is no
-  longer any need to add the -o suffix to file names, and the problems
-  with finding files (especially offensive ones) seem to have
-  disappeared in the process.
-  
-  Currently, I'm working on breaking the fortune files themselves into
-  smaller, more manageable pieces, checking spelling, punctuation, and
-  grammar, and trying to reduce redundancy.  The eventual goal, after 
-  the files are cleaned up, is another set of files carrying HTML tags,
-  which would then massively simplify a CGI script that calls fortune.
+(Note: this file has been re-arranged to be in reverse chronological
+order, which is The Right Thing for ChangeLogs - DLC)
 
-  New Makefiles.
+May, 1997
+
+  This release fixes many of the portability problems with the
+  fortune-mod program released by Amy Lewis in September, 1995.  The
+  previous version had many Linux-isms in it, which left it unworkable
+  on any other platform.  This version replaces most of these with more
+  standard calls, making it more likely to work under other platforms.
+  The Makefiles have been modified so that GNU's gcc and make are no
+  longer required: any standard make and ANSI-compatible C compiler
+  should work.  Sorry, pre-ANSI compilers are not supported (c'mon, this
+  is the 90's, darn it!)
+
+  This version has been tested to work on SunOS 4.1.x as well as Linux.
+  All changes made to the sources were as platform-independant as
+  possible.  Therefore, no "#ifdef LINUX" or "#ifdef SUNOS4" directives
+  appear in the code.  An effect of this is that a number of 'implicit
+  declaration' warnings are emitted by gcc under SunOS 4.1.x, but this a
+  problem with SunOS's standard headers, not with the program or the
+  compiler.  The benefit of this approach is that it eases the work of
+  expanding the port to include other platforms. Bug reports and fixes
+  for other platforms are most welcome!
+
+  A few "standard" C function calls were replaced with more standard
+  counterparts at various points.  Generally, when there was a choice
+  between a BSD version of a function and a POSIX version, the POSIX
+  version was favoured (even though fortune originated on BSD).  An
+  exception to this was the regex functions: either POSIX or BSD
+  versions can be used, with selection made via the top-level Makefile.
+
+  Fortune and strfile also compiles on Solaris 2.5, but a discrepency
+  between the declaration and implementation of 'struct dirent' on the
+  test platform caused fortune to execute incorrectly there.  It is not
+  certain whether this is a bug in the header file, the C library, or
+  the test platform.
+
+  While the making of this release was not meant to become a bug
+  search-and-destroy mission, some bugs were inadvertantly discovered
+  and fixed. including the known bug of using -a with a file that occurs
+  in both the offensive and inoffensive directories.  Fixing this
+  particular bug required a way to be able to seperately identify two
+  fortune files with the same name, with one in the inoffensive
+  directory, the other one in the offensive directory.  Now, such a name
+  will be taken to be the inoffensive file by default.  However, you can
+  now append '-o' to a fortune name, and the '-o' will be removed and
+  the offensive directory will be searched.  Thus you can say (assuming
+  you use the distributed datfiles):
+
+        fortune 80% politics politics-o
+
+  Which has an 80% change of giving an "inoffensive" political fortune,
+  and a 20% change of giving an "offensive" political one.  Note that
+  this makes fortune-mod backwards-compatible with BSD fortune, but only
+  for users, not fortune database maintainers.
+
+  Of course, this solution only passes the buck: with the above example
+  again, if you have a 'politics-o' file in your inoffensive directory,
+  you are back to square one.  OTOH, seeing that '-o' originally was
+  meant for offensive fortunes, using it for inoffensive ones is simply
+  asking for trouble.
+
+  Bug fixed: Fortune's definition of a fortune length (for -s and -l)
+  was inconsistant.  Unordered fortunes counted the 2 delimiting
+  characters (as hinted in the man page), but sorted or randomized
+  fortunes did not.  Now the delimiting characters are _NEVER_ counted,
+  so you will always get the length limit you expect.
+
+  Another bug fix: -l and -s can now work together with -m.  Previously
+  -l and -s were ignored when -m was in effect.  The new behaviour helps
+  me count how many long or short fortunes there are in a file.
+
+  Ansify has been removed from the package, as well as some filter
+  scripts from NetBSD that no longer appear useful.  Randstr has been
+  kept, but has not been improved in any way.  It at least has a man
+  page: maybe somebody will find it useful.
+
+  Some of the documentation (including the man pages) has been improved
+  and updated, and some files have been renamed so that the package
+  looks less Linux-specific.
+
+    -- Dennis L. Clark <dbugger@progsoc.uts.edu.au>
+
+Late October 1995
+  Ansify has been abandoned.  I'm going to distribute this working version
+  of fortune, and then see how difficult it would be to add termcap/terminfo
+  enhancements to fortune itself--I don't anticipate serious problems, but
+  I'd rather go ahead and get this on the net.
   
-  A 'randstr' (I want to call it 'lottery,' but I won't) utility, which
-  amounts to a poor woman's stripped-down fortune, to illustrate some
-  other possible uses of strfile-type random-access strings files.
+  A last-minute change was made to the way that percentages are displayed
+  with -f; it is now in the format nnn.nn%.  The reason for this is that
+  with the multiplication of small files, fortune -af displayed a large
+  number of "0%"s--no worse than the old version, but not helpful.
+
+  The fortunes database was finally cleaned up, and this version is now
+  being distributed (at least, I hope it is).  I don't consider the current
+  division of fortunes among files absolutely canonical; some are certainly
+  in the wrong places.  But things are *better*.
+
+Amy A. Lewis	alewis@email.unc.edu
+
+Mid-October '95
+  Another utility, ansify, now compiles; it has not been tested at all, so
+  it may not work even slightly.
   
-  Amy A. Lewis   alewis@email.unc.edu
+  Ansify is a rather stupid program, all things considered, but the work on
+  it does raise an interesting possibility for an enhanced fortune.  At
+  present, the fortune databases contain x^Hy sequences for underline and
+  special characters (and this can be extended to include bold, = x^Hx).
+  Ansify is stupid because it doesn't use the proper tools, ie termcap or
+  terminfo (hmmm ... since it works on files, that may not be so stupid);
+  it appears that if that can be done, then a termcap/terminfo enhanced
+  fortune could be produced, which would recognize the existence of ^H in
+  a string and attempt to display using appropriate control sequences.
+  This sort of modification would be of greater interest to casual users,
+  I think, than even the bug fixes, and since it would not force changes
+  in the storage of fortunes, it is eminently portable.  Consider this a
+  'todo' announcement.
 
 Added (early October 95):
   A new executable, rot, which is a rot13 filter (a caesar cipher). Most
@@ -119,39 +202,40 @@ More minor fixes:
   
   [The above is now in the man page, more or less]
   
-Mid-October '95
-  Another utility, ansify, now compiles; it has not been tested at all, so
-  it may not work even slightly.
+Late September, 1995
+  Too many changes to mention, really.  Look at the source code for
+  comments on individual files.  LINUX.DIF has been removed.
   
-  Ansify is a rather stupid program, all things considered, but the work on
-  it does raise an interesting possibility for an enhanced fortune.  At
-  present, the fortune databases contain x^Hy sequences for underline and
-  special characters (and this can be extended to include bold, = x^Hx).
-  Ansify is stupid because it doesn't use the proper tools, ie termcap or
-  terminfo (hmmm ... since it works on files, that may not be so stupid);
-  it appears that if that can be done, then a termcap/terminfo enhanced
-  fortune could be produced, which would recognize the existence of ^H in
-  a string and attempt to display using appropriate control sequences.
-  This sort of modification would be of greater interest to casual users,
-  I think, than even the bug fixes, and since it would not force changes
-  in the storage of fortunes, it is eminently portable.  Consider this a
-  'todo' announcement.
-
-Late October 1995
-  Ansify has been abandoned.  I'm going to distribute this working version
-  of fortune, and then see how difficult it would be to add termcap/terminfo
-  enhancements to fortune itself--I don't anticipate serious problems, but
-  I'd rather go ahead and get this on the net.
+  It is worth noting that strfile was completely broken as distributed,
+  and fortune had code to make it report a different file list than the
+  one it used to retrieve fortunes.  There's some rather strong language
+  on the subject in strfile.c; if it offends you, tough.
   
-  A last-minute change was made to the way that percentages are displayed
-  with -f; it is now in the format nnn.nn%.  The reason for this is that
-  with the multiplication of small files, fortune -af displayed a large
-  number of "0%"s--no worse than the old version, but not helpful.
+  Bugs were fixed, and some enhancements were added.  Unstr, in
+  particular, has had its command line considerably enhanced.  Strfile
+  now *really does* sort, instead of merely setting the 'sorted' flag.
+  Ditto for randomizing.
+  
+  Noteworthy: the way to distinguish between offensive and non-offensive
+  files has changed for fortune.  A second directory (which may be a
+  subdirectory of the main fortune directory; the program doesn't
+  add files recursively down a directory tree) has been added to 
+  pathnames.h.  Offensive files should be placed there.  There is no
+  longer any need to add the -o suffix to file names, and the problems
+  with finding files (especially offensive ones) seem to have
+  disappeared in the process.
+  
+  Currently, I'm working on breaking the fortune files themselves into
+  smaller, more manageable pieces, checking spelling, punctuation, and
+  grammar, and trying to reduce redundancy.  The eventual goal, after 
+  the files are cleaned up, is another set of files carrying HTML tags,
+  which would then massively simplify a CGI script that calls fortune.
 
-  The fortunes database was finally cleaned up, and this version is now
-  being distributed (at least, I hope it is).  I don't consider the current
-  division of fortunes among files absolutely canonical; some are certainly
-  in the wrong places.  But things are *better*.
-
-Amy A. Lewis	alewis@email.unc.edu
+  New Makefiles.
+  
+  A 'randstr' (I want to call it 'lottery,' but I won't) utility, which
+  amounts to a poor woman's stripped-down fortune, to illustrate some
+  other possible uses of strfile-type random-access strings files.
+  
+  Amy A. Lewis   alewis@email.unc.edu
 

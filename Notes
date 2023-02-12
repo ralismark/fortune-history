@@ -16,20 +16,20 @@ Warning:
 
 ==> GENERAL INFORMATION
 	By default, fortune retrieves its fortune files from the directory
-/usr/share/games/fortune.  A fortune file has two parts: the source file
+/usr/local/share/games/fortune.  A fortune file has two parts: the source file
 (which contains the fortunes themselves) and the data file which describes
 the fortunes.  The data fil always has the same name as the fortune file
-with the string ".dat" concatenated, i.e. "fort" is the standard fortune
-database, and "fort.dat" is the data file which describes it.  See
+with the string ".dat" concatenated, e.g. if "fort" is a standard fortune
+database, then "fort.dat" is the data file which describes it.  See
 strfile(8) for more information on creating the data files.
 	Fortunes are split into potentially offensive and not potentially
 offensive parts.  The offensive version of a file has the same name as the
-non-offensive version with "-o" concatenated, i.e. "fort" is the standard
-fortune database, and "fort-o" is the standard offensive database.  The
-fortune program automatically assumes that any file with a name ending in
-"-o" is potentially offensive, and should therefore only be displayed if
-explicitly requested, either with the -o option or by specifying a file name
-on the command line.
+non-offensive version but exists in the offensive fortunes directory 
+(/usr/local/share/games/fortune/off by default).  The fortune program
+automatically assumes that any file in the offensive fortune directory
+is potentially offensive, and should therefore only be displayed if
+explicitly requested, either with the -o option, by specifying a file name
+on the command line, or by appending "-o" to the name.
 	Potentially offensive fortune files should NEVER be maintained in
 clear text on the system.  They are rotated (see caesar(6)) 13 positions.
 To create a new, potentially offensive database, use caesar to rotate it,

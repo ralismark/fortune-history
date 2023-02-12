@@ -50,4 +50,4 @@ type database, and use this database to run a monthly lottery.
 .SH BUGS
 None known.
 .SH SEE ALSO
-.BR fortune "(6), " strfile "(8), " unstr (8)
+.BR fortune "(6), " strfile (1)

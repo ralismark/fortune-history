@@ -74,7 +74,6 @@
 
 #include	<stdlib.h>
 #include	<unistd.h>
-#include	<endian.h>
 #include	<netinet/in.h>
 #include	<sys/param.h>
 #include	<stdio.h>
@@ -88,7 +87,7 @@
 
 /*
  *    This program takes a file composed of strings seperated by
- * lines starting with two consecutive delimiting character (default
+ * lines containing only the delimiting character (the default
  * character is '%') and creates another file which consists of a table
  * describing the file (structure from "strfile.h"), a table of seek
  * pointers to the start of the strings, and the strings, each terminated

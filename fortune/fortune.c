@@ -52,6 +52,23 @@
  * 6: Calculated probabilities for all files, so that -f will print them.
  */
 
+/* Changes Copyright (c) 1997 Dennis L. Clark.  All rights reserved.
+ *
+ *    The changes in this file may be freely redistributed, modified or
+ *    included in other software, as long as both the above copyright
+ *    notice and these conditions appear intact.
+ */
+
+/* Modified May 1997, Dennis L. Clark (dbugger@progsoc.uts.edu.au)
+ *  + Various portability fixes
+ *  + Percent selection of files with -a now works on datafiles which
+ *    appear in both unoffensive and offensive directories (see man page
+ *    for details)
+ *  + The -s and -l options are now more consistant in their
+ *    interpretation of fortune length
+ *  + The -s and -l options can now be combined wit the -m option
+ */
+
 #if 0				/* comment out the stuff here, and get rid of silly warnings */
 #ifndef lint
 static char copyright[] =
@@ -71,6 +88,8 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #endif /* not lint */
 #endif /* killing warnings */
 
+#include	<sys/types.h>
+#include	<sys/time.h>
 #include	<sys/param.h>
 #include	<sys/stat.h>
 #include	<netinet/in.h>
@@ -84,9 +103,16 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #include	<ctype.h>
 #include	<stdlib.h>
 #include	<string.h>
+
+#ifdef HAVE_REGEX_H
+#include	<regex.h>
+#else
+#ifdef HAVE_RX_H
 #include	<rx.h>
+#endif /* HAVE_RX_H */
+#endif /* HAVE_REGEX_H */
+
 #include	"strfile.h"
-#include	"pathnames.h"
 
 #define	TRUE	1
 #define	FALSE	0
@@ -146,7 +172,7 @@ unsigned char *Fortbuf = NULL;	/* fortune buffer for -m */
 
 int Fort_len = 0, Spec_prob = 0,	/* total prob specified on cmd line */
   Num_files, Num_kids,		/* totals of files and children. */
-  SLEN = 160;			/* characters in a "short" fortune */
+  SLEN = 160;			/* max. characters in a "short" fortune */
 
 off_t Seekpts[2];		/* seek pointers to fortunes */
 
@@ -156,25 +182,27 @@ FILEDESC *Fortfile;		/* Fortune file to use */
 
 STRFILE Noprob_tbl;		/* sum of data for all no prob files */
 
-#ifndef NO_REGEX
-#ifdef REGCMP
-#define	RE_COMP(p)	(Re_pat = regcmp(p, NULL))
-#define	BAD_COMP(f)	((f) == NULL)
-#define	RE_EXEC(p)	regex(Re_pat, (p))
+#ifdef BSD_REGEX
 
-char *Re_pat;
-
-char *regcmp(), *regex();
-
-#else
-#define	RE_COMP(p)	(p = re_comp(p))
+#define	RE_COMP(p)	re_comp(p)
 #define	BAD_COMP(f)	((f) != NULL)
 #define	RE_EXEC(p)	re_exec(p)
 
-#endif
-#endif
+#else
 
-int add_dir __P((register FILEDESC *));
+#ifdef POSIX_REGEX
+#define	RE_COMP(p)	regcomp(&Re_pat, (p), REG_NOSUB)
+#define	BAD_COMP(f)	((f) != 0)
+#define	RE_EXEC(p)	(regexec(&Re_pat, (p), 0, NULL, 0) == 0)
+
+regex_t Re_pat;
+#else
+#define NO_REGEX
+#endif /* POSIX_REGEX */
+
+#endif /* BSD_REGEX */
+
+int add_dir(register FILEDESC *);
 
 void usage(void)
 {
@@ -397,7 +425,7 @@ int is_fortfile(char *file, char **datp, char **posp)
 
     DPRINTF(2, (stderr, "is_fortfile(%s) returns ", file));
 
-    if ((sp = rindex(file, '/')) == NULL)
+    if ((sp = strrchr(file, '/')) == NULL)
 	sp = file;
     else
 	sp++;
@@ -406,7 +434,7 @@ int is_fortfile(char *file, char **datp, char **posp)
 	DPRINTF(2, (stderr, "FALSE (file starts with '.')\n"));
 	return FALSE;
     }
-    if ((sp = rindex(sp, '.')) != NULL)
+    if ((sp = strrchr(sp, '.')) != NULL)
     {
 	sp++;
 	for (i = 0; suflist[i] != NULL; i++)
@@ -445,6 +473,8 @@ int add_file(int percent, register char *file, char *dir,
     register char *path;
     register bool was_malloc;
     register bool isdir;
+    auto char *sp;
+    auto bool found;
 
     if (dir == NULL)
     {
@@ -464,23 +494,31 @@ int add_file(int percent, register char *file, char *dir,
 	return FALSE;		/* don't recurse */
     }
 
-    DPRINTF(1, (stderr, "adding file \"%s\"\n", path));
+    DPRINTF(1, (stderr, "trying to add file \"%s\"\n", path));
     if ((fd = open(path, 0)) < 0)
     {
-	if (dir == NULL && file[0] != '/')
-	    if (All_forts)
-		return !(add_file(percent, file, FORTDIR, head, tail, parent)
-		     & add_file(percent, file, OFFDIR, head, tail, parent));
+	found = FALSE;
+	if (dir == NULL && (strchr(file,'/') == NULL))
+	    if ( ((sp = strrchr(file,'-')) != NULL) && (strcmp(sp,"-o") == 0) )
+	    {
+		/* BSD-style '-o' offensive file suffix */
+		*sp = '\0';
+		found = add_file(percent, file, OFFDIR, head, tail, parent);
+		/* put the suffix back in for better identification later */
+		*sp = '-';
+	    }
+	    else if (All_forts)
+		found = (add_file(percent, file, FORTDIR, head, tail, parent)
+		    || add_file(percent, file, OFFDIR, head, tail, parent));
 	    else if (Offend)
-		return add_file(percent, file, OFFDIR, head, tail, parent);
+		found = add_file(percent, file, OFFDIR, head, tail, parent);
 	    else
-		return add_file(percent, file, FORTDIR, head, tail, parent);
-	if (parent == NULL)
+		found = add_file(percent, file, FORTDIR, head, tail, parent);
+	if (!found && parent == NULL && dir == NULL)
 	    perror(path);
-	/* we really don't want an error message if the file might be in the other directory */
 	if (was_malloc)
 	    free(path);
-	return FALSE;
+	return found;
     }
 
     DPRINTF(2, (stderr, "path = \"%s\"\n", path));
@@ -500,11 +538,12 @@ int add_file(int percent, register char *file, char *dir,
 	    fprintf(stderr,
 		    "fortune:%s not a fortune file or directory\n",
 		    path);
-	free((char *) fp);
 	if (was_malloc)
 	    free(path);
 	do_free(fp->datfile);
 	do_free(fp->posfile);
+	if (fp->fd >= 0) close(fp->fd);
+	free(fp);
 	return FALSE;
     }
     if (*head == NULL)
@@ -548,9 +587,9 @@ int add_dir(register FILEDESC * fp)
     fp->num_children = 0;
     while ((dirent = readdir(dir)) != NULL)
     {
-	if (dirent->d_namlen == 0)
+	if (dirent->d_name[0] == 0)
 	    continue;
-	name = copy(dirent->d_name, dirent->d_namlen);
+	name = strdup(dirent->d_name);
 	if (add_file(NO_PROB, name, fp->path, &fp->child, &tailp, fp))
 	    fp->num_children++;
 	else
@@ -762,7 +801,7 @@ void init_prob(void)
 	}
 	else
 	    percent += fp->percent;
-    DPRINTF(1, (stderr, "summing probabilities:%d%% with %d NO_PROB's",
+    DPRINTF(1, (stderr, "summing probabilities:%d%% with %d NO_PROB's\n",
 		percent, num_noprob));
     if (percent > 100)
     {
@@ -1091,7 +1130,7 @@ void matches_in_list(FILEDESC * list)
 {
     unsigned char *sp;
     register FILEDESC *fp;
-    int in_file;
+    int in_file, nchar;
 
     for (fp = list; fp != NULL; fp = fp->next)
     {
@@ -1110,7 +1149,11 @@ void matches_in_list(FILEDESC * list)
 	    else
 	    {
 		*sp = '\0';
-		if (RE_EXEC(Fortbuf))
+		nchar = sp - Fortbuf;
+		DPRINTF(1, (stdout, "nchar = %d\n", nchar));
+		if ( (nchar < SLEN || !Short_only) &&
+			(nchar > SLEN || !Long_only) &&
+			RE_EXEC(Fortbuf) )
 		{
 		    if (!in_file)
 		    {
@@ -1175,7 +1218,7 @@ int fortlen(void)
     unsigned char line[BUFSIZ];
 
     if (!(Fortfile->tbl.str_flags & (STR_RANDOM | STR_ORDERED)))
-	nchar = (Seekpts[1] - Seekpts[0]);	/* <= SLEN); huh? */
+	nchar = (Seekpts[1] - Seekpts[0]) - 2;	/* for %^J delimiter */
     else
     {
 	open_fp(Fortfile);

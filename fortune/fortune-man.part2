@@ -1,3 +1,4 @@
+.PD
 .PP
 If a particular set of fortunes is particularly unwanted, there is an
 easy solution: delete the associated
@@ -8,12 +9,14 @@ since
 no longer finds the pointers file, it ignores the text file.
 .SH BUGS
 The division of fortunes into offensive and non-offensive by directory,
-rather than via the `-o' file infix, is not compatible with original BSD
-fortune; BSD format for recognizing offensive files is no longer
-supported. I suppose this is a bug, at least in the sense that a DOS with
-a flat memory model would be buggy because it isn't backwards compatible
-with the segmented memory model.  The workaround, of course, is to move
-the `-o' files into the offensive directory without renaming.
+rather than via the `-o' file infix, is not 100% compatible with
+original BSD fortune. Although the `-o' infix is recognised as referring
+to an offensive database, the offensive database files still need to be
+in a seperate directory.  The workaround, of course, is to move the `-o'
+files into the offensive directory (with or without renaming), and to
+use the
+.B -a
+option.
 .PP
 The supplied fortune databases have been attacked, in order to correct
 orthographical and grammatical errors, and particularly to reduce
@@ -30,15 +33,6 @@ the offensive fortunes files, nor are all the fortunes in the offensive
 files potentially offensive, probably, though a strong attempt has been
 made to achieve greater consistency.  Also, a better division might be
 made.
-.PP
-.B fortune -f
-now (properly) prints out the probabilities, instead of lots of blank
-lines. However (there's always a however, isn't there?), if a percentage
-is specified on the command line for a filename that exists in both the
-inoffensive and the offensive directories, together with the
-.B -a
-parameter, fortune fails (and does so without an error message).  The
-workaround is to rename one of the files.
 .SH HISTORY
 This version of fortune is based on the NetBSD fortune 1.4, but with a
 number of bug fixes and enhancements.
@@ -56,7 +50,15 @@ to unstr, and there is a potential savings in disk space (on the
 assumption that the sysadmin kept both .dat file with strings and the
 text file).
 .PP
+Many of the enhancements made over the NetBSD version assumed a Linux
+system, and thus caused it to fail under other platforms, including BSD.
+The source code has since been made more generic, and currently works on
+SunOS 4.x as well as Linux, with support for more platforms expected in
+the future.  Note that some bugs were inadvertantly discovered and fixed
+during this process.
+.PP
 At a guess, a great many people have worked on this program, many without
 leaving attributions.
 .SH SEE ALSO
-.BR regex "(3), " regcmp "(3), " strfile "(8), " unstr (8)
+.BR re_comp "(3), " regcomp "(3), " strfile "(1), "
+.BR unstr (1)

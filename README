@@ -1,3 +1,34 @@
+
+This is fortune-mod, an feature-enhanced fortune derived from sources
+found in NetBSD.  You can also find out more about this package in the
+following files:
+
+    NEWS
+	A summary of important changes made to fortune-mod.
+
+    README.install
+	How to configure, complile and install fortune-mod.
+
+    ChangeLog
+	A revision history of fortune-mod.
+
+    Notes
+	Discussion of the behavior of fortune (obsolete for this
+	version) and conventions for formatting fortune entries,
+	from NetBSD fortune.
+
+    Offensive
+	Discussion on the "offensive" fortune files distributed in this
+	package.
+
+    cookie-files
+	A list of the fortune files (both inoffensive and offensive)
+	distributed in this package.
+
+
+The following is the README from the originating NetBSD fortune:
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 #	$NetBSD: README,v 1.2 1995/03/23 08:28:29 cgd Exp $
 #	@(#)README	8.1 (Berkeley) 5/31/93
 

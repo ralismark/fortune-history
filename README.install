@@ -17,19 +17,15 @@ most of the make targets will crash and burn if they do not find the
 variables that they are looking for.
 
 The good part of this is that except for the datfiles tree, the
-sub-makefiles are all very simple.  Fortune creates a pathnames.h file,
-if properly called from the top-level directory (make fortune-bin), but
-all the other programs have definitions of the form: program: program.o.
+sub-makefiles are all very simple.  All the programs have rules of
+the form: program: program.o, with the appropriate link command.
 The only target safe to call in individual directories is clean.
 
 The makefiles for the datfiles subdirectory are complex in an attempt to
 avoid distributing any more data than needed.  The offensive files are
 distributed in unrotated format; the make files have to rotate these
 files before strfiling them.  The make clean routine has to be able to
-delete the rotated files without touching the unrotated ones; the install
-routine has to be able to install a generic make-fortune-db script
-without ever creating the anomalous 'Makefile.dat' or
-'make-fortune-db.dat' files.
+delete the rotated files without touching the unrotated ones.
 
 Pretty much everything is configurable in the top-level makefile, and it
 mostly has pretty decent comments telling you what it is that you're
