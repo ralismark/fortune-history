@@ -1,7 +1,11 @@
-#	$NetBSD: Makefile,v 1.5 1995/03/23 08:28:44 cgd Exp $
-#	@(#)Makefile	8.1 (Berkeley) 5/31/93
+CFLAGS= $(O)
 
-PROG=	strfile
-MAN=	strfile.8
+strfile: strfile.o
 
-.include <bsd.prog.mk>
+install:
+#	install strfile /usr/sbin/
+#	install -m 644 strfile.8 /usr/man/man8/
+
+clean:
+	rm -f strfile.o strfile
+

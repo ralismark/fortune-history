@@ -1,6 +1,3 @@
-#	$NetBSD: Makefile,v 1.11 1995/03/23 08:28:33 cgd Exp $
-#	@(#)Makefile	8.2 (Berkeley) 4/19/94
-
 SRCS=	fortunes fortunes2 startrek zippy
 BLDS=	fortunes.dat fortunes2.dat startrek.dat zippy.dat \
 	fortunes-o fortunes-o.dat
@@ -16,29 +13,24 @@ TYPE=	real
 # THE FOURTH LINE
 #TYPE=	fake
 
-CLEANFILES+=${BLDS}
-
-STRFILE!=cd $(.CURDIR)/../strfile; \
-	printf "xxx:\n\techo \$${.OBJDIR}/strfile\n" | ${MAKE} -r -s -f - xxx
-
 all: ${BLDS}
 
 install: ${SRCS} ${BLDS}
-	(cd ${.CURDIR} && install -c -o ${BINOWN} -g ${BINGRP} -m 444 \
-	    ${SRCS} ${DESTDIR}/usr/share/games/fortune)
-	install -o ${BINOWN} -g ${BINGRP} -m 444 ${BLDS} \
-	    ${DESTDIR}/usr/share/games/fortune
-
-fortunes.dat fortunes2.dat fortunes2-o.dat limerick.dat startrek.dat zippy.dat:
-	${STRFILE} -rs ${.CURDIR}/${.TARGET:R} ${.TARGET}
+	install -m 444 ${SRCS} /usr/share/fortune/
+	install -m 444 ${BLDS} /usr/share/fortune/
 
 fortunes-o.dat: fortunes-o
-	${STRFILE} -rsx fortunes-o ${.TARGET}
+	../strfile/strfile -rsx fortunes-o fortunes-o.dat
+
+%.dat: %
+	../strfile/strfile -rs $< $@
 
 #fortunes-o: fortunes-o.${TYPE}
 #	/usr/games/caesar 13 < ${.ALLSRC} > ${.TARGET}
 
 fortunes-o: fortunes-o.${TYPE}.rot13
-	cat < ${.ALLSRC} > ${.TARGET}
+	cat fortunes-o.${TYPE}.rot13 > fortunes-o
 
-.include <bsd.prog.mk>
+clean:
+	rm -f ${BLDS}
+

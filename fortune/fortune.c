@@ -61,6 +61,7 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 # include	<ctype.h>
 # include	<stdlib.h>
 # include	<string.h>
+# include	<rx.h>
 # include	"strfile.h"
 # include	"pathnames.h"
 

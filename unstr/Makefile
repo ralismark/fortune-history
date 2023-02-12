@@ -1,8 +1,10 @@
-#	$NetBSD: Makefile,v 1.3 1995/03/23 08:28:58 cgd Exp $
-#	@(#)Makefile	8.1 (Berkeley) 5/31/93
+CFLAGS=$(O) -I../strfile
 
-PROG=	unstr
-NOMAN=	noman
-CFLAGS+=-I${.CURDIR}/../strfile
+unstr: unstr.o
 
-.include <bsd.prog.mk>
+install:
+#	install unstr /usr/sbin/
+
+clean:
+	rm -f unstr.o unstr
+

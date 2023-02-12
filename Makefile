@@ -1,12 +1,12 @@
-#	$NetBSD: Makefile,v 1.5 1995/03/23 08:28:23 cgd Exp $
-#	@(#)Makefile	8.1 (Berkeley) 5/31/93
+SUBDIRS=strfile unstr fortune datfiles
+flags="O=-O2 -fomit-frame-pointer -pipe" LDFLAGS=-s
 
-SUBDIR=	fortune
+all:
+	for i in ${SUBDIRS}; do make -C $$i ${flags}; done
 
-.ifmake !(install)
-SUBDIR+= strfile
-.endif
+install:
+	for i in ${SUBDIRS}; do make install -C $$i ${flags}; done
 
-SUBDIR+= datfiles
+clean:
+	for i in ${SUBDIRS}; do make clean -C $$i ${flags}; done
 
-.include <bsd.subdir.mk>

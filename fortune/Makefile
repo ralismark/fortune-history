@@ -1,11 +1,11 @@
-#	$NetBSD: Makefile,v 1.8 1995/03/23 08:28:36 cgd Exp $
-#	@(#)Makefile	8.1 (Berkeley) 5/31/93
+CFLAGS=$(O) -I../strfile
 
-PROG=		fortune
-MAN=		fortune.6
-CFLAGS+=	-I${.CURDIR}/../strfile 
-LDADD+=		-lcompat
-DPADD+=		${LIBCOMPAT}
+fortune: fortune.o
 
-.include "${.CURDIR}/../../Makefile.inc"
-.include <bsd.prog.mk>
+install:
+	install fortune /usr/bin/
+	install -m 644 fortune.6 /usr/man/man6/
+
+clean:
+	rm -f fortune.o fortune
+

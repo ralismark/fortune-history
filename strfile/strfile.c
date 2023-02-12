@@ -50,7 +50,7 @@ static char rcsid[] = "$NetBSD: strfile.c,v 1.3 1995/03/23 08:28:47 cgd Exp $";
 #endif
 #endif /* not lint */
 
-# include	<machine/endian.h>
+# include	<endian.h>
 # include	<sys/param.h>
 # include	<stdio.h>
 # include	<ctype.h>
