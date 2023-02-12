@@ -32,9 +32,9 @@
 .\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 .\" SUCH DAMAGE.
 .\"
-.\"	@(#)fortune.6	8.1 (Berkeley) 5/31/93
+.\"	@(#)fortune.6	8.3 (Berkeley) 4/19/94
 .\"
-.Dd May 31, 1993
+.Dd April 19, 1994
 .Dt FORTUNE 6
 .Os BSD 4
 .Sh NAME
@@ -160,7 +160,8 @@ fortune -e
 .Pp
 is equivalent to
 .Bd -literal -offset indent
-fortune 50% funny 50% notEm -funny
+fortune 50% funny 50% not
+.Em -funny
 .Ed
 .Sh FILES
 .Bl -tag -width Pa -compact
@@ -169,4 +170,3 @@ fortune 50% funny 50% notEm -funny
 .Sh SEE ALSO
 .Xr regex 3 ,
 .Xr regcmp 3 ,
-.Xr strfile 8
