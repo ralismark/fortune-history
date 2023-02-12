@@ -1,23 +1,36 @@
-char	*sccsid = "@(#)fortune.c	1.4 (Berkeley) 2/11/83";
+/*
+ * Copyright (c) 1986 Regents of the University of California.
+ * All rights reserved.  The Berkeley software License Agreement
+ * specifies the terms and conditions for redistribution.
+ */
+
+#ifndef lint
+static char sccsid[] = "@(#)fortune.c	5.2 (Berkeley) 12/9/86";
+#endif not lint
 
 # include	<sys/types.h>
 # include	<stdio.h>
+# include	<sys/file.h>
 # include	"strfile.h"
 
-# define	MINW	6		/* minimum wait if desired	*/
-# define	CPERS	20		/* # of chars for each sec	*/
-# define	SLEN	160		/* # of chars in short fortune	*/
+# define	TRUE	1
+# define	FALSE	0
+# define	bool	short
 
-# define	reg	register
+# define	MINW	6		/* minimum wait if desired */
+# define	CPERS	20		/* # of chars for each sec */
+# define	SLEN	160		/* # of chars in short fortune */
 
-short	wflag		= 0,		/* wait desired after fortune	*/
-	sflag		= 0,		/* short fortune desired	*/
-	lflag		= 0,		/* long fortune desired		*/
-	oflag		= 0,		/* offensive fortunes only	*/
-	aflag		= 0;		/* any fortune allowed		*/
+# define	FORTFILE	"/usr/games/lib/fortunes.dat"
 
-char	fortfile[100]	= FORTFILE,	/* fortune database		*/
-	*usage[]	= {
+bool	Wflag		= FALSE,	/* wait desired after fortune */
+	Sflag		= FALSE,	/* short fortune desired */
+	Lflag		= FALSE,	/* long fortune desired */
+	Oflag		= FALSE,	/* offensive fortunes only */
+	Aflag		= FALSE;	/* any fortune allowed */
+
+char	*Fortfile	= FORTFILE,	/* fortune database */
+	*Usage[]	= {
        "usage:  fortune [ - ] [ -wsloa ] [ file ]",
        "	- - give this summary of usage",
        "	w - have program wait after printing message in order",
@@ -26,105 +39,173 @@ char	fortfile[100]	= FORTFILE,	/* fortune database		*/
        "	l - long fortune only",
        "	o - offensive fortunes only",
        "	a - any fortune",
-       "		Mail suggested fortunes to \"fortune\""
+       "		Mail suggested fortunes to \"fortune\"",
+	NULL
 	};
 
-long	seekpts[2];			/* seek pointers to fortunes	*/
+long	Seekpts[2];			/* seek pointers to fortunes */
 
-time_t	seed;
+FILE	*Inf;				/* input file */
 
-STRFILE	tbl;				/* input table			*/
+STRFILE	Tbl;				/* input table */
 
 time_t	time();
 
 main(ac, av)
 int	ac;
-char	*av[]; {
-
-	reg char	c;
-	reg int		nchar = 0;
-	reg FILE	*inf;
-	reg int		numforts,	/* number of fortunes		*/
-			fortune;	/* fortune number		*/
-	reg time_t	tm;
+char	*av[];
+{
+	register char	c;
+	register int	nchar = 0;
+	register int	i;
 
 	getargs(ac, av);
-	if ((inf = fopen(fortfile, "r")) == NULL) {
-		perror(fortfile);
+	if ((Inf = fopen(Fortfile, "r+")) == NULL) {
+		perror(Fortfile);
 		exit(-1);
 	}
-	fread(&tbl, (sizeof tbl), 1, inf);
-	numforts = tbl.str_numstr - 1;	 /* always a null string at the end */
-	if (tbl.str_longlen < SLEN && lflag) {
+	fread((char *) &Tbl, sizeof Tbl, 1, Inf);	/* NOSTRICT */
+	if (Tbl.str_longlen <= SLEN && Lflag) {
 		puts("Sorry, no long strings in this file");
 		exit(0);
 	}
-	if (tbl.str_shortlen > SLEN && sflag) {
+	if (Tbl.str_shortlen > SLEN && Sflag) {
 		puts("Sorry, no short strings in this file");
 		exit(0);
 	}
-	if (oflag)
-		numforts -= tbl.str_delims[0];
-	else if (!aflag)
-		numforts = tbl.str_delims[0];
-	tm = time(NULL);
-	seed = tm + getpid();
-	getfort(numforts, inf);
-	if (sflag)
-		while (seekpts[1] - seekpts[0] >= SLEN)
-			getfort(numforts, inf);
-	else if (lflag)
-		while (seekpts[1] - seekpts[0] < SLEN)
-			getfort(numforts, inf);
-	fseek(inf, seekpts[0], 0);
-	while (c = getc(inf)) {
+
+	/*
+	 * initialize the pointer to the first -o fortune if need be.
+	 */
+	if (Tbl.str_delims[2] == 0)
+		Tbl.str_delims[2] = Tbl.str_delims[0];
+
+	for (;;) {
+		getfort();
+		if (Sflag && !is_short())
+			continue;
+		if (Lflag && !is_long())
+			continue;
+		break;
+	}
+
+	fseek(Inf, Seekpts[0], 0);
+	while (c = getc(Inf)) {
 		nchar++;
 		putchar(c);
 	}
 	fflush(stdout);
-	if (wflag)
-		sleep(max((int) nchar/CPERS, MINW));
+	fseek(Inf, 0L, 0);
+#ifdef	LOCK_EX
+	/*
+	 * if we can, we exclusive lock, but since it isn't very
+	 * important, we just punt if we don't have easy locking
+	 * available.
+	 */
+	flock(fileno(Inf), LOCK_EX);
+#endif	LOCK_EX
+	fwrite(&Tbl, 1, sizeof Tbl, Inf);
+#ifdef	LOCK_EX
+	flock(fileno(Inf), LOCK_UN);
+#endif	LOCK_EX
+	if (Wflag)
+		sleep(max((int) nchar / CPERS, MINW));
+	exit(0);
+}
+
+/*
+ * is_short:
+ *	Return TRUE if fortune is "short".
+ */
+is_short()
+{
+	register int	nchar;
+
+	if (!(Tbl.str_flags & (STR_RANDOM | STR_ORDERED)))
+		return (Seekpts[1] - Seekpts[0] <= SLEN);
+	fseek(Inf, Seekpts[0], 0);
+	nchar = 0;
+	while (getc(Inf))
+		nchar++;
+	return (nchar <= SLEN);
+}
+
+/*
+ * is_long:
+ *	Return TRUE if fortune is "long".
+ */
+is_long()
+{
+	register int	nchar;
+
+	if (!(Tbl.str_flags & (STR_RANDOM | STR_ORDERED)))
+		return (Seekpts[1] - Seekpts[0] > SLEN);
+	fseek(Inf, Seekpts[0], 0);
+	nchar = 0;
+	while (getc(Inf))
+		nchar++;
+	return (nchar > SLEN);
 }
 
 /*
  *	This routine evaluates the arguments on the command line
  */
 getargs(ac, av)
-int		ac;
-reg char	*av[]; {
-
-	reg short	bad = 0;
-	reg int		i, j;
+register int	ac;
+register char	*av[];
+{
+	register int	i;
+	register char	*sp;
+	register int	j;
+	register short	bad = 0;
 
 	for (i = 1; i < ac; i++)  {
-		if (av[i][0] != '-')
-			strcpy(fortfile, av[i]);
+		if (av[i][0] != '-') {
+			setuid(getuid());
+			setgid(getgid());
+			Fortfile = av[i];
+		}
+		else if (av[i][1] == '\0') {
+			j = 0;
+			while (Usage[j] != NULL)
+				puts(Usage[j++]);
+			exit(0);
+			/* NOTREACHED */
+		}
 		else
-			switch (av[i][1]) {
-			  case '\0':	/* give usage			*/
-				for (j = 0; j < sizeof usage / sizeof (char *); j++)
-					puts(usage[j]);
-				exit(0);
-			  case 'w':	/* give time to read		*/
-				wflag++;
-				break;
-			  case 's':	/* short ones only		*/
-				sflag++;
-				break;
-			  case 'l':	/* long ones only		*/
-				lflag++;
-				break;
-			  case 'o':	/* offensive ones only		*/
-				oflag++;
-				break;
-			  case 'a':	/* any fortune			*/
-				aflag++;
-				break;
-			  default:
-				printf("unknown flag: '%c'\n", av[1][1]);
-				bad++;
-				break;
-			}
+			for (sp = &av[i][1]; *sp != '\0'; sp++)
+				switch (*sp) {
+				  case 'w':	/* give time to read */
+					Wflag++;
+					break;
+				  case 's':	/* short ones only */
+					Sflag++;
+					Lflag = 0;
+					break;
+				  case 'l':	/* long ones only */
+					Lflag++;
+					Sflag = 0;
+					break;
+				  case 'o':	/* offensive ones only */
+					Oflag++;
+					break;
+				  case 'a':	/* any fortune */
+					Aflag++;
+					/*
+					 * initialize the random number
+					 * generator; throw away the first
+					 * few numbers to avoid any non-
+					 * randomness in startup
+					 */
+					srnd(time(NULL) + getpid());
+					for (j = 0; j < 20; j++)
+						(void) rnd(100);
+					break;
+				  default:
+					printf("unknown flag: '%c'\n", *sp);
+					bad++;
+					break;
+				}
 	}
 	if (bad) {
 		printf("use \"%s -\" to get usage\n", av[0]);
@@ -132,27 +213,40 @@ reg char	*av[]; {
 	}
 }
 
-getfort(numforts, inf)
-reg int		numforts;
-reg FILE	*inf; {
+/*
+ * getfort:
+ *	Get the fortune data file's seek pointer for the next fortune.
+ */
+getfort()
+{
+	register int	fortune;
 
-	reg int		fortune;
+	/*
+	 * Make sure all values are in range.
+	 */
 
-	fortune = rnd(numforts);
-	if (oflag && !aflag)
-		fortune += tbl.str_delims[0];
-	fseek(inf, (long)(sizeof seekpts[0]) * fortune + sizeof tbl, 0);
-	fread(seekpts, (sizeof seekpts[0]), 2, inf);
+	if (Tbl.str_delims[1] >= Tbl.str_delims[0])
+		Tbl.str_delims[1] = 0;
+	if (Tbl.str_delims[2] >= Tbl.str_numstr)
+		Tbl.str_delims[2] = Tbl.str_delims[0];
+
+	if (Aflag) {
+		if (rnd(Tbl.str_numstr) < Tbl.str_delims[0])
+			fortune = Tbl.str_delims[1]++;
+		else
+			fortune = Tbl.str_delims[2]++;
+	}
+	else if (Oflag)
+		fortune = Tbl.str_delims[2]++;
+	else
+		fortune = Tbl.str_delims[1]++;
+
+	fseek(Inf, (long)(sizeof Seekpts[0]) * fortune + sizeof Tbl, 0);
+	fread((char *) Seekpts, (sizeof Seekpts[0]), 2, Inf);
 }
 
 max(i, j)
-reg int	i, j; {
-
+register int	i, j;
+{
 	return (i >= j ? i : j);
-}
-
-rnd(num)
-int	num; {
-
-	return ((seed = seed*11109+13849) & 0xffff) % num;
 }

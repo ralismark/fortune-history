@@ -1,39 +1,78 @@
-#	@(#)Makefile	4.2	(Berkeley)	83/08/14
 #
-DESTDIR=
-FORTUNES=	scene obscene
-SOURCE=		fortune.c strfile.h strfile.c unstr.c ${FORTUNES}
-LIBDIR=		${DESTDIR}/usr/games/lib
-BINDIR=		${DESTDIR}/usr/games
-OWN=		daemon
-CFLAGS=		-O
-
-.DEFAULT:
-	sccs get $@
+# Copyright (c) 1987 Regents of the University of California.
+# All rights reserved.  The Berkeley software License Agreement
+# specifies the terms and conditions for redistribution.
+#
+#	@(#)Makefile	1.4	(Berkeley)	9/20/87
+#
+CFLAGS=	-O
+LIBC=	/lib/libc.a
+SFLAGS=	-r
+TDEV=	-Pver
+TROFF=	ditroff ${TDEV}
+SRCS=	fortune.c rnd.c strfile.c unstr.c
 
 all: fortune strfile unstr fortunes.dat
 
-fortune: strfile.h fortune.c
-	${CC} ${CFLAGS} -DFORTFILE='"${LIBDIR}/fortunes.dat"' -o fortune fortune.c
+fortune: fortune.o rnd.o ${LIBC}
+	${CC} ${CFLAGS} -o $@ fortune.o rnd.o
 
-strfile: strfile.h strfile.c
-	${CC} ${CFLAGS} -o strfile strfile.c
+strfile: strfile.o rnd.o ${LIBC}
+	${CC} ${CFLAGS} -o $@ strfile.o rnd.o
 
-unstr: strfile.h unstr.c
-	${CC} ${CFLAGS} -o unstr unstr.c
+unstr: unstr.o ${LIBC}
+	${CC} ${CFLAGS} -o $@ unstr.o
 
 fortunes.dat: fortunes strfile
-	./strfile fortunes
+	./strfile ${SFLAGS} fortunes
 
-fortunes: $(FORTUNES)
-	cat scene > fortunes
-	echo "%-" >> fortunes
-	cat obscene >> fortunes
-	echo "%%" >> fortunes
+fortunes: scene obscene
+	(cat scene; echo "%-"; cat obscene) > fortunes
 
-install: all
-	install -m 600 -o ${OWN} fortunes.dat ${LIBDIR}/
-	install -m 4711 -o ${OWN} fortune ${BINDIR}/
+clean: FRC
+	rm -f fortune fortunes fortunes.dat strfile unstr core *.o
+	rm -f Oscene Oobscene
 
-clean:
-	rm -f fortune fortunes fortunes.dat fortunes.tar strfile unstr
+depend: FRC
+	mkdep ${CFLAGS} ${SRCS}
+
+install: FRC
+	install -s -o games -g bin -m 4755 fortune ${DESTDIR}/usr/games
+	install -o games -g bin -m 600 fortunes.dat ${DESTDIR}/usr/games/lib
+
+lint: FRC
+	lint ${CFLAGS} fortune.c rnd.c
+	lint ${CFLAGS} strfile.c rnd.c
+	lint ${CFLAGS} unstr.c
+
+tags: FRC
+	ctags ${SRCS}
+
+troff: FRC
+	./Do_troff scene ${TROFF}
+	./Do_troff obscene ${TROFF}
+
+sort: sort.scene sort.obscene
+
+sort.scene: strfile unstr
+	strfile -oi scene
+	mv scene Oscene
+	unstr -o scene
+
+sort.obscene: strfile unstr
+	strfile -oi obscene
+	mv obscene Oobscene
+	unstr -o obscene
+
+FRC:
+
+# DO NOT DELETE THIS LINE -- mkdep uses it.
+# DO NOT PUT ANYTHING AFTER THIS LINE, IT WILL GO AWAY.
+
+fortune.o: fortune.c /usr/include/sys/types.h /usr/include/stdio.h
+fortune.o: /usr/include/sys/file.h strfile.h
+rnd.o: rnd.c
+strfile.o: strfile.c /usr/include/stdio.h /usr/include/ctype.h strfile.h
+unstr.o: unstr.c /usr/include/stdio.h strfile.h
+
+# IF YOU PUT ANYTHING HERE IT WILL GO AWAY
