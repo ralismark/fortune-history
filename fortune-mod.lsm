@@ -1,0 +1,20 @@
+Begin3
+Title:		fortune - BSD modified
+Version:        October '95
+Entered-date:   01OCT95
+Description:    Bug-fixes and enhancements to the standard BSD fortune,
+		strfile, and unstr.  Datafiles cleaned up.  Added randstr.
+		fortune displays a random text string from a set of files
+		in a certain format; strfile and unstr maintain those files.
+Keywords:       fortune,games,database
+Author:         multiple
+Maintained-by:  alewis@email.unc.edu
+Primary-site:   sunsite.unc.edu /pub/Linux/games
+		665 bytes fortune-mod.lsm
+		3036 bytes fortune-mod.README
+		1311 Kb fortune-mod.tar.gz
+Alternate-site:	
+Original-site:  
+Platforms:      Linux
+Copying-policy: BSD
+End

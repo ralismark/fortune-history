@@ -1,36 +1,28 @@
-SRCS=	fortunes fortunes2 startrek zippy
-BLDS=	fortunes.dat fortunes2.dat startrek.dat zippy.dat \
-	fortunes-o fortunes-o.dat
+all:
+	if [ $(OFFENSIVE) = 1 ] ; then $(MAKE) -C off ; fi
+	if [ $(WEB) = 1 ] ; then $(MAKE) -C html ; fi
+	-rm -f *.dat
+	for i in * ; do if [ "$$i" != "Makefile" \
+	-a -f $$i ] ; then ../util/strfile $$i ; fi ; done
 
-# TO INSTALL THE POTENTIALLY OFFENSIVE FORTUNES, UNCOMMENT THE THREE
-# LINES AND COMMENT OUT THE FOURTH LINE.
-
-# THE THREE LINES
-SRCS+=	fortunes2-o limerick
-BLDS+=	fortunes2-o.dat limerick.dat
-TYPE=	real
-
-# THE FOURTH LINE
-#TYPE=	fake
-
-all: ${BLDS}
-
-install: ${SRCS} ${BLDS}
-	install -m 444 ${SRCS} /usr/share/fortune/
-	install -m 444 ${BLDS} /usr/share/fortune/
-
-fortunes-o.dat: fortunes-o
-	../strfile/strfile -rsx fortunes-o fortunes-o.dat
-
-%.dat: %
-	../strfile/strfile -rs $< $@
-
-#fortunes-o: fortunes-o.${TYPE}
-#	/usr/games/caesar 13 < ${.ALLSRC} > ${.TARGET}
-
-fortunes-o: fortunes-o.${TYPE}.rot13
-	cat fortunes-o.${TYPE}.rot13 > fortunes-o
+install:
+	-mkdir $(COOKIEDIR)
+	if [ $(OFFENSIVE) = 1 ] ; then $(MAKE) -C off install ; fi
+	if [ $(WEB) = 1 ] ; then $(MAKE) -C html install ; fi
+	for i in * ; do if [ "$$i" != "Makefile" -a -f $$i ] ; \
+	then install -m 0644 $$i $(COOKIEDIR) ; fi ; done
+# Is this hack necessary?
+#	@echo "#!/bin/sh" >make-fortune-db
+#	@echo -n "# A fortune-file data file creation script" >>make-fortune-db
+#	@echo " -- Amy A. Lewis, September, 1995" >>make-fortune-db
+#	@echo "#Syntax: make-fortune-db [c] filename " >>make-fortune-db
+#	@echo "if [ \"\$$2\" != \"\" ] ; then $(BINDIR)/strfile -x \$$2" >>make-fortune-db
+#	@echo "elif [ \"\$$1\" != \"\" ] ; then $(BINDIR)/strfile \$$1" >>make-fortune-db
+#	@echo "else exit 1 ; fi" >>make-fortune-db
+#	@echo "# This is a quick hack, so feel free to improve on it.">>make-fortune-db
+#	install -m $(BINMODE) make-fortune-db $(COOKIEDIR)
 
 clean:
-	rm -f ${BLDS}
-
+	-rm -f *.dat make-fortune-db
+	$(MAKE) -C off clean
+	$(MAKE) -C html clean
