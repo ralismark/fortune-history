@@ -73,7 +73,7 @@ static char sccsid[] = "@(#)unstr.c	8.1 (Berkeley) 5/31/93";
  * with a dot in it--in that case, specify the dat file fully.
  * 
  * The program also now accepts an optional second filename, which is the
- * name of the output file; if not specified, it dumps to stderr.
+ * name of the output file; if not specified, it dumps to stdout.
  * 
  * It can also take one parameter, which defines a new separator character.
  * This was added chiefly in order to avoid having to run sed over a
@@ -88,7 +88,7 @@ static char sccsid[] = "@(#)unstr.c	8.1 (Berkeley) 5/31/93";
  * get a fortune that contains nothing but a newline.  Karo syrup, syrup.
  * For the gory details, and lots of cussing, see strfile.c
  */
-#include	<endian.h>
+#include	<sys/types.h>
 #include	<netinet/in.h>
 #include	<sys/param.h>
 #include	"strfile.h"

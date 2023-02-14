@@ -41,7 +41,7 @@
 .\" to, by Amy Lewis.  Changes to command line, and a different style of
 .\" macros for Linux systems.
 .\"
-.TH STRFILE 4 "June 9, 1993 [Sep. '95]" "4th Berkeley Distribution" "UNIX System Manager's Manual"
+.TH STRFILE 1 "June 9, 1993 [Apr. '97]" "4th Berkeley Distribution" "UNIX System Manager's Manual"
 .SH NAME
 strfile \- create a random access file for storing strings
 .br
@@ -51,7 +51,8 @@ unstr \- dump strings in pointer order
 .IR char "] " sourcefile " [" outputfile ]
 .br
 .BR unstr " [" -c
-.IR char "] " datafile [ .ext "] [" outputfile ]
+.IR char "] " datafile [ .ext ]
+.RI [ outputfile ]
 .SH DESCRIPTION
 .B strfile
 reads a file containing groups of lines separated by a line containing
@@ -92,7 +93,8 @@ The options are as follows:
 .TP
 .BI "-c " char
 Change the delimiting character from the percent sign to 
-.IR char ". This option is available for both "
+.IR char .
+This option is available for both
 .BR strfile " and " unstr .
 .TP
 .B -i
@@ -121,8 +123,8 @@ Note that each alphabetic character in the groups of lines is rotated
 STR_ROTATED bit in the header 
 .I str_flags 
 field to be set. Note that it 
-.BR "does not" " rotate the strings--that operation must be performed "
-separately.
+.B does not
+rotate the strings--that operation must be performed separately.
 .SS Header
 The format of the header is:
 .PP
@@ -161,12 +163,13 @@ There
 some other possibilities.  Source code for a sample program,
 .BR randstr ,
 is included with this distribution: randstr splits the difference between
-.BR unstr " and " fortune.
+.BR unstr " and " fortune .
 It reads a single, specified file, and randomly selects a single text
 string.
 .IP 1
-Include strfile.h into a news reading/posting program, to generate random
-signatures.
+Include
+.I strfile.h
+into a news reading/posting program, to generate random signatures.
 .BR Tin (1)
 does something similar, in a much more complex manner.
 .IP 2
@@ -180,14 +183,17 @@ would be as well off using it to decide who to call on Friday nights (and
 for some, it wouldn't matter whether there were phone numbers in it or not).
 .IP 4
 Use it in 'lottery' situations.  If you're an ISP, write a script to
-store login names and GECOS from /etc/passwd in strfile format, write
-another to send 'congratulations, you've won' to the lucky login
-selected.  The prize might be a month's free service, or if you're AOL,
-a month free on a real service provider.
+store login names and GECOS from
+.I /etc/passwd
+in strfile format, write another to send 'congratulations, you've won'
+to the lucky login selected.  The prize might be a month's free service,
+or if you're AOL, a month free on a real service provider.
 .SH SEE ALSO
 .BR byteorder "(3), " fortune (6)
 .SH HISTORY
 The
 .B strfile
-utility first appeared in 4.4BSD. This version has been heavily
-modified, possibly in ways peculiar to Linux.
+utility first appeared in 4.4BSD. This version was heavily modified,
+much of it in ways peculiar to Linux.  Work has since been done to make
+the code more generic, and has so far been tested to work with SunOS
+4.x.  More platforms are expected to be supported as work continues.

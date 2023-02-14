@@ -5,23 +5,12 @@
 # install-fman.  Make clean is an acceptable target called directly
 # in this directory, though.
 
-all: pathnames.h fortune
-
-debug: pathnames.h
-	gcc $(DEBUGCFLAGS) -c fortune.c -o fortune.o
-	gcc $(DEBUGLDFLAGS) fortune.o -o fortune
+all: fortune
 
 fortune: fortune.o
-
-pathnames.h:
-	@echo "Creating pathnames.h"
-	@echo '#define FORTDIR	"$(COOKIEDIR)"' >pathnames.h
-	@echo '#define OFFDIR	"$(OCOOKIEDIR)"' >>pathnames.h
-
-
-fortune: fortune.o
+	$(CC) $(LDFLAGS) -o fortune fortune.o $(LIBS)
 
 clean:
-	-rm -f fortune.o fortune fortune.man pathnames.h
+	rm -f fortune.o fortune fortune.man
 
 

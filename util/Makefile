@@ -5,25 +5,19 @@
 # and make install-uman.  make clean will work properly if called in
 # this directory.
 
-all: strfile unstr
-
-# Grr.  There oughta be a way to move DEBUG*FLAGS into *FLAGS and call
-# make, but if there is, I don't know it.
-debug:
-	gcc $(DEBUGCFLAGS) -c strfile.c -o strfile.o
-	gcc $(DEBUGCFLAGS) -c unstr.c -o unstr.o
-	gcc $(DEBUGLDFLAGS) unstr.o -o unstr
-	gcc $(DEBUGLDFLAGS) strfile.o -o strfile
+all: strfile unstr rot
 
 strfile: strfile.o
+	$(CC) $(LDFLAGS) -o strfile strfile.o
 
 unstr: unstr.o
+	$(CC) $(LDFLAGS) -o unstr unstr.o
 
 randstr: randstr.o
+	$(CC) $(LDFLAGS) -o randstr randstr.o
 
 rot: rot.o
-
-ansify: ansify.o
+	$(CC) $(LDFLAGS) -o rot rot.o
 
 clean:
-	-rm -f *.o unstr strfile randstr rot ansify
+	rm -f *.o unstr strfile randstr rot ansify
