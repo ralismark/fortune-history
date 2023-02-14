@@ -3,24 +3,24 @@
 #
 
 # Where does the fortune program go?
-FORTDIR=/usr/local/games
+FORTDIR=$(prefix)/usr/games
 # Where do the data files (fortunes, or cookies) go?
-COOKIEDIR=/usr/local/share/games/fortunes
+COOKIEDIR=$(prefix)/usr/share/games/fortunes
 # Offensive ones?
 OCOOKIEDIR=$(COOKIEDIR)/off
 # The ones with html tags?
 WCOOKIEDIR=$(COOKIEDIR)/html
 # Where do strfile and unstr go?
-BINDIR=/usr/local/bin
+BINDIR=$(prefix)/usr/sbin
 # What is the proper mode for strfile and unstr? 755= everyone, 700= root only
 BINMODE=0755
 #BINMODE=0700
 # Where do the man pages for strfile and unstr go?
-BINMANDIR=/usr/local/man/man1
+BINMANDIR=$(prefix)/usr/man/man8
 # What is their proper extension?
-BINMANEXT=1
+BINMANEXT=8
 # And the same for the fortune man page
-FORTMANDIR=/usr/local/man/man6
+FORTMANDIR=$(prefix)/usr/man/man6
 FORTMANEXT=6
 # Do we want to install the offensive files? (0 no, 1 yes)
 OFFENSIVE=1
@@ -163,7 +163,7 @@ install-uman:
 	install -m 0755 -d $(BINMANDIR)
 	install -m 0644 util/strfile.man $(BINMANDIR)/strfile.$(BINMANEXT)
 	rm -f $(BINMANDIR)/unstr.$(BINMANEXT)
-	ln -s strfile.$(BINMANEXT) $(BINMANDIR)/unstr.$(BINMANEXT)
+	(cd $(BINMANDIR) && ln -sf strfile.$(BINMANEXT).gz $(BINMANDIR)/unstr.$(BINMANEXT).gz)
 
 # Install the fortune cookie files
 install-cookie: cookies-z

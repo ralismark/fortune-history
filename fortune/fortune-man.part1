@@ -112,7 +112,8 @@ ask for short fortunes, or too long and ask for long ones, fortune goes
 into a never-ending thrash loop.
 .TP
 .B -o
-Choose only from potentially offensive aphorisms.
+Choose only from potentially offensive aphorisms.  The -o option is
+ignored if a fortune directory is specified.
 .sp
 .B Please, please, please request a potentially
 .B offensive fortune if and only if
