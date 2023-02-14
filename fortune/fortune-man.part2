@@ -12,7 +12,7 @@ The division of fortunes into offensive and non-offensive by directory,
 rather than via the `-o' file infix, is not 100% compatible with
 original BSD fortune. Although the `-o' infix is recognised as referring
 to an offensive database, the offensive database files still need to be
-in a seperate directory.  The workaround, of course, is to move the `-o'
+in a separate directory.  The workaround, of course, is to move the `-o'
 files into the offensive directory (with or without renaming), and to
 use the
 .B -a
@@ -21,7 +21,7 @@ option.
 The supplied fortune databases have been attacked, in order to correct
 orthographical and grammatical errors, and particularly to reduce
 redundancy and repetition and redundancy.  But especially to avoid
-repititiousness.  This has not been a complete success.  In the process,
+repetitiousness.  This has not been a complete success.  In the process,
 some fortunes may also have been lost.
 .PP
 The fortune databases are now divided into a larger number of smaller
@@ -54,7 +54,7 @@ Many of the enhancements made over the NetBSD version assumed a Linux
 system, and thus caused it to fail under other platforms, including BSD.
 The source code has since been made more generic, and currently works on
 SunOS 4.x as well as Linux, with support for more platforms expected in
-the future.  Note that some bugs were inadvertantly discovered and fixed
+the future.  Note that some bugs were inadvertently discovered and fixed
 during this process.
 .PP
 At a guess, a great many people have worked on this program, many without

@@ -69,6 +69,14 @@
  *  + The -s and -l options can now be combined wit the -m option
  */
 
+/* Modified Jul 1999, Pablo Saratxaga <srtxg@chanae.alphanet.ch>
+ * - added use of the LANG variables; now if called without argument
+ * it will choose (if they exist) fortunes in the users' language.
+ * (that is, under a directory $LANG/ under the main fortunes directory 
+ * 
+ * Added to debian by Alastair McKinstry, <mckinstry@computer.org>, 2002-07-31
+ */
+
 #if 0				/* comment out the stuff here, and get rid of silly warnings */
 #ifndef lint
 static char copyright[] =
@@ -552,7 +560,7 @@ int add_file(int percent, register char *file, char *dir,
     DPRINTF(1, (stderr, "trying to add file \"%s\"\n", path));
     if ((fd = open(path, O_RDONLY)) < 0)
     {
-	found = FALSE;
+      found = FALSE;
 	if (dir == NULL && (strchr(file,'/') == NULL))
 	{
 	    if ( ((sp = strrchr(file,'-')) != NULL) && (strcmp(sp,"-o") == 0) )
@@ -577,7 +585,42 @@ int add_file(int percent, register char *file, char *dir,
 			 || add_file(percent, file, FORTDIR, head, tail, parent));
 	}
 	if (!found && parent == NULL && dir == NULL)
+        { /* don't display an error when trying language specific files */
+	  char *lang;
+	  
+	  lang=getenv("LC_MESSAGES");
+	  if (!lang) lang=getenv("LC_ALL");
+	  if (!lang) lang=getenv("LANGUAGE");
+	  if (!lang) lang=getenv("LANG");
+	  if (lang) {
+	    char llang[512];
+	    char langdir[512];
+	    int ret=0;
+	    char *p;
+	    
+	    strncpy(llang,lang,sizeof(llang));
+	    lang=llang;
+	    
+	    /* the language string can be like "es:fr_BE:ga" */
+	    while (!ret && lang && (*lang)) {
+	      p=strchr(lang,':');
+	      if (p) *p++='\0';
+	      snprintf(langdir,sizeof(langdir),"%s/%s",
+		       FORTDIR,lang);
+	      
+	      if (strncmp(path,lang,2) == 0)
+		ret=1;
+	      else if (strncmp(path,langdir,strlen(FORTDIR)+3) == 0)
+		ret=1;
+	      lang=p;
+	    }
+	    if (!ret)
+	      perror(path);
+	  } else {
 	    perror(path);
+	  }
+	}
+	
 	if (was_malloc)
 	    free(path);
 	return found;
@@ -588,8 +631,13 @@ int add_file(int percent, register char *file, char *dir,
     fp = new_fp();
     fp->fd = fd;
     fp->percent = percent;
-    fp->name = file;
-    fp->path = path;
+
+    fp->name = do_malloc (strlen (file) + 1);
+    strncpy (fp->name, file, strlen (file) + 1);
+
+    fp->path = do_malloc (strlen (path) + 1);
+    strncpy (fp->path, path, strlen (file) + 1);
+
     fp->parent = parent;
 
     if ((isdir && !add_dir(fp)) ||
@@ -698,6 +746,9 @@ int form_file_list(register char **files, register int file_cnt)
 {
     register int i, percent;
     register char *sp;
+    char *lang;
+    char langdir[512];
+    char fullpathname[512];
 
     if (file_cnt == 0)
     {
@@ -715,12 +766,62 @@ int form_file_list(register char **files, register int file_cnt)
 			     &File_tail, NULL)
 		    | add_file(NO_PROB, OFFDIR, NULL, &File_list,
 			       &File_tail, NULL));
-	else
-	    return (add_file(NO_PROB, LOCFORTDIR, NULL, &File_list,
-			     &File_tail, NULL)
-		    | add_file(NO_PROB, FORTDIR, NULL, &File_list,
-			       &File_tail, NULL));
+	else {
+	    char *lang=NULL;
+	    
+            lang=getenv("LC_MESSAGES");
+            if (!lang) lang=getenv("LC_ALL");
+            if (!lang) lang=getenv("LANGUAGE");
+	    if (!lang) lang=getenv("LANG");
+	    if (lang) {
+		char llang[512];
+		int ret=0;
+		char *p;
+		
+		strncpy(llang,lang,sizeof(llang));
+		lang=llang;
+		
+		/* the language string can be like "es:fr_BE:ga" */
+		while ( lang && (*lang)) {
+			p=strchr(lang,':');
+			if (p) *p++='\0';
+
+			/* first try full locale */
+			ret=add_file(NO_PROB, lang, NULL, &File_list,
+				&File_tail, NULL);
+			
+			/* if not try language name only (two first chars) */
+			if (!ret) {
+			  char ll[3];
+
+			  strncpy(ll,lang,2);
+			  ll[2]='\0';
+			  ret=add_file(NO_PROB, ll, NULL,
+				       &File_list, &File_tail, NULL);
+			}
+			
+			/* if we have found one we have finished */
+			if (ret)
+			  return ret;
+			lang=p;
+		}
+		/* default */
+		return (add_file(NO_PROB, LOCFORTDIR, NULL, &File_list,
+				 &File_tail, NULL)
+			| add_file(NO_PROB, FORTDIR, NULL, &File_list,
+				   &File_tail, NULL));
+		
+            }
+	    else
+	      /* no locales available, use default */
+	      return (add_file(NO_PROB, LOCFORTDIR, NULL, &File_list,
+			       &File_tail, NULL)
+		      | add_file(NO_PROB, FORTDIR, NULL, &File_list,
+				 &File_tail, NULL));
+	    
+	}
     }
+    
     for (i = 0; i < file_cnt; i++)
     {
 	percent = NO_PROB;
@@ -762,8 +863,64 @@ int form_file_list(register char **files, register int file_cnt)
 	    }
 	}
 	if (strcmp(sp, "all") == 0)
-	    sp = FORTDIR;
-	if (!add_file(percent, sp, NULL, &File_list, &File_tail, NULL))
+	  sp = FORTDIR;
+	/* if it isn't an absolute path or relative to . or .. 
+	   make it an absolute path relative to FORTDIR */
+	if (strncmp(sp,"/",1)!=0 && strncmp(sp,"./",2)!=0 &&
+	    strncmp(sp,"../",3)!=0)
+	  snprintf(fullpathname,sizeof(fullpathname),
+		   "%s/%s",FORTDIR,sp);
+	else
+	  snprintf(fullpathname,sizeof(fullpathname),"%s",sp);
+	
+	lang=getenv("LC_MESSAGES");
+	if (!lang) lang=getenv("LC_ALL");
+	if (!lang) lang=getenv("LANGUAGE");
+	if (!lang) lang=getenv("LANG");
+	if (lang) {
+	  char llang[512];
+	  int ret=0;
+	  char *p;
+	  
+	  strncpy(llang,lang,sizeof(llang));
+	  lang=llang;
+	  
+	  /* the language string can be like "es:fr_BE:ga" */
+	  while (!ret && lang && (*lang)) {
+	    p=strchr(lang,':');
+	    if (p) *p++='\0';
+	    
+	    /* first try full locale */
+	    snprintf(langdir,sizeof(langdir),"%s/%s/%s",
+		     FORTDIR, lang, sp);
+	    ret=add_file(percent, langdir, NULL, &File_list,
+			 &File_tail, NULL);
+	    
+	    /* if not try language name only (two first chars) */
+	    if (!ret) {
+	      char ll[3];
+	      
+	      strncpy(ll,lang,2);
+	      ll[2]='\0';
+	      snprintf(langdir,sizeof(langdir),
+		       "%s/%s/%s", FORTDIR, ll, sp);
+	      ret=add_file(percent, langdir, NULL,
+			   &File_list, &File_tail, NULL);
+	    }
+	    
+	    lang=p;
+	  }
+	  /* default */
+	  if (!ret)
+	    ret=add_file(percent, fullpathname, NULL, &File_list,
+			 &File_tail, NULL);
+	  if (!ret)
+	    return FALSE;
+	  
+	}
+	else
+	  if (!add_file(percent, fullpathname, NULL, &File_list,
+			&File_tail, NULL))
 	    return FALSE;
     }
     return TRUE;
@@ -931,7 +1088,7 @@ void init_prob(void)
 	    {
 		frac = percent / num_noprob;
 		DPRINTF(1, (stderr, ", frac = %d%%", frac));
-		for (fp = File_list; fp != last; fp = fp->next)
+		for (fp = File_tail; fp != last; fp = fp->prev)
 		    if (fp->percent == NO_PROB)
 		    {
 			fp->percent = frac;
@@ -1220,6 +1377,11 @@ void get_fort(void)
 			fp->tbl.str_numstr));
 	}
 	get_tbl(fp);
+    }
+    if (fp->tbl.str_numstr == 0)
+    {
+        fprintf(stderr, "fortune: no fortune found\n");
+        exit(1);
     }
     if (fp->child != NULL)
     {

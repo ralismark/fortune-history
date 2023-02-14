@@ -505,14 +505,19 @@ int main(int ac, char **av)
     if (!Sflag)
     {
 	printf("\"%s\" created\n", Outfile);
-	if (Num_pts == 2)
-	    puts("There was 1 string");
+	if (Num_pts == 1)
+	    puts("There was no string");
 	else
-	    printf("There were %ld strings\n", Num_pts - 1);
-	printf("Longest string: %lu byte%s\n", Tbl.str_longlen,
-	       Tbl.str_longlen == 1 ? "" : "s");
-	printf("Shortest string: %lu byte%s\n", Tbl.str_shortlen,
-	       Tbl.str_shortlen == 1 ? "" : "s");
+	{
+	    if (Num_pts == 2)
+		puts("There was 1 string");
+	    else
+		printf("There were %ld strings\n", Num_pts - 1);
+	    printf("Longest string: %lu byte%s\n", Tbl.str_longlen, 
+		Tbl.str_longlen == 1 ? "" : "s");
+	    printf("Shortest string: %lu byte%s\n", Tbl.str_shortlen,
+		Tbl.str_shortlen == 1 ? "" : "s");
+	}
     }
 
     fseek(outf, (off_t) 0, 0);

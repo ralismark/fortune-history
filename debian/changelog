@@ -1,3 +1,99 @@
+fortune-mod (9708-27) unstable; urgency=low
+
+  * Fixed -f to provide correct filenames 
+    (closes: #156195)
+  * Fixed -e to provide correct percentages, when some percentages
+    are supplied on the command line. (patch from Michal 
+    Politowski <mpol@charybda.icm.edu.pl>)
+    (closes: #157197)
+  * Fixed Garrison Keillor quote in "ethnic"
+    (closes: #159273)
+  * Removed non-fortune from James Troup on debian's bug tracking
+    system in "linux"
+    (closes: #160252)
+  * Fixed attribution, and wording from Mark Twain to Oscar Wilde
+    in "paradoxum"
+    (closes: #171910)
+  * Don't choke when all files are empty. (patch from Aurelien 
+    Jarno <aurel32@debian.org>)
+    (closes: #176032)
+  * Fixed quoting, and attribution in "work", and removed duplicate 
+    in "cookie"
+    (closes: #176623)
+  * Moved two translated quotes from "translate-me" to "people" and
+    "science", and added attribution to Albert Einstein
+    (closes: #182612)
+  * Moved some translated quotes from "translate-me" to "wisdom"
+    (closes: #182623)
+  * Removed duplicate from "people", left copy in "science"
+    (closes: #182623)
+  * Removed duplicate from "science"
+    (closes: #182625)
+  * Added missing help in a quote in "work"
+    (closes: #192811)
+  * Made the 'nohup rm -fr /&' fortune slightly more obvious, in
+    "computer"
+    (closes: #149400)
+  * Removed duplicate (and wrong) riddle in "riddle"
+    (closes: #158604)
+  * Removed duplicate word in "cookie"
+    (closes: #164404)
+  * Fixed factual error in "arts"
+    (closes: #173497)
+  * Fixed lots of spelling mistakes in "computer"
+    (closes: #175524)
+  * Updated debian/copyright file
+    (closes: #171115)
+  * Fixed spelling mistakes in man page
+    (closes: #173948)
+  * Applied patch from "Aurelien Jarno <aurel32@debian.org>", to
+    stop the display of erroneous information when there are no
+    strings in a file.
+    (closes: #175774)
+  * Fixed typo in "linux"
+    (closes: #192036)
+  * Added a quote in "off/sex"
+    (closes: #193214)
+  * Fixed typo in "sport"
+    (closes: #173247)
+  * Added Linus Thorvalds quote in "linux"
+    (closes: #165524)
+  * Added a quote about Jim Flemming on NANOG in "cookies"
+    (closes: #162401)
+  * Added greenrd's law in "definitions"
+    (closes: #162188)
+  * Added Dragon Warrior quote in "off/religion"
+    (closes: #158301)
+  
+
+ -- Pascal Hakim <pasc@debian.org>  Tue, 20 May 2003 15:58:07 +1000
+
+fortune-mod (9708-26) unstable; urgency=low
+  
+  * Thanks for the corrections and submissions, everyone !
+  	Keep'em coming !
+  * Added new cookie files 
+      -  paradoxum
+  * Added a Dijkstra cookie to computers.
+  * Added 2 quotes from Baker.
+  * Moved offensive cookies (closes: #156820, #154404).
+  * linux:1439:s/nickle/nickel/  (closes: #141603).
+  * songs-poems:6246:s/Voicl/Voicel/ (closes: #141805).
+  * knghtbrd:14:s/say/day/ (closes: 146946).
+  * computers:5268:s/Jeffrey Honig/George Michaelson/ (closes: #153151).
+  * startrek:324: deleted extra " (closes: #154483).
+  * art,people:s/Jonathon Swift/Jonathan Swift/ (closes: #155585).
+  * riddles:s/lightbulb/light bulb/ (closes: #155388).
+  * Added Kant's epigraph to wisdom (closes: #142664).
+  * Added /. quote on cable modems to computers (closes: #146629).
+  * wisdom:239:s/Adams\?/Adams/ (closes: #149003).
+  * Added pullout method of virus prevention to sex (closes: #150041).
+  * i8n support thanks to Alastair McKinstry <mckinstry@computer.org>
+  	(closes: #122219).
+  
+	
+ -- Mark Ng <ng@debian.org>  Sat, 17 Aug 2002 13:26:18 +1000
+
 fortune-mod (9708-25) unstable; urgency=low
 
   * Generally added new cookies and corrected mistakes.

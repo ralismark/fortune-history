@@ -4697,25 +4697,6 @@ proof by appeal to intuition:
 %
 Seen on a button at an SF Convention:
 Veteran of the Bermuda Triangle Expeditionary Force.  1990-1951.
--- 
--- uunet!sugar!karl  | "We've been following your progress with considerable 
--- karl@sugar.uu.net |  interest, not to say contempt."  -- Zaphod Beeblebrox IV
--- Usenet BBS (713) 438-5018
-
-
-From karl@sugar.hackercorp.com Sat Apr 29 10:46:20 1989
-From: karl@sugar.hackercorp.com (Karl Lehenbauer)
-Subject: Fortune cookie file, part 07 of 06
-
-Below is the latest addition to my fortune cookie file, 40212 bytes of mirth
-and merriment.  
-
-This file contains a lot of quotes from peoples' postings on Usenet.  After I 
-had been doing this a while, I began including their net addresses as well.
-
-Enjoy, or hit 'n'...
-
--------------------- cut it here, dude ------------------------------
 %
 "If people are good only because they fear punishment, and hope for reward,
 then we are a sorry lot indeed."
@@ -5338,15 +5319,6 @@ soluble in alcohol..."
 "Life sucks, but death doesn't put out at all...."
 -- Thomas J. Kopp
 %
-"There is no Father Christmas.  It's just a marketing ploy 
-to make low income parents' lives a misery."
-"... I want you to picture the trusting face of a child,
-streaked with tears because of what you just said."
-"I want you to picture the face of its mother, because one
-week's dole won't pay for one Master of the Universe
-Battlecruiser!"
-- Filthy Rich and Catflap, 1986.
-%
    n = ((n >>  1) & 0x55555555) | ((n <<  1) & 0xaaaaaaaa);
    n = ((n >>  2) & 0x33333333) | ((n <<  2) & 0xcccccccc);
    n = ((n >>  4) & 0x0f0f0f0f) | ((n <<  4) & 0xf0f0f0f0);
@@ -5396,7 +5368,7 @@ almost all occurences of the word "paradigm" into "example" or "model."
 "Life, loathe it or ignore it, you can't like it."
 -- Marvin the paranoid android
 %
-Contemptuous lights flashed flashed across the computer's console.
+Contemptuous lights flashed across the computer's console.
 -- Hitchhiker's Guide to the Galaxy
 %
 "There must be some mistake," he said, "are you not a greater computer than
@@ -5708,3 +5680,12 @@ being used for the brutal purpose for which they were invented."
 %
 "You can have my Unix system when you pry it from my cold, dead fingers."
 -- Cal Keegan
+%
+We'll be more than happy to do so once Jim shows the slightest sign
+of interest in fixing his proposal to deal with the technical
+arguments that have *already* been made.  Most engineers have
+learned there is little to be gained in fine-tuning the valve timing
+on a gasoline-powered internal combustion engine when the pistons
+and crankshaft are missing...
+		-- Valdis.Kletnieks@vt.edu on NANOG
+%
