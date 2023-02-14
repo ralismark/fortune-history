@@ -106,6 +106,7 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #include	<ctype.h>
 #include	<stdlib.h>
 #include	<string.h>
+#include	<errno.h>
 
 /* This makes GNU libc to prototype the BSD regex functions */
 #ifdef BSD_REGEX
@@ -131,7 +132,7 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #define	MINW	6		/* minimum wait if desired */
 #define	CPERS	20		/* # of chars for each sec */
 
-#define	POS_UNKNOWN	((off_t) -1)	/* pos for file unknown */
+#define	POS_UNKNOWN	((int32_t) -1)	/* pos for file unknown */
 #define	NO_PROB		(-1)	/* no prob specified for file */
 
 #ifdef DEBUG
@@ -146,7 +147,7 @@ typedef struct fd
 {
     int percent;
     int fd, datfd;
-    off_t pos;
+    int32_t pos;
     FILE *inf;
     char *name;
     char *path;
@@ -184,7 +185,7 @@ int Fort_len = 0, Spec_prob = 0,	/* total prob specified on cmd line */
   Num_files, Num_kids,		/* totals of files and children. */
   SLEN = 160;			/* max. characters in a "short" fortune */
 
-off_t Seekpts[2];		/* seek pointers to fortunes */
+int32_t Seekpts[2];		/* seek pointers to fortunes */
 
 FILEDESC *File_list = NULL,	/* Head of file list */
  *File_tail = NULL;		/* Tail of file list */
@@ -399,6 +400,15 @@ FILEDESC *new_fp(void)
     fp->fd = -1;
     fp->percent = NO_PROB;
     fp->read_tbl = FALSE;
+    fp->tbl.str_version = 0;
+    fp->tbl.str_numstr = 0;
+    fp->tbl.str_longlen = 0;
+    fp->tbl.str_shortlen = 0;
+    fp->tbl.str_flags = 0;
+    fp->tbl.stuff[0] = 0;
+    fp->tbl.stuff[1] = 0;
+    fp->tbl.stuff[2] = 0;
+    fp->tbl.stuff[3] = 0;
     fp->next = NULL;
     fp->prev = NULL;
     fp->child = NULL;
@@ -419,6 +429,27 @@ int is_dir(char *file)
     if (stat(file, &sbuf) < 0)
 	return FALSE;
     return (sbuf.st_mode & S_IFDIR);
+}
+
+/*
+ * is_existant:
+ * 	Return TRUE if the file exists, FALSE otherwise.
+ */
+int is_existant(char *file)
+{
+    struct stat staat;
+
+    if (stat(file, &staat) == 0)
+	return TRUE;
+    switch(errno)
+    {
+	case ENOENT:
+	case ENOTDIR:
+	    return FALSE;
+	default:
+	    perror("fortune: bad juju in is_existant");
+	    exit(1);
+    }
 }
 
 /*
@@ -505,6 +536,12 @@ int add_file(int percent, register char *file, char *dir,
 	(void) strcat(strcat(strcpy(path, dir), "/"), file);
 	was_malloc = TRUE;
     }
+    if (*path == '/' && !is_existant(path))	/* If doesn't exist, don't do anything. */
+    {
+	if (was_malloc)
+	    free(path);
+	return FALSE;
+    }
     if ((isdir = is_dir(path)) && parent != NULL)
     {
 	if (was_malloc)
@@ -513,25 +550,32 @@ int add_file(int percent, register char *file, char *dir,
     }
 
     DPRINTF(1, (stderr, "trying to add file \"%s\"\n", path));
-    if ((fd = open(path, 0)) < 0)
+    if ((fd = open(path, O_RDONLY)) < 0)
     {
 	found = FALSE;
 	if (dir == NULL && (strchr(file,'/') == NULL))
+	{
 	    if ( ((sp = strrchr(file,'-')) != NULL) && (strcmp(sp,"-o") == 0) )
 	    {
 		/* BSD-style '-o' offensive file suffix */
 		*sp = '\0';
-		found = add_file(percent, file, OFFDIR, head, tail, parent);
+		found = (add_file(percent, file, LOCOFFDIR, head, tail, parent))
+			 || add_file(percent, file, OFFDIR, head, tail, parent);
 		/* put the suffix back in for better identification later */
 		*sp = '-';
 	    }
 	    else if (All_forts)
-		found = (add_file(percent, file, FORTDIR, head, tail, parent)
-		    || add_file(percent, file, OFFDIR, head, tail, parent));
+		found = (add_file(percent, file, LOCFORTDIR, head, tail, parent)
+			 || add_file(percent, file, LOCOFFDIR, head, tail, parent)
+		       	 || add_file(percent, file, FORTDIR, head, tail, parent)
+			 || add_file(percent, file, OFFDIR, head, tail, parent));
 	    else if (Offend)
-		found = add_file(percent, file, OFFDIR, head, tail, parent);
+		found = (add_file(percent, file, LOCOFFDIR, head, tail, parent)
+			 || add_file(percent, file, OFFDIR, head, tail, parent));
 	    else
-		found = add_file(percent, file, FORTDIR, head, tail, parent);
+		found = (add_file(percent, file, LOCFORTDIR, head, tail, parent)
+			 || add_file(percent, file, FORTDIR, head, tail, parent));
+	}
 	if (!found && parent == NULL && dir == NULL)
 	    perror(path);
 	if (was_malloc)
@@ -564,6 +608,21 @@ int add_file(int percent, register char *file, char *dir,
 	free(fp);
 	return FALSE;
     }
+    
+    /* This is a hack to come around another hack - add_dir returns success 
+     * if the directory is allowed to be empty, but we can not handle an 
+     * empty directory... */
+    if (isdir && fp->num_children == 0) {
+	if (was_malloc)
+	    free(path);
+	do_free(fp->datfile);
+	do_free(fp->posfile);
+	if(fp->fd >= 0) close(fp->fd);
+	free(fp);
+	return TRUE;
+    }
+    /* End hack. */
+    
     if (*head == NULL)
 	*head = *tail = fp;
     else if (fp->percent == NO_PROB)
@@ -615,6 +674,15 @@ int add_dir(register FILEDESC * fp)
     }
     if (fp->num_children == 0)
     {
+	/*
+	 * Only the local fortune dir and the local offensive dir are
+	 * allowed to be empty.
+	 *  - Brian Bassett (brianb@debian.org) 1999/07/31
+	 */
+	if (strcmp(LOCFORTDIR, fp->path) == 0 || strcmp(LOCOFFDIR, fp->path) == 0)
+	{
+	    return TRUE;
+	}
 	fprintf(stderr,
 		"fortune: %s: No fortune files in directory.\n", fp->path);
 	return FALSE;
@@ -632,17 +700,27 @@ int form_file_list(register char **files, register int file_cnt)
     register char *sp;
 
     if (file_cnt == 0)
+    {
 	if (All_forts)
-	    return (add_file(NO_PROB, FORTDIR, NULL, &File_list,
+	    return (add_file(NO_PROB, LOCFORTDIR, NULL, &File_list,
 			     &File_tail, NULL)
-		    & add_file(NO_PROB, OFFDIR, NULL, &File_list,
+		    | add_file(NO_PROB, LOCOFFDIR, NULL, &File_list,
+			       &File_tail, NULL)
+		    | add_file(NO_PROB, FORTDIR, NULL, &File_list,
+			       &File_tail, NULL)
+		    | add_file(NO_PROB, OFFDIR, NULL, &File_list,
 			       &File_tail, NULL));
 	else if (Offend)
-	    return add_file(NO_PROB, OFFDIR, NULL, &File_list,
-			    &File_tail, NULL);
+	    return (add_file(NO_PROB, LOCOFFDIR, NULL, &File_list,
+			     &File_tail, NULL)
+		    | add_file(NO_PROB, OFFDIR, NULL, &File_list,
+			       &File_tail, NULL));
 	else
-	    return add_file(NO_PROB, FORTDIR, NULL, &File_list,
-			    &File_tail, NULL);
+	    return (add_file(NO_PROB, LOCFORTDIR, NULL, &File_list,
+			     &File_tail, NULL)
+		    | add_file(NO_PROB, FORTDIR, NULL, &File_list,
+			       &File_tail, NULL));
+    }
     for (i = 0; i < file_cnt; i++)
     {
 	percent = NO_PROB;
@@ -846,6 +924,7 @@ void init_prob(void)
     Spec_prob = percent;	/* this is for -f when % is specified on cmd line */
     percent = 100 - percent;
     if (Equal_probs)
+    {
 	if (num_noprob != 0)
 	{
 	    if (num_noprob > 1)
@@ -868,6 +947,7 @@ void init_prob(void)
 			", %d%% distributed over remaining fortunes\n",
 			percent));
 	}
+    }
     DPRINTF(1, (stderr, "\n"));
 
 #ifdef DEBUG
@@ -913,18 +993,72 @@ void get_tbl(FILEDESC * fp)
 	return;
     if (fp->child == NULL)
     {
-	if ((fd = open(fp->datfile, 0)) < 0)
+#if 0
+        /* This should not be needed anymore since add_file takes care of 
+         * empty directories now (Torsten Landschoff <torsten@debian.org>)
+	 */
+
+	/*
+	 * Only the local fortune dir and the local offensive dir are
+	 * allowed to be empty.  Don't try and fetch their tables if
+	 * they have no children (i.e. are empty).
+	 *  - Brian Bassett (brianb@debian.org) 1999/07/31
+	 */
+	if (strcmp(LOCFORTDIR, fp->path) == 0 || strcmp(LOCOFFDIR, fp->path) == 0)
+	{
+	    fp->read_tbl = TRUE;	/* Make it look like we've read it. */
+	    return;
+	}
+	/* End */
+#endif
+	if ((fd = open(fp->datfile, O_RDONLY)) < 0)
 	{
 	    perror(fp->datfile);
 	    exit(1);
 	}
-	if (read(fd, (char *) &fp->tbl, sizeof fp->tbl) != sizeof fp->tbl)
+	if (read(fd, &fp->tbl.str_version, sizeof fp->tbl.str_version) !=
+		sizeof fp->tbl.str_version)
 	{
 	    fprintf(stderr,
 		    "fortune: %s corrupted\n", fp->path);
 	    exit(1);
 	}
-	/* fp->tbl.str_version = ntohl(fp->tbl.str_version); */
+	if (read(fd, &fp->tbl.str_numstr, sizeof fp->tbl.str_numstr) !=
+		sizeof fp->tbl.str_numstr)
+	{
+	    fprintf(stderr,
+		    "fortune: %s corrupted\n", fp->path);
+	    exit(1);
+	}
+	if (read(fd, &fp->tbl.str_longlen, sizeof fp->tbl.str_longlen) !=
+		sizeof fp->tbl.str_longlen)
+	{
+	    fprintf(stderr,
+		    "fortune: %s corrupted\n", fp->path);
+	    exit(1);
+	}
+	if (read(fd, &fp->tbl.str_shortlen, sizeof fp->tbl.str_shortlen) !=
+		sizeof fp->tbl.str_shortlen)
+	{
+	    fprintf(stderr,
+		    "fortune: %s corrupted\n", fp->path);
+	    exit(1);
+	}
+	if (read(fd, &fp->tbl.str_flags, sizeof fp->tbl.str_flags) !=
+		sizeof fp->tbl.str_flags)
+	{
+	    fprintf(stderr,
+		    "fortune: %s corrupted\n", fp->path);
+	    exit(1);
+	}
+	if (read(fd, &fp->tbl.stuff, sizeof fp->tbl.stuff) !=
+		sizeof fp->tbl.stuff)
+	{
+	    fprintf(stderr,
+		    "fortune: %s corrupted\n", fp->path);
+	    exit(1);
+	}
+	fp->tbl.str_version = ntohl(fp->tbl.str_version);
 	fp->tbl.str_numstr = ntohl(fp->tbl.str_numstr);
 	fp->tbl.str_longlen = ntohl(fp->tbl.str_longlen);
 	fp->tbl.str_shortlen = ntohl(fp->tbl.str_shortlen);
@@ -1010,7 +1144,7 @@ FILEDESC *pick_child(FILEDESC * parent)
  */
 void open_dat(FILEDESC * fp)
 {
-    if (fp->datfd < 0 && (fp->datfd = open(fp->datfile, 0)) < 0)
+    if (fp->datfd < 0 && (fp->datfd = open(fp->datfile, O_RDONLY)) < 0)
     {
 	perror(fp->datfile);
 	exit(1);
@@ -1097,7 +1231,8 @@ void get_fort(void)
     open_dat(fp);
     lseek(fp->datfd,
 	  (off_t) (sizeof fp->tbl + fp->pos * sizeof Seekpts[0]), 0);
-    read(fp->datfd, Seekpts, sizeof Seekpts);
+    read(fp->datfd, &Seekpts[0], sizeof Seekpts[0]);
+    read(fp->datfd, &Seekpts[1], sizeof Seekpts[1]);
     Seekpts[0] = ntohl(Seekpts[0]);
     Seekpts[1] = ntohl(Seekpts[1]);
 }
@@ -1150,6 +1285,8 @@ int maxlen_in_list(FILEDESC * list)
 void matches_in_list(FILEDESC * list)
 {
     unsigned char *sp;
+    unsigned char *p; /* -allover */
+    unsigned char ch; /* -allover */
     register FILEDESC *fp;
     int in_file, nchar;
 
@@ -1171,6 +1308,18 @@ void matches_in_list(FILEDESC * list)
 	    {
 		*sp = '\0';
 		nchar = sp - Fortbuf;
+                /* Should maybe rot13 Fortbuf -allover */
+                if(fp->tbl.str_flags & STR_ROTATED)
+		{
+                    for (p = Fortbuf; (ch = *p); ++p)
+		    {
+                        if (isupper(ch))
+                            *p = 'A' + (ch - 'A' + 13) % 26;
+                        else if (islower(ch))
+                            *p = 'a' + (ch - 'a' + 13) % 26;
+		    }
+		}
+ 
 		DPRINTF(1, (stdout, "nchar = %d\n", nchar));
 		if ( (nchar < SLEN || !Short_only) &&
 			(nchar > SLEN || !Long_only) &&
@@ -1219,11 +1368,15 @@ void display(FILEDESC * fp)
 	 !STR_ENDSTRING(line, fp->tbl); Fort_len++)
     {
 	if (fp->tbl.str_flags & STR_ROTATED)
+	{
 	    for (p = line; (ch = *p); ++p)
+	    {
 		if (isupper(ch))
 		    *p = 'A' + (ch - 'A' + 13) % 26;
 		else if (islower(ch))
 		    *p = 'a' + (ch - 'a' + 13) % 26;
+	    }
+	}
 	fputs(line, stdout);
     }
     fflush(stdout);

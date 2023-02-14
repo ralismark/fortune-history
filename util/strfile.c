@@ -135,7 +135,7 @@
 typedef struct
 {
     char first;
-    off_t pos;
+    int32_t pos;
 }
 STR;
 
@@ -150,7 +150,7 @@ int Rflag = FALSE;		/* randomize order flag */
 int Xflag = FALSE;		/* set rotated bit */
 long Num_pts = 0;		/* number of pointers/strings */
 
-off_t *Seekpts;
+int32_t *Seekpts;
 
 FILE *Sort_1, *Sort_2;		/* pointers for sorting */
 
@@ -228,9 +228,9 @@ void getargs(int argc, char **argv)
  * add_offset:
  *      Add an offset to the list, or write it out, as appropriate.
  */
-void add_offset(FILE * fp, off_t off)
+void add_offset(FILE * fp, int32_t off)
 {
-    off_t net;
+    int32_t net;
 
     if (!STORING_PTRS)
     {
@@ -249,9 +249,9 @@ void add_offset(FILE * fp, off_t off)
  * fix_last_offset:
  *     Used when we have two separators in a row.
  */
-void fix_last_offset(FILE * fp, off_t off)
+void fix_last_offset(FILE * fp, int32_t off)
 {
-    off_t net;
+    int32_t net;
 
     if (!STORING_PTRS)
     {
@@ -324,7 +324,7 @@ void
   do_order(void)
 {
     register long i;
-    register off_t *lp;
+    register int32_t *lp;
     register STR *fp;
 
     Sort_1 = fopen(Infile, "r");
@@ -375,8 +375,8 @@ char *
 void randomize(void)
 {
     register int cnt, i;
-    register off_t tmp;
-    register off_t *sp;
+    register int32_t tmp;
+    register int32_t *sp;
     extern time_t time(time_t *);
 
     srandom((int) (time((time_t *) NULL) + getpid()));
@@ -413,7 +413,7 @@ int main(int ac, char **av)
 {
     register unsigned char *sp;
     register FILE *inf, *outf;
-    register off_t last_off, length, pos, *p;
+    register int32_t last_off, length, pos, *p;
     register int first, cnt;
     register char *nsp;
     register STR *fp;
@@ -524,12 +524,19 @@ int main(int ac, char **av)
     Tbl.str_longlen = htonl(Tbl.str_longlen);
     Tbl.str_shortlen = htonl(Tbl.str_shortlen);
     Tbl.str_flags = htonl(Tbl.str_flags);
-    fwrite((char *) &Tbl, sizeof Tbl, 1, outf);
+    fwrite(&Tbl.str_version,  sizeof Tbl.str_version,  1, outf);
+    fwrite(&Tbl.str_numstr,   sizeof Tbl.str_numstr,   1, outf);
+    fwrite(&Tbl.str_longlen,  sizeof Tbl.str_longlen,  1, outf);
+    fwrite(&Tbl.str_shortlen, sizeof Tbl.str_shortlen, 1, outf);
+    fwrite(&Tbl.str_flags,    sizeof Tbl.str_flags,    1, outf);
+    fwrite( Tbl.stuff,        sizeof Tbl.stuff,        1, outf);
     if (STORING_PTRS)
     {
 	for (p = Seekpts, cnt = Num_pts; cnt--; ++p)
+	{
 	    *p = htonl(*p);
-	fwrite((char *) Seekpts, sizeof *Seekpts, (int) Num_pts, outf);
+	    fwrite(p, sizeof *p, 1, outf);
+	}
     }
     fclose(outf);
     exit(0);

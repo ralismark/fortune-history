@@ -2,28 +2,28 @@ Source: fortune-mod
 Section: games
 Priority: optional
 Maintainer: Brian Bassett <brianb@debian.org>
-Standards-Version: 2.3.0.1
+Standards-Version: 3.0.1
 
 Package: fortune-mod
 Architecture: any
 Replaces: fortune
 Provides: fortune
-Recommends: fortunes-min
-Suggests: fortunes, fortunes-off
 Conflicts: fortune
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, fortunes-min | fortune-cookie-db
+Suggests: xcontrib, bsdmainutils
 Description: Fortune cookies provided upon demand.
  These are the machine-dependent parts of the fortune package, i.e.
  the fortune program and the programs used for generating the data files.
  The fortune package displays epigrams selected randomly from a selection
  of fortune files. This is an enhanced version of the BSD program.
- The datafiles (which can be shared) are contained in the 'fortunes'
- and 'fortunes-off' packages.
+ The datafiles (which can be shared) are contained in the 'fortunes-min',
+ 'fortunes', and 'fortunes-off' packages.
 
 Package: fortunes-min
-Architecture: any
-Depends: fortune-mod
+Architecture: all
+Depends: fortune-mod (>= 9708-12)
 Replaces: fortunes (<= 9708-6)
+Provides: fortune-cookie-db
 Description: Datafiles containing fortune cookies
  This package contains a small number of 'fortune cookies' for the
  bandwidth conscious.  There are over 15000 different 'fortune cookies'
@@ -31,16 +31,18 @@ Description: Datafiles containing fortune cookies
  the cookies.
 
 Package: fortunes
-Architecture: any
-Depends: fortunes-min, fortune-mod
+Architecture: all
+Depends: fortune-mod (>= 9708-12), fortunes-min
+Provides: fortune-cookie-db
 Description: Datafiles containing fortune cookies
  There are far over 15000 different 'fortune cookies' in this package.
  You'll need the fortune-mod package to display the cookies.
 
 Package: fortunes-off
-Architecture: any
-Depends: fortune-mod, fortunes
+Architecture: all
+Depends: fortune-mod (>= 9708-12), fortunes
 Replaces: fortunes (<= 9708-0.1)
+Provides: fortune-cookie-db
 Description: Datafiles containing offensive fortune cookies
  This package contains 'fortune cookies' which some may consider to be
  offensive.  Please do not install this package if you or your users are

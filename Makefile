@@ -10,17 +10,23 @@ COOKIEDIR=$(prefix)/usr/share/games/fortunes
 OCOOKIEDIR=$(COOKIEDIR)/off
 # The ones with html tags?
 WCOOKIEDIR=$(COOKIEDIR)/html
+# Where do local data files go?
+LOCALDIR=$(prefix)/usr/local/share/games/fortunes
+# Offensive ones?
+LOCALODIR=$(LOCALDIR)/off
+# With HTML tags?
+LOCALWDIR=$(LOCALDIR)/html
 # Where do strfile and unstr go?
 BINDIR=$(prefix)/usr/bin
 # What is the proper mode for strfile and unstr? 755= everyone, 700= root only
 BINMODE=0755
 #BINMODE=0700
 # Where do the man pages for strfile and unstr go?
-BINMANDIR=$(prefix)/usr/man/man1
+BINMANDIR=$(prefix)/usr/share/man/man1
 # What is their proper extension?
 BINMANEXT=1
 # And the same for the fortune man page
-FORTMANDIR=$(prefix)/usr/man/man6
+FORTMANDIR=$(prefix)/usr/share/man/man6
 FORTMANEXT=6
 # Do we want to install the offensive files? (0 no, 1 yes)
 OFFENSIVE=1
@@ -54,7 +60,7 @@ REGEXDEFS=-DHAVE_REGEX_H -DBSD_REGEX
 #
 REGEXLIBS=
 
-DEFINES=-DFORTDIR="\"$(COOKIEDIR)\"" -DOFFDIR="\"$(OCOOKIEDIR)\""
+DEFINES=-DFORTDIR="\"$(COOKIEDIR)\"" -DOFFDIR="\"$(OCOOKIEDIR)\"" -DLOCFORTDIR="\"$(LOCALDIR)\"" -DLOCOFFDIR="\"$(LOCALODIR)\""
 CFLAGS=-O2 $(DEFINES) -Wall -fomit-frame-pointer -pipe -fsigned-char
 LDFLAGS=-s
 

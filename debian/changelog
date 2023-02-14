@@ -1,3 +1,102 @@
+fortune-mod (9708-19) unstable; urgency=low
+
+  * Fixed problems with specifying a percentage along with a file
+    (closes: #54619)
+
+ -- Brian Bassett <brianb@debian.org>  Thu, 13 Jan 2000 15:24:44 -0800
+
+fortune-mod (9708-18) unstable; urgency=low
+
+  * Fixed typos in:
+    + songs-poems (closes: #50214)
+    + cookie (closes: #50905, #54040)
+
+ -- Brian Bassett <brianb@debian.org>  Sat,  8 Jan 2000 17:15:59 -0800
+
+fortune-mod (9708-17) unstable; urgency=low
+
+  * Fixed the menu entry for X, since xmessage is braindead wrt tabs and
+    sizes the window as if a tab is one column.  Brings in a Suggests:
+    on bsdmainutils for `col` (Shouldn't be necessary, as bsdmainutils
+    is Important, but better safe than sorry).  Fix courtesy of
+    Kevin Ryde <user42@zip.com.au>.
+
+ -- Brian Bassett <brianb@debian.org>  Sat,  6 Nov 1999 16:23:13 -0800
+
+fortune-mod (9708-16) unstable; urgency=low
+
+  * Fixed 'no place to put residual probablilty' error.  (closes: 
+    #47043)
+  * Corrected cookie typos.  (closes: #43553, #43554)
+
+ -- Brian Bassett <brianb@debian.org>  Mon, 11 Oct 1999 20:59:42 -0700
+
+fortune-mod (9708-15) unstable; urgency=low
+
+  * Updated to Standards-Version 3.0.1, FHS
+  * Applied patch to keep fortune from breaking if /usr/local dirs
+    don't exist. (closes: #44682)
+  * Fixed speeling error in zippy. (closes: #46630)
+  * Added a menu entry for fortune.  The X11 version of the menu entry
+    uses xmessage, bringing in a new Suggests: on xcontrib.
+    (closes: #46894)
+  * Fortune now Depends: on fortune-cookie-db to make sure `fortune`
+    works after an `apt-get install fortune`. (closes: #45728)
+  * Renamed "knghtbrd1" fortune file to "knghtbrd".
+
+ -- Brian Bassett <brianb@debian.org>  Fri,  8 Oct 1999 13:59:09 -0700
+
+fortune-mod (9708-14) unstable; urgency=low
+
+  * Applied patch from Torsten Landschoff <torsten@pclab.ifg.uni-kiel.de>
+    to clean up /usr/local patch from 9708-12.
+    + Fixes #42372, 42589, 43259: fortune -m prints "Bad file descriptor"
+    + Fixes #42823: fortune -e prints "Floating point exception"
+  * Added fortune file "knghtbrd1" from Joseph Carter <knghtbrd@debian.org>,
+    consisting of humorous IRC snippets.
+
+ -- Brian Bassett <brianb@debian.org>  Mon, 23 Aug 1999 09:45:03 -0700
+
+fortune-mod (9708-13) unstable; urgency=low
+
+  * Fixed `fortune -a` printing 'Bad address'. (#42326)
+
+ -- Brian Bassett <brianb@debian.org>  Mon,  2 Aug 1999 11:51:31 -0700
+
+fortune-mod (9708-12) unstable; urgency=low
+
+  * Adapted patch from OpenBSD's fortune to fix .dat file fields to
+    32-bit integers, especially on 64-bit platforms.
+    + As a result, the fortunes packages can now be built as arch
+      independant packages (#32142)
+    + As a side effect of bumping the database version, fortune-mod
+      conflicts with the old fortunes packages.  New fortunes packages
+      should Depend on "fortune-mod (>= 9708-12)".
+  * Fixed typos.
+    + Numerical typo (s/255/225/) in science (#41032)
+    + Restored chopped off line in off/limerick (#41075)
+    + Fixed mathematical errors in off/limerick (#41390)
+  * Fortune now looks in /usr/local/share/games/fortune for additional
+    fortunes. (#33835)
+  * Moved offensive fortune from ethnic to off/ethnic (#40752)
+  * Added my policy on moving offensive fortunes found in the main
+    database.
+
+ -- Brian Bassett <brianb@debian.org>  Sat, 31 Jul 1999 12:50:20 -0700
+
+fortune-mod (9708-11) unstable; urgency=low
+
+  * Aplied patch from Allover Stripes <allover@hedgehog.globalserve.net>
+    to fix problem with -m failing on offensive fortunes (which are
+    stored ROT13'd) (#35669)
+  * Fixed hardcoded access mode in open() calls.  Hamstrung the Hurd
+    folks (#37091)
+  * Fixed typo in linux (caught by Torsten Hilbrich
+    <Torsten.Hilbrich@gmx.net>
+  * Fixed typo in cookie (#33167)
+
+ -- Brian Bassett <brianb@debian.org>  Sat, 12 Jun 1999 15:07:52 -0700
+
 fortune-mod (9708-10) frozen unstable; urgency=low
 
   * Fixed typo in copyright (lintian)
