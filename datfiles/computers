@@ -75,7 +75,7 @@ with the possible exceptions of handguns and Tequilla.
 %
 A computer salesman visits a company president for the purpose of selling
 the president one of the latest talking computers.
-Salesman:	"This machine knows everything. I can ask it any quesstion
+Salesman:	"This machine knows everything. I can ask it any question
 		and it'll give the correct answer.  Computer, what is the
 		speed of light?"
 Computer:	186,282 miles per second.
@@ -574,7 +574,7 @@ Note that LET *could* have been defined by:
 This is believed to speed up execution by as much as a factor of 1.01 or
 3.50 depending on whether you believe our friendly marketing representatives.
 This code was written by a new programmer here (we snatched him away from
-Itty Bitti Machines where we was writting COUGHBOL code) so to give him
+Itty Bitti Machines where he was writing COUGHBOL code) so to give him
 confidence we trusted his vows of "it works pretty well" and installed it.
 %
 ===  ALL USERS PLEASE NOTE  ========================
@@ -986,9 +986,9 @@ other's private parts.
 %
 Calm down, it's *____only* ones and zeroes.
 %
-Can't open /usr/fortunes.  Lid stuck on cookie jar.
+Can't open /usr/share/games/fortunes/fortunes.  Lid stuck on cookie jar.
 %
-Can't open /usr/games/lib/fortunes.dat.
+Can't open /usr/share/games/fortunes/fortunes.dat.
 %
 CChheecckk yyoouurr dduupplleexx sswwiittcchh..
 %
@@ -1441,8 +1441,6 @@ orthodoxy, you must buy a computer made and sold by Apple itself.
 Earth is a beta site.
 %
 /earth: file system full.
-%
-egrep -n '^[a-z].*\(' $ | sort -t':' +2.0
 %
 Einstein argued that there must be simplified explanations of nature, because
 God is not capricious or arbitrary.  No such faith comforts the software
@@ -2066,7 +2064,7 @@ If the code and the comments disagree, then both are probably wrong.
 %
 If the designers of X-window built cars, there would be no fewer than five
 steering wheels hidden about the cockpit, none of which followed the same
-prinicples -- but you'd be able to shift gears with your car stereo.  Useful
+principles -- but you'd be able to shift gears with your car stereo.  Useful
 feature, that.
 		-- From the programming notebooks of a heretic, 1990.
 %
@@ -2236,12 +2234,12 @@ sat hacking at the PDP-6.
 	At this Minsky shut his eyes, and Sussman asked his teacher "Why do
 you close your eyes?"
 	"So that the room will be empty."
-	At that momment, Sussman was enlightened.
+	At that moment, Sussman was enlightened.
 %
 	In the east there is a shark which is larger than all other fish.  It
 changes into a bird whose winds are like clouds filling the sky.  When this
 bird moves across the land, it brings a message from Corporate Headquarters.
-This message it drops into the midst of the program mers, like a seagull
+This message it drops into the midst of the programmers, like a seagull
 making its mark upon the beach.  Then the bird mounts on the wind and, with
 the blue sky at its back, returns home.
 	The novice programmer stares in wonder at the bird, for he understands
@@ -2327,7 +2325,7 @@ three more than the schedule allowed.
 	The control program manager had 150 men.  He asserted that they
 could prepare the specifications, with the architecture team coordinating;
 it would be well-done and practical, and he could do it on schedule.
-Futhermore, if the architecture team did it, his 150 men would sit twiddling
+Furthermore, if the architecture team did it, his 150 men would sit twiddling
 their thumbs for ten months.
 	To this the architecture manager responded that if I gave the control
 program team the responsibility, the result would not in fact be on time,
@@ -2812,7 +2810,9 @@ Nobody said computers were going to be polite.
 Nobody's gonna believe that computers are intelligent until they start
 coming in late and lying about it.
 %
-nohup rm -fr /&
+My little brother got this fortune:
+	nohup rm -fr /&
+So he did...
 %
 Norbert Weiner was the subject of many dotty professor stories.  Weiner was, in
 fact, very absent minded.  The following story is told about him: when they
@@ -4277,7 +4277,7 @@ She set no preconditions.
 %
 THEGODDESSOFTHENETHASTWISTINGFINGERSANDHERVOICEISLIKEAJAVELININTHENIGHTDUDE
 %
-... there are about 5,000 people who are part of that commitee.  These guys
+... there are about 5,000 people who are part of that committee.  These guys
 have a hard time sorting out what day to meet, and whether to eat croissants
 or doughnuts for breakfast -- let alone how to define how all these complex
 layers that are going to be agreed upon.
@@ -4761,7 +4761,7 @@ Usage: fortune -P [-f] -a [xsz] Q: file [rKe9] -v6[+] file1 ...
 %
 Usage: fortune -P [] -a [xsz] [Q: [file]] [rKe9] -v6[+] dataspec ... inputdir
 %
-USENET would be a better laboratory is there were more labor and less oratory.
+USENET would be a better laboratory if there were more labor and less oratory.
 		-- Elizabeth Haley
 %
 User hostile.
@@ -5026,7 +5026,7 @@ When we write programs that "learn", it turns out we do and they don't.
 Whenever a system becomes completely defined, some damn fool discovers
 something which either abolishes the system or expands it beyond recognition.
 %
-Where a calculator on the ENIAC is equpped with 18,000 vaccuum tubes and
+Where a calculator on the ENIAC is equpped with 18,000 vacuum tubes and
 weighs 30 tons, computers in the future may have only 1,000 vaccuum tubes
 and perhaps weigh 1 1/2 tons.
 		-- Popular Mechanics, March 1949
@@ -5266,7 +5266,7 @@ evil, for I can string six primitive monadic and dyadic operators together.
 %
 Yes, we will be going to OSI, Mars, and Pluto, but not necessarily in
 that order.
-		-- Jeffrey Honig
+		-- George Michaelson
 %
 You are an insult to my intelligence!  I demand that you log off immediately.
 %
@@ -5287,7 +5287,7 @@ chewing on your leg, a troglodyte is bashing your brains out with a
 gold nugget, a crocodile is removing large chunks of flesh from you, a
 rhinoceros is goring you with his horn, a sabre-tooth cat is busy
 trying to disembowel you, you are being trampled by a large mammoth, a
-vampire is sucking you dry, a Tyranosaurus Rex is sinking his six inch
+vampire is sucking you dry, a Tyrannosaurus Rex is sinking his six inch
 long fangs into various parts of your anatomy, a large bear is
 dismembering your body, a gargoyle is bouncing up and down on your
 head, a burly troll is tearing you limb from limb, several dire wolves
@@ -5415,3 +5415,29 @@ Your password is pitifully obvious.
 %
 Your program is sick!  Shoot it and put it out of its memory.
 %
+I mean, if 10 years from now, when you are doing something quick and dirty,
+you suddenly visualize that I am looking over your shoulders and say to
+yourself, "Dijkstra would not have liked this", well that would be enough
+immortality for me.
+%
+As seen on slashdot about what you can do with your cable modems:
+(http://slashdot.org/comments.pl?sid=32387&cid=3495418):
+
+        Summary: It's not about how you handle your equipment, it's where
+        you have permission to stick it.
+
+The post is by "redgekko"
+%
+"The biggest problem facing software engineering is the one it will 
+ never solve - politics." 
+ -- Gavin Baker, ca 1996, An unusually cynical moment inspired by working on a large
+    project beseiged by politics
+%
+"Don't fear the pen. When in doubt, draw a pretty picture." 
+   --Baker's Third Law of Design.
+%
+Breakpoint 1, main (argc=1, argv=0xbffffc40) at main.c:29
+29   printf ("Welcome to GNU Hell!\n");
+		-- "GNU Libtool documentation"
+%
+

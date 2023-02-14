@@ -1,10 +1,6 @@
 A Linux machine! because a 486 is a terrible thing to waste!
 (By jjs@wintermute.ucr.edu, Joe Sloan)
 %
-"A word to the wise: a credentials dicksize war is usually a bad idea on the
-net."
-(David Parsons in c.o.l.development.system, about coding in C.)
-%
 "Absolutely nothing should be concluded from these figures except that
 no conclusion can be drawn from them."
 (By Joseph L. Brothers, Linux/PowerPC Project)
@@ -308,10 +304,6 @@ Now, it we had this sort of thing:
 wouldn't believe...
 (Discussion in comp.os.linux.misc on the intuitiveness of commands.)
 %
-"Oh, I've seen copies [of Linux Journal] around the terminal room at The
-Labs."
-(By Dennis Ritchie)
-%
 "On a normal ascii line, the only safe condition to detect is a 'BREAK'
 - everything else having been assigned functions by Gnu EMACS."
 (By Tarl Neustaedter)
@@ -432,7 +424,7 @@ FOR THE 386."
 (Matt Welsh)
 %
 "We all know Linux is great...it does infinite loops in 5 seconds."
-(Linus Torvalds about the superiority of Linux on the Amterdam
+(Linus Torvalds about the superiority of Linux on the Amsterdam
 Linux Symposium)
 %
 We are MicroSoft.  You will be assimilated.  Resistance is futile.
@@ -496,4 +488,9 @@ all-new-and-improved linux kernel version."
 Your job is being a professor and researcher: That's one hell of a good excuse
 for some of the brain-damages of minix.
 (Linus Torvalds to Andrew Tanenbaum)
+%
+I've heard a Jew and a Muslim argue in a Damascus cafe with less passion
+than the emacs wars."
+		-- Ronald Florence <ron@18james.com> in 
+		   <ueu1c4mbrc.fsf@auda.18james.com>
 %

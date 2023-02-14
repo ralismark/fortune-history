@@ -697,7 +697,7 @@ Memories of you remind me of you.
 -- Karl Lehenbauer
 %
 Life.  Don't talk to me about life.
-- Marvin the Paranoid Anroid
+- Marvin the Paranoid Android
 %
 On a clear disk you can seek forever.
 %
@@ -1347,7 +1347,7 @@ I know engineers.  They love to change things.
 %
 On our campus the UNIX system has proved to be not only an effective software
 tool, but an agent of technical and social change within the University.
-- John Lions (U. of Toronto (?))
+- John Lions (University of New South Wales)
 %
 Those who do not understand Unix are condemned to reinvent it, poorly.
 - Henry Spencer, University of Toronto Unix hack
@@ -2035,7 +2035,7 @@ This "cerebral spare tire" concept continues to nourish the clientele of
 a metaphor for the fact that few of us fully exploit our talents, who could
 deny it?  As a refuge for occultists seeking a neural basis of the miraculous,
 it leaves much to be desired.
--- Barry L. Beyerstein, "The Brain and Conciousness:  Implications for
+-- Barry L. Beyerstein, "The Brain and Consciousness:  Implications for
    Psi Phenomena", The Skeptical Enquirer, Vol. XII, No. 2, pg. 171
 %
 Thufir's a Harkonnen now.
@@ -3402,7 +3402,7 @@ His wishes, his thoughts, his gestures, his noises command the universe.
 %
 An Animal that knows who it is, one that has a sense of his own identity, is
 a discontented creature, doomed to create new problems for himself for the
-duration of his stay on this planet.  Since neither the mouse nor the chip
+duration of his stay on this planet.  Since neither the mouse nor the chimp
 knows what is, he is spared all the vexing problems that follow this
 discovery.  But as soon as the human animal who asked himself this question
 emerged, he plunged himself and his descendants into an eternity of doubt
@@ -4063,8 +4063,6 @@ processors, was impossible.  Today, new generation supercomputers operate
 at billions of operations per second (gigaflops).
 -- Aviation Week & Space Technology, May 9, 1988, "Washington Roundup", pg 13
 %
-Shit Happens.
-%
 backups: always in season, never out of style.
 %
 "There was a vague, unpleasant manginess about his appearence; he somehow
@@ -4454,7 +4452,7 @@ a mind of their own."
 or dogma.  It is simply an approach to the problem of telling what is
 counterfeit and what is genuine.  And a recognition of how costly it may
 be to fail to do so.  To be a skeptic is to cultivate "street smarts" in
-the battle for control of one's own mind, one's own money, one'w own
+the battle for control of one's own mind, one's own money, one's own
 allegiances.  To be a skeptic, in short, is to refuse to be a victim.
 -- Robert S. DeBear, "An Agenda for Reason, Realism, and Responsibility,"
  New York Skeptic (newsletter of the New York Area Skeptics, Inc.), Spring 1988
@@ -4699,25 +4697,6 @@ proof by appeal to intuition:
 %
 Seen on a button at an SF Convention:
 Veteran of the Bermuda Triangle Expeditionary Force.  1990-1951.
--- 
--- uunet!sugar!karl  | "We've been following your progress with considerable 
--- karl@sugar.uu.net |  interest, not to say contempt."  -- Zaphod Beeblebrox IV
--- Usenet BBS (713) 438-5018
-
-
-From karl@sugar.hackercorp.com Sat Apr 29 10:46:20 1989
-From: karl@sugar.hackercorp.com (Karl Lehenbauer)
-Subject: Fortune cookie file, part 07 of 06
-
-Below is the latest addition to my fortune cookie file, 40212 bytes of mirth
-and merriment.  
-
-This file contains a lot of quotes from peoples' postings on Usenet.  After I 
-had been doing this a while, I began including their net addresses as well.
-
-Enjoy, or hit 'n'...
-
--------------------- cut it here, dude ------------------------------
 %
 "If people are good only because they fear punishment, and hope for reward,
 then we are a sorry lot indeed."
@@ -4825,10 +4804,6 @@ the ideal never goes unpunished."
 "The great question... which I have not been able to answer... is, `What does 
 woman want?'"
 -- Sigmund Freud
-%
-"A fractal is by definition a set for which the Hausdorff Besicovitch
-dimension strictly exceeds the topological dimension."
--- Mandelbrot, _The Fractal Geometry of Nature_
 %
 "I have recently been examining all the known superstitions of the world,
  and do not find in our particular superstition (Christianity) one redeeming
@@ -5010,7 +4985,7 @@ I thirsted for a meaningful vision of human life -- so I became a scientist.
 This is like becoming an archbishop so you can meet girls." 
 -- Matt Cartmill
 %
-Heisengberg might have been here.
+Heisenberg might have been here.
 %
 "Any excuse will serve a tyrant."
 -- Aesop
@@ -5249,7 +5224,7 @@ don't think it's wonderful.   ...
 -- D. J. McCarthy (dmccart@cadape.UUCP)
 %
 "They that can give up essential liberty to obtain a little temporary
-saftey deserve neither liberty not saftey."
+safety deserve neither liberty nor safety."
 -- Benjamin Franklin, 1759
 %
 "I am, therefore I am."
@@ -5344,15 +5319,6 @@ soluble in alcohol..."
 "Life sucks, but death doesn't put out at all...."
 -- Thomas J. Kopp
 %
-"There is no Father Christmas.  It's just a marketing ploy 
-to make low income parents' lives a misery."
-"... I want you to picture the trusting face of a child,
-streaked with tears because of what you just said."
-"I want you to picture the face of its mother, because one
-week's dole won't pay for one Master of the Universe
-Battlecruiser!"
-- Filthy Rich and Catflap, 1986.
-%
    n = ((n >>  1) & 0x55555555) | ((n <<  1) & 0xaaaaaaaa);
    n = ((n >>  2) & 0x33333333) | ((n <<  2) & 0xcccccccc);
    n = ((n >>  4) & 0x0f0f0f0f) | ((n <<  4) & 0xf0f0f0f0);
@@ -5402,7 +5368,7 @@ almost all occurences of the word "paradigm" into "example" or "model."
 "Life, loathe it or ignore it, you can't like it."
 -- Marvin the paranoid android
 %
-Contemptuous lights flashed flashed across the computer's console.
+Contemptuous lights flashed across the computer's console.
 -- Hitchhiker's Guide to the Galaxy
 %
 "There must be some mistake," he said, "are you not a greater computer than
@@ -5714,3 +5680,12 @@ being used for the brutal purpose for which they were invented."
 %
 "You can have my Unix system when you pry it from my cold, dead fingers."
 -- Cal Keegan
+%
+We'll be more than happy to do so once Jim shows the slightest sign
+of interest in fixing his proposal to deal with the technical
+arguments that have *already* been made.  Most engineers have
+learned there is little to be gained in fine-tuning the valve timing
+on a gasoline-powered internal combustion engine when the pistons
+and crankshaft are missing...
+		-- Valdis.Kletnieks@vt.edu on NANOG
+%

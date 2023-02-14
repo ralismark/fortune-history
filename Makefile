@@ -3,24 +3,30 @@
 #
 
 # Where does the fortune program go?
-FORTDIR=/usr/local/games
+FORTDIR=$(prefix)/usr/games
 # Where do the data files (fortunes, or cookies) go?
-COOKIEDIR=/usr/local/share/games/fortunes
+COOKIEDIR=$(prefix)/usr/share/games/fortunes
 # Offensive ones?
 OCOOKIEDIR=$(COOKIEDIR)/off
 # The ones with html tags?
 WCOOKIEDIR=$(COOKIEDIR)/html
+# Where do local data files go?
+LOCALDIR=$(prefix)/usr/local/share/games/fortunes
+# Offensive ones?
+LOCALODIR=$(LOCALDIR)/off
+# With HTML tags?
+LOCALWDIR=$(LOCALDIR)/html
 # Where do strfile and unstr go?
-BINDIR=/usr/local/bin
+BINDIR=$(prefix)/usr/bin
 # What is the proper mode for strfile and unstr? 755= everyone, 700= root only
 BINMODE=0755
 #BINMODE=0700
 # Where do the man pages for strfile and unstr go?
-BINMANDIR=/usr/local/man/man1
+BINMANDIR=$(prefix)/usr/share/man/man1
 # What is their proper extension?
 BINMANEXT=1
 # And the same for the fortune man page
-FORTMANDIR=/usr/local/man/man6
+FORTMANDIR=$(prefix)/usr/share/man/man6
 FORTMANEXT=6
 # Do we want to install the offensive files? (0 no, 1 yes)
 OFFENSIVE=1
@@ -42,11 +48,13 @@ WEB=0
 #	For systems with BSD-compatible regex functions
 # -DPOSIX_REGEX
 #	For systems with POSIX-compatible regex functions
+# -DHAVE_STDBOOL
+#       For GNU system that declare bool type in <stdbool.h>
 #
 # NB. Under Linux, the BSD regex functions are _MUCH_ faster
 #     than the POSIX ones, but your mileage may vary.
 #
-REGEXDEFS=-DHAVE_REGEX_H -DBSD_REGEX
+REGEXDEFS=-DHAVE_REGEX_H -DBSD_REGEX -DHAVE_STDBOOL
 
 #
 # If your system's regex functions are not in its standard C library,
@@ -54,8 +62,10 @@ REGEXDEFS=-DHAVE_REGEX_H -DBSD_REGEX
 #
 REGEXLIBS=
 
-DEFINES=-DFORTDIR="\"$(COOKIEDIR)\"" -DOFFDIR="\"$(OCOOKIEDIR)\""
-CFLAGS=-O2 $(DEFINES) -Wall -fomit-frame-pointer -pipe
+RECODELIBS=-lrecode
+
+DEFINES=-DFORTDIR="\"$(COOKIEDIR)\"" -DOFFDIR="\"$(OCOOKIEDIR)\"" -DLOCFORTDIR="\"$(LOCALDIR)\"" -DLOCOFFDIR="\"$(LOCALODIR)\""
+CFLAGS=-O2 $(DEFINES) -Wall -fomit-frame-pointer -pipe -fsigned-char
 LDFLAGS=-s
 
 # The above flags are used by default; the debug flags are used when make
@@ -93,7 +103,7 @@ debug: fortune-debug util-debug cookies-z
 fortune-bin:
 	cd fortune && $(MAKE) CC='$(CC)' \
 		    CFLAGS='$(CFLAGS) $(REGEXDEFS) -I../util'	\
-		    LDFLAGS='$(LDFLAGS)' LIBS='$(REGEXLIBS)'
+		    LDFLAGS='$(LDFLAGS)' LIBS='$(REGEXLIBS) $(RECODELIBS)'
 
 fortune-debug:
 	cd fortune && $(MAKE) CC='$(CC)' \
@@ -163,7 +173,7 @@ install-uman:
 	install -m 0755 -d $(BINMANDIR)
 	install -m 0644 util/strfile.man $(BINMANDIR)/strfile.$(BINMANEXT)
 	rm -f $(BINMANDIR)/unstr.$(BINMANEXT)
-	ln -s strfile.$(BINMANEXT) $(BINMANDIR)/unstr.$(BINMANEXT)
+	(cd $(BINMANDIR) && ln -sf strfile.$(BINMANEXT).gz $(BINMANDIR)/unstr.$(BINMANEXT).gz)
 
 # Install the fortune cookie files
 install-cookie: cookies-z

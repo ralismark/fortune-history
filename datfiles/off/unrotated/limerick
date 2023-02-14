@@ -1,28 +1,29 @@
-	      1/2
+	      1/3
 	 /\(3)
 	 |     2			  1/3
-	 |    z dz cos(3 * PI / 9) = ln (e   )
+	 |    t dt cos(3 * PI / 9) = ln (e   )
 	 |
 	\/ 1
 
-The integral of z squared, dz
-From 1 to the square root of 3
+The integral of t squared, dt
+From 1 to the cube root of 3
 	Times the cosine
 	Of 3 PI over nine
 Is the log of the cube root of e
 %
 	   (1/2)
 	/ 3
-	|       2         3 x 3.14            (1/2)
-	|      z dz  cos (--------)   =  ln(e     )
-	/ 1		     9
+	|       3    1      3 x PI           (1/2)
+	|      t dt  - cos (------)   =  ln(e     )
+	/ 1	     2        9
 
 The integral, from one to root three,
-Of z to the second dz,
-	Times the cosine
+Of t to the third dt,
+	Times half the cosine
 	Of 3 pi over nine
-Is the log of the third root of e.
+Is the log of the square root of e.
 %
+			    1/2
 	12 + 144 + 20 + 3(4)                  2
 	----------------------  +  5(11)  =  9  +  0
 		  7
@@ -78,8 +79,8 @@ For her costume did not keep her flesh in.
 %
 A bisexual chap name of Lunt
 Taught himself an unusual stunt.
-He could peel back his spout
-Turn the skin inside out
+	He could peel back his spout
+	Turn the skin inside out
 Like a glove, to be used as a cunt!
 %
 A bobby of Nottingham Junction
@@ -1662,7 +1663,7 @@ Father Burke said, "There's no greater joy!
 	And possible heavens,
 Existence will merely annoy."
 %
-As the breeches-buoy swing towards the rocks,
+As the breeches-buoy swung towards the rocks,
 Its occupant cried, "Save my socks!
 	I could not bear the loss,
 	For with scarlet silk floss
@@ -2714,7 +2715,7 @@ Collapsed at the height of a rout;
 The Enterprise crew when off work
 Will fuck like an Ottoman Turk.
 	Uhura the Zulu
-	Is shcked up with Sulu,
+	Is shacked up with Sulu,
 And Spock shares a crew girl with Kirk.
 %
 The Enterprise girls, so one hears,
@@ -5048,13 +5049,6 @@ Who rode around in an Austin.
 	There was room for his ass
 	And a gallon of gas,
 But his balls hung out and he lost 'em.
-%
-There was a young man from Brazil,
-And a lady who'd not take the pill,
-	They lay on the sofa,
-	And a <$H12{ot]{ok]{ob{o[]{oR{oK{oDpo~po~pot~poe~{ o!po~po~poq~
-n~po_~{o[po	 ~poz~pok~po\~{o
-8]{o/pomF~po^~{opoh~poY~{opoc~poT~{op~po^~poO~{o[~poY~ poJ~{oF~poT~poE~{o1~
 %
 There was a young man from Calcutta
 Who was heard in his beard to mutter,

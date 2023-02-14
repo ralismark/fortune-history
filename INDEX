@@ -27,6 +27,3 @@ following files:
     cookie-files
 	A list of the fortune files (both inoffensive and offensive)
 	distributed in this package.
-
-    fortune-mod.lsm
-	The package's entry in the Linux Software Map.
