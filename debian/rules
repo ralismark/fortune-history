@@ -41,7 +41,6 @@ binary-indep: build
 	dh_strip -i
 	dh_compress -i
 	dh_fixperms -i
-	dh_suidregister -i
 	dh_installdeb -i
 #	dh_shlibdeps -i
 	dh_gencontrol -i
@@ -69,7 +68,6 @@ binary-arch: build
 	dh_strip -a
 	dh_compress -a
 	dh_fixperms -a
-	dh_suidregister -a
 	dh_installdeb -a
 	dh_shlibdeps -a
 	dh_gencontrol -a

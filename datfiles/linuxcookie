@@ -308,10 +308,6 @@ Now, it we had this sort of thing:
 wouldn't believe...
 (Discussion in comp.os.linux.misc on the intuitiveness of commands.)
 %
-"Oh, I've seen copies [of Linux Journal] around the terminal room at The
-Labs."
-(By Dennis Ritchie)
-%
 "On a normal ascii line, the only safe condition to detect is a 'BREAK'
 - everything else having been assigned functions by Gnu EMACS."
 (By Tarl Neustaedter)

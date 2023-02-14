@@ -1,3 +1,118 @@
+fortune-mod (9708-25) unstable; urgency=low
+
+  * Generally added new cookies and corrected mistakes.
+  * Added new knghtbrd cookies.
+  * No longer valid (closes: #64239) (closes: #93353)
+  * Added % to wisdom:1234 (closes: #118180)
+  * s/becannt/bekannt/ in songs-poems:1212 (closes: #118456)
+  * removed duplicated Mandelbrot quote from cookies (closes: #118603)
+  * s/Kalvin/Kelvin in men-women:1454 (closes: #126184)
+  * cleared up train-station/work-station entry in linux:1168 (closes: #135152)
+  * added % to magic:23 (closes: #138768)
+  * corrected Kenobi quote in art:1083 (closes:#140562)
+  * s/meet/see for Pink Floyd in songs-poems:2583 (closes: #140924)
+  * spelling mistakes in package descriptions
+    (closes: #124629) (closes: #124634) (closes: #124635)
+  * Harlan Ellison quote is mostly correct ;-) (closes: #126946)
+  * s/-300K/~300K/ in science:2395 (closes: #131630)
+  * moved Socrates' last words from off/private to miscellaneous
+    (closes: #136847)
+  * s/say tuned/stay tuned/ in love:151 (closes: #140218)
+  * Added Gandhi quote to wisdom (closes: #104225)
+  * Added modconf changelog message to linux (closes: #117869)
+  * Added task-p0rn to linux (closes: #127685)
+  * Added more cookies (closes: #133638)
+
+ -- Mark Ng <ng@debian.org>  Sat,  6 Apr 2002 01:07:32 +1000
+
+fortune-mod (9708-24) unstable; urgency=low
+
+  * New maintainer: Mark Ng <ng@debian.org>
+  * BSD License update. (closes: #123817)	
+  * Fixed minor spelling (closes: #124627)
+
+ -- Mark Ng <ng@debian.org>  Sat,  5 Jan 2002 23:58:24 +1100
+
+fortune-mod (9708-23) unstable; urgency=low
+
+  * Fix typos in:
+    + songs-poems: Correct word in Weird Al song. (closes: #112688)
+    + computers: Fix typo in Elizabeth Haley quote. (closes: #115918)
+    + startrek: Fix typo in Kirk quote. (closes: #112603)
+    + cookie: Fix Ben Franklin quote. (closes: #114097)
+    + linux: Separate two unrelated fortunes.
+    + knghtbrd: Remove duplicate fortune.
+    + linux: De-germanify attribution for a fortune.
+    + linux: Remove fortune that does not belong in linux.  (i. e.
+      no linux content, nor attributable to any Linux figure.)
+      (closes: #107158)
+    + cookie: Moved offensive fortune to off/cookie (closes: #108060)
+    + off/fortunes: Restored two fortunes dealing with suicide of
+      the user previously removed in 9708-22. (closes: #107265)
+    + riddles: Moved potentially offensive fortune and expanded
+      the offending acronym (as found elsewhere in off/riddles)
+      (closes: #107075)
+
+ -- Brian Bassett <brianb@debian.org>  Tue, 30 Oct 2001 23:17:39 -0800
+
+fortune-mod (9708-22) unstable; urgency=low
+
+  * Fix typos in:
+    + literature: Corrected typo in Mark Twain's name (closes: #102627)
+    + people: Removed duplicate 'is' (closes: #98858), split two fortunes
+              that had nothing to do with each other
+    + computers: Removed broken (ie, it does nothing when given to any
+      known shell) fortune (closes: #105552)
+    + songs-poems: Correctly attibute quote to Robert Loius Stevenson
+  * Removed two fortunes from fortunes dealing with the users' death and
+    suicide (closes: #98557, #106446)
+  * Relegated zippy to fortunes-off, as quite a number of these
+    non-sensical pieces of "humor" fail the criteria for offensiveness.
+    (closes: #35560)
+  * Fix bashism in menu file (closes: #97190)
+  * Update knightbrd from upstream author, Joseph Carter
+    <knghtbrd@debian.org>.
+
+ -- Brian Bassett <brianb@debian.org>  Sun, 29 Jul 2001 21:31:20 -0700
+
+fortune-mod (9708-21) unstable; urgency=low
+
+  * Corrected attributions in:
+    + education (closes: #60613)
+    + songs-poems (closes: #61194)
+  * Fixed typos in:
+    + computers (closes: #67311)
+    + cookie (closes: #71807)
+  * Removed duplicate cookie from linuxcookie, and added another quote
+    from Denis Ritchie to linux. (closes: #81162)
+  * Removed duplicate cookie from off/vulgarity. (closes: #66601)
+
+ -- Brian Bassett <brianb@debian.org>  Fri,  2 Feb 2001 21:20:47 -0800
+
+fortune-mod (9708-20) unstable; urgency=low
+
+  * Moved offensive fortunes from:
+    + riddles (closes: #58603)
+  * Fixed typos:
+    + off/limerick
+    + off/songs-poems (closes: #60686)
+  * Added new fortunes:
+    + off/religion (closes: #63247)
+    + art
+    + definitions
+    + literature
+    + miscellaneous
+    + people
+    + platitudes
+    + politics
+    + science
+    + songs-poems
+    + startrek
+    + wisdom (closes: #63248)
+  * Fixed menu entry. (closes: #65784)
+
+ -- Brian Bassett <brianb@debian.org>  Sun, 18 Jun 2000 16:29:42 -0700
+
 fortune-mod (9708-19) unstable; urgency=low
 
   * Fixed problems with specifying a percentage along with a file

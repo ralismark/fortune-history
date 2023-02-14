@@ -986,9 +986,9 @@ other's private parts.
 %
 Calm down, it's *____only* ones and zeroes.
 %
-Can't open /usr/fortunes.  Lid stuck on cookie jar.
+Can't open /usr/share/games/fortunes/fortunes.  Lid stuck on cookie jar.
 %
-Can't open /usr/games/lib/fortunes.dat.
+Can't open /usr/share/games/fortunes/fortunes.dat.
 %
 CChheecckk yyoouurr dduupplleexx sswwiittcchh..
 %
@@ -1441,8 +1441,6 @@ orthodoxy, you must buy a computer made and sold by Apple itself.
 Earth is a beta site.
 %
 /earth: file system full.
-%
-egrep -n '^[a-z].*\(' $ | sort -t':' +2.0
 %
 Einstein argued that there must be simplified explanations of nature, because
 God is not capricious or arbitrary.  No such faith comforts the software
@@ -4761,7 +4759,7 @@ Usage: fortune -P [-f] -a [xsz] Q: file [rKe9] -v6[+] file1 ...
 %
 Usage: fortune -P [] -a [xsz] [Q: [file]] [rKe9] -v6[+] dataspec ... inputdir
 %
-USENET would be a better laboratory is there were more labor and less oratory.
+USENET would be a better laboratory if there were more labor and less oratory.
 		-- Elizabeth Haley
 %
 User hostile.

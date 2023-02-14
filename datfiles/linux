@@ -129,10 +129,6 @@ can't, while I'll just plug a Linux box into the serial port and load up the
 HP-48 VT-100 emulator.
 	-- Jeff Dege, jdege@winternet.com
 %
-There are no threads in a.b.p.erotica,  so there's no  gain in using a
-threaded news reader.
-	-- unknown source
-%
 /*
  * Oops. The kernel tried to access some bad page. We'll have to
  * terminate things with extreme prejudice.
@@ -1169,7 +1165,7 @@ And formatted so it's a little easier to read:
 (It is an old Debian tradition to leave at least twice a year ...)
 	-- Sven Rudolph
 %
-When a trainstation is were a train stops what is a workstation?
+If a 'train station' is where a train stops, what's a 'workstation'?
 %
 Computers are not intelligent.  They only think they are.
 %
@@ -1547,6 +1543,7 @@ James Troup <troup@debian.org>:
 %
 Debian is like Suse with yast turned off, just better. :)
 	-- Goswin Brederlow
+%
 Arnold's Laws of Documentation:
 	(1) If it should exist, it doesn't.
 	(2) If it does exist, it's out of date.
@@ -1769,7 +1766,7 @@ privileges that only a partner can grant.
 	-- Telsa Gwynne
 %
 <Skyhook> Where is 'bavaria' proper?  I thought it was austria.
-	-- Gesehen auf #Linux
+	-- Seen on #Linux
 %
 Day X+4 months: Microsoft ships NT 5.0 for Intel.with a big media
                 event on TV. IBM begins to ship Debian 4.6 as the
@@ -1791,3 +1788,24 @@ from 497 days to 0.
 <doogie> netgod:  8:42pm is not late.
 <netgod> doogie: its 2:42am in Joeyland
 	-- #Debian
+%
+We knew from experience that the essence of communal computing, as
+supplied by remote-access, time-shared machines, is not just to type
+programs into a terminal instead of a keypunch, but to encourage close
+communication.
+	-- Dennis Ritchie
+%
+modconf (0.2.37) stable unstable; urgency=medium
+  [...]
+  * Eduard Bloch:
+    - fixed Makefile broken Marcin Owsiany a while ago. The default manpage
+      has been overwritten with the polish translation. I still wonder why
+      nobody noticed this before. Closes: #117474
+  [...]
+ -- Eduard Bloch <blade@debian.org>  Sun, 28 Oct 2001 12:53:27 +0100
+%
+<|ryan|> I don't use deb
+<netgod> u poor man
+<Disconnect> netgod: heh
+<Kingsqueak> apt-get install task-p0rn
+%
