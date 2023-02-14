@@ -6,7 +6,7 @@ all:
 	-a -f $$i ] ; then ../util/strfile $$i ; fi ; done
 
 install:
-	-mkdir $(COOKIEDIR)
+	-mkdir -p $(COOKIEDIR)
 	if [ $(OFFENSIVE) = 1 ] ; then $(MAKE) -C off install ; fi
 	if [ $(WEB) = 1 ] ; then $(MAKE) -C html install ; fi
 	for i in * ; do if [ "$$i" != "Makefile" -a -f $$i ] ; \

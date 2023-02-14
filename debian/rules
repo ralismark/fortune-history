@@ -1,0 +1,88 @@
+#! /usr/bin/make -f
+#
+# Last Updated: Thu, 10 Oct 1996 12:32:05 +0200 by Helmut Geyer
+#
+# should be used only by dpkg-buildpackage
+
+define checkdir
+   test -f fortune/fortune.c -a -f debian/rules
+endef
+
+DOCS-ARCH = README README.Linux 
+DOCS-ALL = Notes Offensive cookie-files
+
+build:
+# Builds the binary package.
+	$(checkdir)
+	make
+	touch build
+
+clean:
+# Undoes the effect of `make -f debian.rules build'.
+	$(checkdir)
+	make clean
+	rm -f build
+	rm -rf debian/tmp-arch
+	rm -rf debian/tmp-all
+
+binary-arch: build checkroot
+	install -d -g root -m 755 -o root debian/tmp-arch
+	chmod g-s debian/tmp-arch
+	install -d -g root -m 755 -o root debian/tmp-arch/DEBIAN
+	make install-fortune install-util install-man \
+                  prefix=$(shell pwd)/debian/tmp-arch
+	install -d -g root -m 755 -o root debian/tmp-arch/usr/doc/fortune-mod
+	install -g root -m 644 -o root $(DOCS-ARCH) \
+	          debian/tmp-arch/usr/doc/fortune-mod
+	install -g root -m 644 -o root debian/changelog \
+	  debian/tmp-arch/usr/doc/fortune-mod/changelog.Debian
+	install -g root -m 644 -o root ChangeLog \
+	  debian/tmp-arch/usr/doc/fortune-mod/changelog
+	gzip -9v debian/tmp-arch/usr/doc/fortune-mod/*
+	-gzip -9frv debian/tmp-arch/usr/man
+	install -d -g root -m 755 -o root debian/tmp-arch/usr/doc/copyright
+	install -g root -m 644 -o root debian/copyright \
+	          debian/tmp-arch/usr/doc/copyright/fortune-mod
+	unset LD_PRELOAD ; dpkg-shlibdeps fortune/fortune 
+	dpkg-gencontrol -pfortune-mod -Pdebian/tmp-arch
+	dpkg --build debian/tmp-arch ..
+
+binary-indep: build checkroot
+	install -d -g root -m 755 -o root debian/tmp-all
+	chmod g-s debian/tmp-all
+	install -d -g root -m 755 -o root debian/tmp-all/DEBIAN
+	make install-cookie prefix=$(shell pwd)/debian/tmp-all
+	install -d -g root -m 755 -o root debian/tmp-all/usr/doc/fortunes
+	install -g root -m 644 -o root $(DOCS-ALL) \
+	          debian/tmp-all/usr/doc/fortunes
+	install -g root -m 644 -o root debian/changelog \
+	  debian/tmp-all/usr/doc/fortunes/changelog.Debian
+	install -g root -m 644 -o root ChangeLog \
+	  debian/tmp-all/usr/doc/fortunes/changelog
+	gzip -9v debian/tmp-all/usr/doc/fortunes/*
+	install -d -g root -m 755 -o root debian/tmp-all/usr/doc/copyright
+	install -g root -m 644 -o root debian/copyright \
+	          debian/tmp-all/usr/doc/copyright/fortunes
+	dpkg-gencontrol -pfortunes -Pdebian/tmp-all
+	install -g root -m 755 -o root debian/postinst \
+	  debian/tmp-all/DEBIAN/postinst
+	dpkg --build debian/tmp-all ..
+
+mrproper: clean
+	-rm -f `find . \( -name \*~ -o -name \*.bak \) -print`
+
+# generic targets:
+binary:     binary-indep binary-arch
+
+source diff:
+	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
+
+checkroot:
+	$(checkdir)
+	test root = "`whoami`"
+
+.PHONY: binary binary-arch binary-indep clean checkroot
+
+# Local Variables:
+# mode: makefile
+# End:

@@ -548,9 +548,9 @@ int add_dir(register FILEDESC * fp)
     fp->num_children = 0;
     while ((dirent = readdir(dir)) != NULL)
     {
-	if (dirent->d_namlen == 0)
+	if (strlen(dirent->d_name) == 0)
 	    continue;
-	name = copy(dirent->d_name, dirent->d_namlen);
+	name = copy(dirent->d_name, strlen(dirent->d_name));
 	if (add_file(NO_PROB, name, fp->path, &fp->child, &tailp, fp))
 	    fp->num_children++;
 	else
@@ -1223,8 +1223,7 @@ int main(int ac, char *av[])
 
     if (Wait)
     {
-	if (Fort_len == 0)
-	    fortlen();
+        fortlen();
 	sleep((unsigned int) max(Fort_len / CPERS, MINW));
     }
     exit(0);

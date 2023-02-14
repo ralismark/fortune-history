@@ -1,5 +1,5 @@
-CFLAGS=-O2 -Wall -fomit-frame-pointer -pipe
-LDFLAGS=-s
+CFLAGS= -O2 -Wall -fomit-frame-pointer -pipe
+LDFLAGS= -s
 
 # The above flags are used by default; the debug flags are used when make
 # is called with 'make debug'
@@ -16,24 +16,24 @@ DEBUGLDFLAGS=-g
 CC=gcc
 
 # Where does the fortune program go?
-FORTDIR=/usr/games
+FORTDIR=$(prefix)/usr/games
 # Where do the data files (fortunes, or cookies) go?
-COOKIEDIR=/var/lib/games/fortunes
+COOKIEDIR=$(prefix)/usr/share/games/fortunes
 # Offensive ones?
 OCOOKIEDIR=$(COOKIEDIR)/off
 # The ones with html tags?
 WCOOKIEDIR=$(COOKIEDIR)/html
 # Where do strfile and unstr go?
-BINDIR=/usr/sbin
+BINDIR=$(prefix)/usr/sbin
 # What is the proper mode for strfile and unstr? 755= everyone, 700= root only
 BINMODE=0755
 #BINMODE=0700
 # Where do the man pages for strfile and unstr go?
-BINMANDIR=/usr/man/man8
+BINMANDIR=$(prefix)/usr/man/man8
 # What is their proper extension?
 BINMANEXT=8
 # And the same for the fortune man page
-FORTMANDIR=/usr/man/man6
+FORTMANDIR=$(prefix)/usr/man/man6
 FORTMANEXT=6
 # Do we want to install the offensive files? (0 no, 1 yes)
 OFFENSIVE=1
@@ -84,10 +84,12 @@ install: install-fortune install-util install-man install-cookie
 
 # Install just the fortune program
 install-fortune:
+	install -d -g root -m 755 -o root $(FORTDIR)
 	install -s -m 0755 fortune/fortune $(FORTDIR)
 
 # Install just the utilities strfile and unstr
 install-util:
+	install -d -g root -m 755 -o root $(BINDIR)
 	install -s -m $(BINMODE) util/strfile $(BINDIR)
 	install -s -m $(BINMODE) util/unstr $(BINDIR)
 
@@ -103,12 +105,14 @@ install-fman:
 	@echo ".br" >>fortune/fortune.man
 	@echo "$(OCOOKIEDIR) \- Directory for offensive fortunes" >>fortune/fortune.man
 	@cat fortune/fortune-man.part2 >>fortune/fortune.man
+	install -d -g root -m 755 -o root $(FORTMANDIR)
 	install -m 0644 -o man fortune/fortune.man $(FORTMANDIR)/fortune.$(FORTMANEXT)
 
 # Install the utilities man pages
 install-uman:
-	install -m 0644 -o man mutil/strfile.man $(BINMANDIR)/strfile.$(BINMANEXT)
-	ln -s $(BINMANDIR)/strfile.$(BINMANEXT) $(BINMANDIR)/unstr.$(BINMANEXT)
+	install -d -g root -m 755 -o root $(BINMANDIR)
+	install -m 0644 -o man util/strfile.man $(BINMANDIR)/strfile.$(BINMANEXT)
+	(cd $(BINMANDIR) && ln -sf strfile.$(BINMANEXT).gz unstr.$(BINMANEXT).gz)
 
 # Install the fortune cookie files
 install-cookie:
