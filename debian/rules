@@ -31,6 +31,13 @@ binary-arch: build checkroot
 	install -d -g root -m 755 -o root debian/tmp-arch/DEBIAN
 	make install-fortune install-util install-man \
                   prefix=$(shell pwd)/debian/tmp-arch
+	@cat fortune/fortune-man.part1 >fortune/fortune.man
+	@echo "/usr/share/games/fortunes \- Directory for inoffensive fortunes" >>fortune/fortune.man
+	@echo ".br" >>fortune/fortune.man
+	@echo "/usr/share/games/fortunes/off \- Directory for offensive fortunes" >>fortune/fortune.man
+	@cat fortune/fortune-man.part2 >>fortune/fortune.man
+	install -m 0644 -o root -g root \
+	   fortune/fortune.man debian/tmp-arch/usr/man/man6/fortune.6
 	install -d -g root -m 755 -o root debian/tmp-arch/usr/doc/fortune-mod
 	install -g root -m 644 -o root $(DOCS-ARCH) \
 	          debian/tmp-arch/usr/doc/fortune-mod
@@ -38,11 +45,10 @@ binary-arch: build checkroot
 	  debian/tmp-arch/usr/doc/fortune-mod/changelog.Debian
 	install -g root -m 644 -o root ChangeLog \
 	  debian/tmp-arch/usr/doc/fortune-mod/changelog
+	install -g root -m 644 -o root debian/copyright \
+	          debian/tmp-arch/usr/doc/fortune-mod/
 	gzip -9v debian/tmp-arch/usr/doc/fortune-mod/*
 	-gzip -9frv debian/tmp-arch/usr/man
-	install -d -g root -m 755 -o root debian/tmp-arch/usr/doc/copyright
-	install -g root -m 644 -o root debian/copyright \
-	          debian/tmp-arch/usr/doc/copyright/fortune-mod
 	unset LD_PRELOAD ; dpkg-shlibdeps fortune/fortune 
 	dpkg-gencontrol -pfortune-mod -Pdebian/tmp-arch
 	dpkg --build debian/tmp-arch ..
@@ -60,9 +66,8 @@ binary-indep: build checkroot
 	install -g root -m 644 -o root ChangeLog \
 	  debian/tmp-all/usr/doc/fortunes/changelog
 	gzip -9v debian/tmp-all/usr/doc/fortunes/*
-	install -d -g root -m 755 -o root debian/tmp-all/usr/doc/copyright
 	install -g root -m 644 -o root debian/copyright \
-	          debian/tmp-all/usr/doc/copyright/fortunes
+	          debian/tmp-all/usr/doc/fortunes/
 	dpkg-gencontrol -pfortunes -Pdebian/tmp-all
 	install -g root -m 755 -o root debian/postinst \
 	  debian/tmp-all/DEBIAN/postinst

@@ -2,7 +2,7 @@
 set -e 
 
 echo "The fortunes package is installed with the set of potentially"
-echo -n "offensive fortunes.  Do you want to remove these?  "
+echo -n "offensive fortunes.  Do you want to remove these? [y/N] "
 read Reply
 case $Reply in
 	y*|Y*|aye|AYE|Aye)	rm -rf /usr/share/games/fortunes/off/

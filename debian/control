@@ -2,7 +2,7 @@ Source: fortune-mod
 Section: games
 Priority: optional
 Maintainer: Helmut Geyer <Helmut.Geyer@iwr.uni-heidelberg.de>
-Standards-Version: 2.1.1.0
+Standards-Version: 2.1.2.2
 
 Package: fortune-mod
 Architecture: any

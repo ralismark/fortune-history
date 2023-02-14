@@ -1,3 +1,17 @@
+fortune-mod (9510-4) frozen unstable; urgency=low
+
+  * fixed postinst script to display the default action
+  * fixed manpage which had the wrong paths 
+  * fixed several cookie files
+
+ -- Helmut Geyer <Helmut.Geyer@iwr.uni-heidelberg.de>  Fri, 18 Apr 1997 00:59:21 +0200
+
+fortune-mod (9510-3) unstable; urgency=low
+
+  * fixed copyright location.
+
+ -- Helmut Geyer <Helmut.Geyer@iwr.uni-heidelberg.de>  Wed, 19 Feb 1997 19:29:24 +0100
+
 fortune-mod (9510-2) unstable; urgency=low
 
   * fixed package relationship of fortune-mod with fortune and fortunes
