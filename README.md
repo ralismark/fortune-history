@@ -24,3 +24,9 @@ Look at the git history to see -- many of my commits contain notes about reconst
 - Dennis L. Clark's version from <https://web.archive.org/web/19990506115004/http://www.progsoc.uts.edu.au/~dbugger/hacks/hacks.html>.
 - Pascal Hakim's version from <https://web.archive.org/web/20070829015625/http://www.redellipse.net/code/fortune>.
 - Historical Debian sources are from <https://snapshot.debian.org/package/fortune-mod/>, with more detail from <https://alioth-archive.debian.org/cvs/fortune.tar.xz>.
+
+## License
+
+My reconstruction of the history is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+
+However, the licensing of the actual source code is more complicated, and is something I haven't taken the time to document.
