@@ -1,10 +1,22 @@
 (Note: this file has been re-arranged to be in reverse chronological
 order, which is The Right Thing for ChangeLogs - DLC)
 
+August 29, 1997
+
+  Incorporated a couple of minor changes made in the (old) Debian
+  fortune-mod package, including the addition of an extra data file
+  called 'cookie'.  Renamed some documentation files, and included some
+  install information for non-Linux users.  Added a "-v" option to
+  report the program version.
+
+  I intend to submit this distribution to SunSITE RSN.
+
+    -- Dennis L. Clark <dbugger@progsoc.uts.edu.au>
+
 May, 1997
 
   This release fixes many of the portability problems with the
-  fortune-mod program released by Amy Lewis in September, 1995.  The
+  fortune-mod program released by Amy Lewis in October, 1995.  The
   previous version had many Linux-isms in it, which left it unworkable
   on any other platform.  This version replaces most of these with more
   standard calls, making it more likely to work under other platforms.

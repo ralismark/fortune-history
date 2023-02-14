@@ -1,32 +1,115 @@
+fortune-mod README
+==================
 
-This is fortune-mod, an feature-enhanced fortune derived from sources
-found in NetBSD.  You can also find out more about this package in the
-following files:
+This is fortune-mod 9708.  It is basically the same as the fortune-mod
+released in October 1995, with some portability improvements, bug fixes
+and documentation cleanup.
 
-    NEWS
-	A summary of important changes made to fortune-mod.
+The most significant fix was for the reported bug about the `-a' option
+of fortune with database names that appear in both the inoffensive and
+offensive directories.  This was solved by allowing the user to append
+'-o' to a fortune name while `-a' is in effect to force selection of the
+offensive version of a database.
 
-    README.install
-	How to configure, complile and install fortune-mod.
+Other changes/fixes: Fortune is now consistant in how it determines a
+fortune's length (for -s and -l).  The -m can now be used together with
+-s or -l: only fortunes which match _BOTH_ the pattern and the length
+requirement will be printed.
 
-    ChangeLog
-	A revision history of fortune-mod.
+Most of the other features over the usual BSD fortune are summarised in
+Amy's README.Linux, included below, and in the accompanying manual pages
+for fortune(6) and strfile(1).
 
-    Notes
-	Discussion of the behavior of fortune (obsolete for this
-	version) and conventions for formatting fortune entries,
-	from NetBSD fortune.
+The changes in fortune.c and fortune.man are copyrighted by me but
+freely distributable: see the source files for details.  All other
+changes are in the public domain: you may do what you like with them.
 
-    Offensive
-	Discussion on the "offensive" fortune files distributed in this
-	package.
+Getting this Software
+---------------------
 
-    cookie-files
-	A list of the fortune files (both inoffensive and offensive)
-	distributed in this package.
+You can find out about my latest version of this package from my
+Software Hacks web page:
+
+    http://www.progsoc.uts.edu.au/~dbugger/hacks/hacks.html
+
+From it, there are links to download the source code.
+
+I shall also be uploading "stable" releases to the SunSITE Linux mirror
+network, so check out sunsite.unc.edu or your local SunSITE mirror. If
+you still can't find it, the package should be registered under the
+Linux Software Map, at:
+
+    http://www.execpc.com/lsm/
+
+Its LSM entry should tell you where to find it.
+
+Cheers,
+
+  -- Dennis L. Clark <dbugger@progsoc.uts.edu.au>  Thu, 28 Aug 1997 11:42:15 -0400
+
+----Amy's README.Linux---
+This version of fortune is a modification of the NetBSD fortune, as
+tweaked by Florian La Roche (see below, and many thanks to Florian for
+starting the update), and then massively hacked on by Amy Lewis.
+
+I (Amy) hacked on this because it was broken; the BSD source itself is
+broken (I looked at it).  Specifically, if you are using an old version
+of fortune, then it accesses *only* the two files "fortunes" and
+"fortunes-o", even though 'fortune -[ao]f' will tell you differently.
+That was my original reason to start working with the code.
+
+Bug fixes: fortune now reads the same file list that it reports with -f.
+strfile now really sorts and randomizes, instead of just setting the
+'sorted' and 'randomized' flags.  strfile does not lose the pointer to a
+fortune that follows a null fortune.
+
+Enhancements: fortune -f now prints percentages, whether specified on the
+command line or not.  fortune -m now prints filenames to stderr; the
+fortunes printed to stdout can be redirected into a file which is valid
+strfile format.  fortune -l|s can be modified with -n _number_ to specify
+the number of characters in a short fortune (default 160, as before).
+The means of distinguishing between offensive and inoffensive fortunes is
+changed: offensive fortunes are put in a separate subdirectory.  The
+contents of the fortunes databases have been extensively reviewed, and
+broken into smaller, more manageable [hopefully] files.
+strfile is not notably enhanced, though it received the most significant
+bug fixes.  unstr now accepts a command line parameter -c _char_ which
+globally changes the delimiter character.  unstr now accepts an output
+file as the second file parameter, and can tell if a file has a '.dat'
+extension.
+An example of the use of fortune-style databases for other purposes,
+called randstr, has been added.  See util/README.randstr
+The Makefiles have been extensively hacked upon.
+
+Bugs: combining -a with xx% filename, when _filename_ is found in both
+the offensive and the inoffensive directories, causes fortune to exit
+without an error message.  I think it's confused as to which file gets
+the xx%.  I should fix this.  Don't hold your breath, though.
+
+For more information, see the files ChangeLog, Offensive, README.install,
+and cookie-files in the top-level directory, and the comments in the
+various *.c source files.
+
+Amy A. Lewis	alewis@email.unc.edu	October, 1995
+
+----Florian's README.LINUX---
+I have looked at sunsite and tsx and found one very old fortune program
+and one in the debian Linux distribution. But comparing that one with
+the version in NetBSD-current showed me, that NetBSD-current has fixed
+so many speeling-bugs that I just had to repackage everything for the
+Linux community.
+
+In the source package are all changes for Linux in the file LINUX.DIF.
+(Rewriting the Makefiles and some trivial small fixes.)
+
+I expect this "fortune.tar.gz" to show up under /pub/Linux/games.
+
+Not only the kernel needs speeling-corrections,
+
+Florian La Roche      florian@jurix.jura.uni-sb.de      April 1995
 
 
-The following is the README from the originating NetBSD fortune:
+PS. The following is the README from the originating NetBSD fortune:
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #	$NetBSD: README,v 1.2 1995/03/23 08:28:29 cgd Exp $

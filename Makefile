@@ -34,6 +34,8 @@ WEB=0
 #
 # -DHAVE_REGEX_H
 #	For systems that declare their regex functions in <regex.h>
+# -DHAVE_REGEXP_H
+#	For systems that declare their regex functions in <regexp.h>
 # -DHAVE_RX_H
 #	For systems that declare their regex functions in <rx.h>
 # -DBSD_REGEX
@@ -161,7 +163,7 @@ install-uman:
 	install -m 0755 -d $(BINMANDIR)
 	install -m 0644 util/strfile.man $(BINMANDIR)/strfile.$(BINMANEXT)
 	rm -f $(BINMANDIR)/unstr.$(BINMANEXT)
-	ln -s $(BINMANDIR)/strfile.$(BINMANEXT) $(BINMANDIR)/unstr.$(BINMANEXT)
+	ln -s strfile.$(BINMANEXT) $(BINMANDIR)/unstr.$(BINMANEXT)
 
 # Install the fortune cookie files
 install-cookie: cookies-z

@@ -88,6 +88,9 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #endif /* not lint */
 #endif /* killing warnings */
 
+#define		PROGRAM_NAME		"fortune-mod"
+#define		PROGRAM_VERSION		"9708"
+
 #include	<sys/types.h>
 #include	<sys/time.h>
 #include	<sys/param.h>
@@ -104,13 +107,20 @@ static char rcsid[] = "$NetBSD: fortune.c,v 1.8 1995/03/23 08:28:40 cgd Exp $";
 #include	<stdlib.h>
 #include	<string.h>
 
+/* This makes GNU libc to prototype the BSD regex functions */
+#ifdef BSD_REGEX
+#define	_REGEX_RE_COMP
+#endif
+
 #ifdef HAVE_REGEX_H
 #include	<regex.h>
-#else
+#endif
+#ifdef HAVE_REGEXP_H
+#include	<regexp.h>
+#endif
 #ifdef HAVE_RX_H
 #include	<rx.h>
-#endif /* HAVE_RX_H */
-#endif /* HAVE_REGEX_H */
+#endif
 
 #include	"strfile.h"
 
@@ -204,8 +214,16 @@ regex_t Re_pat;
 
 int add_dir(register FILEDESC *);
 
+char *program_version(void)
+{
+    static char buf[BUFSIZ];
+    (void) sprintf(buf, "%s version %s", PROGRAM_NAME, PROGRAM_VERSION);
+    return buf;
+}
+
 void usage(void)
 {
+    (void) fprintf(stderr, "%s\n",program_version());
     (void) fprintf(stderr, "fortune [-a");
 #ifdef	DEBUG
     (void) fprintf(stderr, "D");
@@ -691,9 +709,9 @@ void getargs(int argc, char **argv)
     ignore_case = FALSE;
 
 #ifdef DEBUG
-    while ((ch = getopt(argc, argv, "aDefilm:n:osw")) != EOF)
+    while ((ch = getopt(argc, argv, "aDefilm:n:osvw")) != EOF)
 #else
-    while ((ch = getopt(argc, argv, "aefilm:n:osw")) != EOF)
+    while ((ch = getopt(argc, argv, "aefilm:n:osvw")) != EOF)
 #endif /* DEBUG */
 	switch (ch)
 	  {
@@ -743,6 +761,9 @@ void getargs(int argc, char **argv)
 	      ignore_case++;
 	      break;
 #endif /* NO_REGEX */
+	  case 'v':
+	      (void) printf("%s\n", program_version());
+	      exit(0);
 	  case '?':
 	  default:
 	      usage();
@@ -1266,8 +1287,7 @@ int main(int ac, char *av[])
 
     if (Wait)
     {
-	if (Fort_len == 0)
-	    fortlen();
+        fortlen();
 	sleep((unsigned int) max(Fort_len / CPERS, MINW));
     }
     exit(0);

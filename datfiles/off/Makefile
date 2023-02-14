@@ -15,18 +15,18 @@ all:	ocookies-stamp
 
 ocookies-stamp:	rotated-stamp
 	rm -f *.dat
-	for i in $(OCOOKIES) ; do $(STRFILE) -x $$i ; done
+	for i in $(OCOOKIES) ; do $(STRFILE) -x $$i || exit $$? ; done
 	touch ocookies-stamp
 
 rotated-stamp:
 	for i in $(OCOOKIES_UNROTATED) ; \
-	    do $(ROT) < unrotated/$$i > $$i ; done
+	    do $(ROT) < unrotated/$$i > $$i || exit $$? ; done
 	touch rotated-stamp
 
 install:
 	install -m 0755 -d $(OCOOKIEDIR)
 	for i in $(OCOOKIES) ; \
-	    do install -m 0644 $$i $$i.dat $(OCOOKIEDIR) ; done
+	    do install -m 0644 $$i $$i.dat $(OCOOKIEDIR) || exit $$? ; done
 
 clean:
 	rm -f ocookies-stamp rotated-stamp *.dat $(OCOOKIES_UNROTATED)
