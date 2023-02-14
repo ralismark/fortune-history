@@ -6,7 +6,7 @@ The original author is Ken Arnold.
 The Linux port of the fortune package (from NetBSD-current in April 1995)
 was done by Florian LaRoche <florian@jurix.jura.uni-sb.de>
 Amy A. Lewis <alewis@email.unc.edu> modified the sources (and the fortune
-files) heavily, fixing bugs and adding new functonality in Oct 1995
+files) heavily, fixing bugs and adding new functionality in Oct 1995
 The data file "cookie" is from Karl Lehenbauer's postings to alt.sources.
 The Debian packaging was done by Helmut Geyer
  <Helmut.Geyer@iwr.uni-heidelberg.de>, and later maintained by Brian Bassett

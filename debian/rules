@@ -1,6 +1,4 @@
 #! /usr/bin/make -f
-#
-# Last Updated: Mon, 12 Jan 1998 22:20:04 -0800 by Brian Bassett
 
 build: build-stamp
 build-stamp:
@@ -35,6 +33,7 @@ binary-arch: build
 	   fortune/fortune.man debian/tmp/usr/man/man6/fortune.6
 	make install-cookie prefix=$(shell pwd)/debian/fortunes
 	mv debian/fortunes/usr/share/games/fortunes/off debian/fortunes-off/usr/share/games/fortunes
+	mv debian/fortunes/usr/share/games/fortunes/{fortunes,literature,riddles}{,.dat} debian/fortunes-min/usr/share/games/fortunes
 	dh_installdocs
 #	dh_installexamples
 #	dh_installmenu

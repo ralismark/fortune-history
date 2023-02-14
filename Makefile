@@ -11,14 +11,14 @@ OCOOKIEDIR=$(COOKIEDIR)/off
 # The ones with html tags?
 WCOOKIEDIR=$(COOKIEDIR)/html
 # Where do strfile and unstr go?
-BINDIR=$(prefix)/usr/sbin
+BINDIR=$(prefix)/usr/bin
 # What is the proper mode for strfile and unstr? 755= everyone, 700= root only
 BINMODE=0755
 #BINMODE=0700
 # Where do the man pages for strfile and unstr go?
-BINMANDIR=$(prefix)/usr/man/man8
+BINMANDIR=$(prefix)/usr/man/man1
 # What is their proper extension?
-BINMANEXT=8
+BINMANEXT=1
 # And the same for the fortune man page
 FORTMANDIR=$(prefix)/usr/man/man6
 FORTMANEXT=6
@@ -55,7 +55,7 @@ REGEXDEFS=-DHAVE_REGEX_H -DBSD_REGEX
 REGEXLIBS=
 
 DEFINES=-DFORTDIR="\"$(COOKIEDIR)\"" -DOFFDIR="\"$(OCOOKIEDIR)\""
-CFLAGS=-O2 $(DEFINES) -Wall -fomit-frame-pointer -pipe
+CFLAGS=-O2 $(DEFINES) -Wall -fomit-frame-pointer -pipe -fsigned-char
 LDFLAGS=-s
 
 # The above flags are used by default; the debug flags are used when make

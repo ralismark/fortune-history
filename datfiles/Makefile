@@ -3,7 +3,7 @@ COOKIES=art ascii-art computers cookie definitions drugs education ethnic \
 	food fortunes goedel humorists kids law linuxcookie literature \
 	love magic medicine men-women miscellaneous news people pets \
 	platitudes politics riddles science songs-poems sports \
-	startrek translate-me wisdom work zippy
+	startrek translate-me wisdom work zippy linux perl
 
 STRFILE=../util/strfile
 

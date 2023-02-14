@@ -1,15 +1,15 @@
 Source: fortune-mod
 Section: games
 Priority: optional
-Maintainer: Brian Bassett <brian@butterfly.ml.org>
+Maintainer: Brian Bassett <brianb@debian.org>
 Standards-Version: 2.3.0.1
 
 Package: fortune-mod
 Architecture: any
 Replaces: fortune
 Provides: fortune
-Recommends: fortunes
-Suggests: fortunes-off
+Recommends: fortunes-min
+Suggests: fortunes, fortunes-off
 Conflicts: fortune
 Depends: ${shlibs:Depends}
 Description: Fortune cookies provided upon demand.
@@ -20,9 +20,19 @@ Description: Fortune cookies provided upon demand.
  The datafiles (which can be shared) are contained in the 'fortunes'
  and 'fortunes-off' packages.
 
-Package: fortunes
+Package: fortunes-min
 Architecture: any
 Depends: fortune-mod
+Replaces: fortunes (<= 9708-6)
+Description: Datafiles containing fortune cookies
+ This package contains a small number of 'fortune cookies' for the
+ bandwidth conscious.  There are over 15000 different 'fortune cookies'
+ in the fortunes package.  You'll need the fortune-mod package to display
+ the cookies.
+
+Package: fortunes
+Architecture: any
+Depends: fortunes-min, fortune-mod
 Description: Datafiles containing fortune cookies
  There are far over 15000 different 'fortune cookies' in this package.
  You'll need the fortune-mod package to display the cookies.

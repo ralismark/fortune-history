@@ -1,3 +1,43 @@
+fortune-mod (9708-10) frozen unstable; urgency=low
+
+  * Fixed typo in copyright (lintian)
+  * Fixed typo in literature (#31015)
+  * Added Depends: fortunes-min to fortunes to upgrade smoothly from hamm.
+    (#31111)
+  * Added powerpc fix from Hartmut Koptein <koptein@et-inf.fho-emden.de>
+    (#31930)
+
+ -- Brian Bassett <brianb@debian.org>  Fri, 15 Jan 1999 18:25:42 -0800
+
+fortune-mod (9708-9) unstable; urgency=low
+
+  * Fix unpack-from-source problems reported by build daemons (#25416,#28542)
+
+ -- Brian Bassett <brianb@debian.org>  Mon, 26 Oct 1998 19:34:15 -0800
+
+fortune-mod (9708-8) unstable; urgency=low
+
+  * Fixed typo (#28231)
+  * Moved inappropriate fortune from law to off/sex (#28193)
+
+ -- Brian Bassett <brianb@debian.org>  Wed, 21 Oct 1998 23:26:44 -0700
+
+fortune-mod (9708-7) unstable; urgency=low
+
+  * Split fortunes into fortunes-min and fortunes for the bandwidth conscious
+  * Added "linux" cookie file by Martin Schulze <joey@infodrom.north.de>
+  * Added "perl" cookie file from http://www.perl.org/lwall-quote.txt
+  * Moved unstr and strfile to /usr/bin from /usr/sbin
+
+ -- Brian Bassett <brianb@debian.org>  Fri,  4 Sep 1998 15:01:58 -0700
+
+fortune-mod (9708-6) unstable; urgency=low
+
+  * Fixed typos and other mistakes (#21572,22247,23527)
+  * Changed mainainter address
+
+ -- Brian Bassett <brianb@debian.org>  Sat, 18 Jul 1998 20:52:17 -0700
+
 fortune-mod (9708-5) frozen unstable; urgency=low
 
   * Fixed manpages in all packages problems (Fixes: #19738,#19844,#19879,#19844,#19895,#19879,#19918)

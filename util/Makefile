@@ -17,7 +17,7 @@ randstr: randstr.o
 	$(CC) $(LDFLAGS) -o randstr randstr.o
 
 rot: rot.o
-	$(CC) $(LDFLAGS) -o rot rot.o
+	$(CC) -fsigned-char $(LDFLAGS) -o rot rot.o
 
 clean:
 	rm -f *.o unstr strfile randstr rot ansify
