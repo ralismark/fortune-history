@@ -4,6 +4,8 @@ This repository captures and reconstructs the historical revisions of the [fortu
 
 Look at the git history to see -- many of my commits contain notes about reconstruction, including omissions/etc.
 
+![](./timeline.svg)
+
 ## Remaining Work
 
 - Importing debian versions after 1.99.1-1 (current is 1.99.1-7.3), see <https://tracker.debian.org/pkg/fortune-mod>.
